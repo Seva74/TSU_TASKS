@@ -1,0 +1,46 @@
+object Form1: TForm1
+  Left = 256
+  Height = 341
+  Top = 145
+  Width = 598
+  Caption = 'Form1'
+  ClientHeight = 341
+  ClientWidth = 598
+  Color = 14671839
+  LCLVersion = '2.2.0.4'
+  object PaintBox1: TPaintBox
+    Left = 16
+    Height = 248
+    Top = 16
+    Width = 288
+  end
+  object Button1: TButton
+    Left = 328
+    Height = 41
+    Top = 72
+    Width = 123
+    Caption = 'Рисовать'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object Label1: TLabel
+    Left = 64
+    Height = 54
+    Top = 160
+    Width = 161
+    Caption = 'Рисунок'
+    Font.Color = clBlue
+    Font.Height = -40
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Button2: TButton
+    Left = 328
+    Height = 41
+    Top = 168
+    Width = 123
+    Caption = 'Выход'
+    OnClick = Button2Click
+    TabOrder = 1
+  end
+end

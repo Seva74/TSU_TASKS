@@ -1,0 +1,133 @@
+object Form1: TForm1
+  Left = 1413
+  Height = 634
+  Top = 316
+  Width = 1121
+  Caption = 'Programm'
+  ClientHeight = 634
+  ClientWidth = 1121
+  Color = clSilver
+  DesignTimePPI = 144
+  Font.CharSet = RUSSIAN_CHARSET
+  Font.Height = -20
+  Font.Name = 'System'
+  Font.Pitch = fpVariable
+  Font.Quality = fqDraft
+  Font.Style = [fsBold]
+  LCLVersion = '2.2.0.4'
+  object Label1: TLabel
+    Left = 400
+    Height = 20
+    Top = 40
+    Width = 243
+    Caption = 'Conting a function F(X) = cos(x)'
+    Color = clWhite
+    Transparent = False
+  end
+  object Label2: TLabel
+    Left = 208
+    Height = 20
+    Top = 106
+    Width = 126
+    Caption = 'Argument value'
+    Color = clWhite
+    Transparent = False
+  end
+  object Label3: TLabel
+    Left = 712
+    Height = 20
+    Top = 106
+    Width = 166
+    Caption = 'Calculation accuracy'
+    Color = clWhite
+    Transparent = False
+  end
+  object Edit1: TEdit
+    Left = 208
+    Height = 34
+    Top = 152
+    Width = 166
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -20
+    Font.Name = 'Trebuchet MS'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    OnChange = Edit1Change
+    ParentFont = False
+    TabOrder = 0
+    Text = 'X'
+  end
+  object Edit2: TEdit
+    Left = 712
+    Height = 28
+    Top = 152
+    Width = 224
+    TabOrder = 1
+    Text = 'Accuracy. Example: 0,0001'
+  end
+  object Label4: TLabel
+    Left = 208
+    Height = 20
+    Top = 272
+    Width = 116
+    Caption = 'Function value'
+    Color = clWhite
+    Transparent = False
+  end
+  object Label5: TLabel
+    Left = 208
+    Height = 20
+    Top = 368
+    Width = 163
+    Caption = 'Number of iterations'
+    Color = clWhite
+    Transparent = False
+    OnClick = Label5Click
+  end
+  object Button1: TButton
+    Left = 208
+    Height = 61
+    Top = 464
+    Width = 206
+    Caption = 'calculate'
+    OnClick = Button1Click
+    TabOrder = 2
+  end
+  object Out_value: TMemo
+    Left = 712
+    Height = 31
+    Top = 272
+    Width = 229
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -20
+    Font.Name = 'Verdana'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    Lines.Strings = (
+      'Memo1'
+    )
+    ParentFont = False
+    TabOrder = 3
+  end
+  object Button2: TButton
+    Left = 712
+    Height = 67
+    Top = 464
+    Width = 206
+    Caption = 'Exit'
+    OnClick = Button2Click
+    TabOrder = 4
+  end
+  object Out_iteraction: TMemo
+    Left = 712
+    Height = 31
+    Top = 357
+    Width = 229
+    Lines.Strings = (
+      'Memo2'
+    )
+    TabOrder = 5
+  end
+end

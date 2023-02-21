@@ -1,0 +1,121 @@
+object Form1: TForm1
+  Left = 1138
+  Height = 575
+  Top = 140
+  Width = 878
+  Caption = 'Form1'
+  ClientHeight = 575
+  ClientWidth = 878
+  LCLVersion = '2.2.0.4'
+  object LinedButton: TButton
+    Left = 104
+    Height = 25
+    Top = 132
+    Width = 75
+    Caption = 'Lined'
+    OnClick = LinedButtonClick
+    TabOrder = 0
+  end
+  object SortButton: TButton
+    Left = 376
+    Height = 25
+    Top = 132
+    Width = 75
+    Caption = 'Sort'
+    OnClick = SortButtonClick
+    TabOrder = 1
+  end
+  object MergeButton: TButton
+    Left = 656
+    Height = 25
+    Top = 132
+    Width = 75
+    Caption = 'Merge'
+    OnClick = MergeButtonClick
+    TabOrder = 2
+  end
+  object ListLined: TListBox
+    Left = 104
+    Height = 232
+    Top = 200
+    Width = 75
+    ItemHeight = 0
+    TabOrder = 3
+  end
+  object ListSorted: TListBox
+    Left = 376
+    Height = 232
+    Top = 200
+    Width = 75
+    ItemHeight = 0
+    TabOrder = 4
+  end
+  object ListMerge: TListBox
+    Left = 656
+    Height = 232
+    Top = 200
+    Width = 75
+    ItemHeight = 0
+    TabOrder = 5
+  end
+  object Input: TEdit
+    Left = 368
+    Height = 23
+    Top = 80
+    Width = 88
+    TabOrder = 6
+    Text = '10'
+  end
+  object Label1: TLabel
+    Left = 352
+    Height = 15
+    Top = 40
+    Width = 127
+    Caption = 'Amount of elemts in list'
+  end
+  object FileMemo: TMemo
+    Left = 104
+    Height = 58
+    Top = 456
+    Width = 627
+    Lines.Strings = (
+      'FileMemo'
+    )
+    TabOrder = 7
+  end
+  object FileSaveButton: TButton
+    Left = 104
+    Height = 25
+    Top = 536
+    Width = 75
+    Caption = 'Save file'
+    OnClick = FileSaveButtonClick
+    TabOrder = 8
+  end
+  object FileOpenButton: TButton
+    Left = 376
+    Height = 25
+    Top = 536
+    Width = 75
+    Caption = 'Open file'
+    OnClick = FileOpenButtonClick
+    TabOrder = 9
+  end
+  object ExitButton: TButton
+    Left = 656
+    Height = 25
+    Top = 536
+    Width = 75
+    Caption = 'Exit'
+    OnClick = ExitButtonClick
+    TabOrder = 10
+  end
+  object FileOpenDialog: TOpenDialog
+    Left = 670
+    Top = 19
+  end
+  object FileSaveDialog: TSaveDialog
+    Left = 768
+    Top = 19
+  end
+end

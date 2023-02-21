@@ -39,3 +39,7 @@
 *.pabcproj
 *.lpi
 *.lpr
+*.lfm
+*.lps
+*.res
+*.ico

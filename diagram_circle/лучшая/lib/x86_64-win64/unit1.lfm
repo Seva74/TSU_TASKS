@@ -1,0 +1,70 @@
+object Form1: TForm1
+  Left = 1598
+  Height = 676
+  Top = 156
+  Width = 918
+  Caption = 'Form1'
+  ClientHeight = 676
+  ClientWidth = 918
+  DesignTimePPI = 144
+  OnCreate = FormCreate
+  LCLVersion = '2.2.0.4'
+  object ListBox1: TListBox
+    Left = 112
+    Height = 36
+    Top = 64
+    Width = 688
+    Items.Strings = (
+      '3'
+    )
+    ItemHeight = 25
+    OnClick = ListBox1Click
+    ScrollWidth = 98
+    TabOrder = 0
+  end
+  object Chart1: TChart
+    Left = 112
+    Height = 440
+    Top = 104
+    Width = 688
+    AxisList = <    
+      item
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+        Title.LabelBrush.Style = bsClear
+      end    
+      item
+        Alignment = calBottom
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelBrush.Style = bsClear
+      end>
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    object Chart1PieSeries1: TPieSeries
+      OnGetMark = Chart1PieSeries1GetMark
+    end
+  end
+  object Button1: TButton
+    Left = 368
+    Height = 70
+    Top = 568
+    Width = 232
+    Caption = 'Нарисовать диаграмму'
+    OnClick = Button1Click
+    TabOrder = 2
+  end
+  object Label1: TLabel
+    Left = 288
+    Height = 25
+    Top = 24
+    Width = 359
+    Caption = 'Выберите количество секторов диаграммы'
+  end
+end

@@ -1,0 +1,59 @@
+object Form1: TForm1
+  Left = 1893
+  Height = 509
+  Top = 229
+  Width = 648
+  Caption = 'Form1'
+  ClientHeight = 509
+  ClientWidth = 648
+  DesignTimePPI = 144
+  LCLVersion = '2.2.0.4'
+  object Chart1: TChart
+    Left = 40
+    Height = 360
+    Top = 128
+    Width = 576
+    AxisList = <    
+      item
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+        Title.LabelBrush.Style = bsClear
+      end    
+      item
+        Alignment = calBottom
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelBrush.Style = bsClear
+      end>
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    object Chart1BarSeries1: TBarSeries
+      BarBrush.Color = clRed
+      Source = RedChartSource
+      OnBeforeDrawBar = Chart1BarSeries1BeforeDrawBar
+    end
+  end
+  object Label1: TLabel
+    Left = 143
+    Height = 54
+    Top = 48
+    Width = 411
+    Caption = 'столбчатая диаграмма'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -40
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object RedChartSource: TRandomChartSource
+    PointsNumber = 8
+    RandSeed = 1828909220
+    XMax = 8
+    XMin = 1
+    YMax = 10
+    Left = 10
+    Top = 10
+  end
+end

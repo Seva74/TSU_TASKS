@@ -1,0 +1,3 @@
+﻿  C.cpp
+F:\seva\Программирование\Informatics\3.2\C\C.cpp(10,21): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  C.vcxproj -> F:\seva\Программирование\Informatics\3.2\C\Debug\C.exe

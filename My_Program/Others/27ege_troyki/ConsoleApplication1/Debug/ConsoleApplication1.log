@@ -1,0 +1,3 @@
+﻿  ConsoleApplication1.cpp
+F:\seva\Программирование\Others\27ege_troyki\ConsoleApplication1\ConsoleApplication1.cpp(22,61): warning C4244: =: преобразование "__int64" в "int", возможна потеря данных
+  ConsoleApplication1.vcxproj -> F:\seva\Программирование\Others\27ege_troyki\ConsoleApplication1\Debug\ConsoleApplication1.exe

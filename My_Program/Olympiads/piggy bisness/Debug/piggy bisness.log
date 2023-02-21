@@ -1,0 +1,9 @@
+﻿  piggy bisness.cpp
+F:\seva\Программирование\Olympiads\piggy bisness\piggy bisness.cpp(8,11): error C2131: выражение не определяется константой
+F:\seva\Программирование\Olympiads\piggy bisness\piggy bisness.cpp(8,11): message : сбой был вызван неконстантными аргументами или ссылкой на неконстантный символ
+F:\seva\Программирование\Olympiads\piggy bisness\piggy bisness.cpp(8,11): message : см. использование "n"
+F:\seva\Программирование\Olympiads\piggy bisness\piggy bisness.cpp(8,17): error C2131: выражение не определяется константой
+F:\seva\Программирование\Olympiads\piggy bisness\piggy bisness.cpp(8,17): message : сбой был вызван неконстантными аргументами или ссылкой на неконстантный символ
+F:\seva\Программирование\Olympiads\piggy bisness\piggy bisness.cpp(8,17): message : см. использование "m"
+F:\seva\Программирование\Olympiads\piggy bisness\piggy bisness.cpp(11,13): warning C4552: ">>": результат выражения не используется
+F:\seva\Программирование\Olympiads\piggy bisness\piggy bisness.cpp(15,13): warning C4552: ">>": результат выражения не используется

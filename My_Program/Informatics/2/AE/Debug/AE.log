@@ -1,0 +1,17 @@
+﻿  AE.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\utility(58,14): error C2064: результатом вычисления фрагмента не является функция, принимающая 2 аргументов
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\utility(57): message : выполняется компиляция ссылки на экземпляр шаблон функции "const _Ty &std::min<int,int>(const _Ty &,const _Ty &,_Pr) noexcept(<expr>)"
+          with
+          [
+              _Ty=int,
+              _Pr=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\utility(58,5): error C2056: недопустимое выражение
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\utility(33,14): error C2064: результатом вычисления фрагмента не является функция, принимающая 2 аргументов
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\utility(32): message : выполняется компиляция ссылки на экземпляр шаблон функции "const _Ty &std::max<int,int>(const _Ty &,const _Ty &,_Pr) noexcept(<expr>)"
+          with
+          [
+              _Ty=int,
+              _Pr=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\utility(33,5): error C2056: недопустимое выражение

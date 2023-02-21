@@ -1,0 +1,132 @@
+<table border="0" width="1000" height="1000">
+<tr height="25">
+<td bgcolor="brown"></td>
+<td bgcolor="brown">A</td>
+<td bgcolor="brown">B</td>
+<td bgcolor="brown">C</td>
+<td bgcolor="brown">D</td>
+<td bgcolor="brown">E</td>
+<td bgcolor="brown">F</td>
+<td bgcolor="brown">G</td>
+<td bgcolor="brown">H</td>
+<td bgcolor="brown"></td>
+</tr>
+
+<tr>
+<td bgcolor="brown">8</th>
+<th>Ладья</th>
+<th bgcolor="yellow">Конь</th>
+<th>Слон</td>
+<th bgcolor="yellow">Ферзь</th>
+<th>Король</td>
+<th bgcolor="yellow">Слон</th>
+<th>Конь</td>
+<th bgcolor="yellow">Ладья</th>
+<td bgcolor="brown">8</td>
+</tr>
+
+<tr>
+<td bgcolor="brown">7</td>
+<th bgcolor="yellow">Пешка</th>
+<th>Пешка</td>
+<th bgcolor="yellow">Пешка</th>
+<th>Пешка</td>
+<th bgcolor="yellow">Пешка</th>
+<th>Пешка</td>
+<th bgcolor="yellow">Пешка</th>
+<th>Пешка</td>
+<td bgcolor="brown">7</td>
+</tr>
+
+<tr>
+<td bgcolor="brown">6</td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td bgcolor="brown">6</td>
+</tr>
+
+<tr>
+<td bgcolor="brown">5</td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="brown">5</td>
+</tr>
+
+<tr>
+<td bgcolor="brown">4</td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td bgcolor="brown">4</td>
+</tr>
+
+<tr>
+<td bgcolor="brown">3</td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="yellow"></td>
+<td></td>
+<td bgcolor="brown">3</td>
+</tr>
+
+
+<tr>
+<td bgcolor="brown">2</td>
+<th>Пешка</th>
+<th bgcolor="yellow">Пешка</th>
+<th >Пешка</th>
+<th bgcolor="yellow">Пешка</th>
+<th>Пешка</th>
+<th bgcolor="yellow">Пешка</th>
+<th>Пешка</th>
+<th bgcolor="yellow">Пешка</th>
+<td bgcolor="brown">2</td>
+</tr>
+
+<tr>
+<td bgcolor="brown">1</th>
+<th bgcolor="yellow">Ладья</th>
+<th>Конь</th>
+<th bgcolor="yellow">Слон</th>
+<th>Ферзь</th>
+<th bgcolor="yellow">Король</th>
+<th>Слон</td>
+<th bgcolor="yellow">Конь</th>
+<th>Ладья</th>
+<td bgcolor="brown">1</td>
+</tr>
+
+<tr height="25">
+<td bgcolor="brown"></td>
+<td bgcolor="brown">A</td>
+<td bgcolor="brown">B</td>
+<td bgcolor="brown">C</td>
+<td bgcolor="brown">D</td>
+<td bgcolor="brown">E</td>
+<td bgcolor="brown">F</td>
+<td bgcolor="brown">G</td>
+<td bgcolor="brown">H</td>
+<td bgcolor="brown"></td>
+</tr>
+</table>

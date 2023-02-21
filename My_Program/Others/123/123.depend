@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1655727871 source:f:\seva\Программирование\others\123\main.cpp
+	<iostream>
+	<fstream>
+	<cmath>
+

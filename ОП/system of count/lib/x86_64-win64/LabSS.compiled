@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CONFIG>
-  <Compiler Value="C:\lazarus\fpc\3.2.2\bin\x86_64-win64\fpc.exe" Date="1411537227"/>
-  <Params Value=" -MObjFPC -Scghi -O1 -gw2 -godwarfsets -gl -l -vewnhibq &quot;-FiC:\Users\User\Desktop\ОП\system of count\lib\x86_64-win64&quot; &quot;-FuC:\Users\User\Desktop\ОП\system of count\&quot; &quot;-FUC:\Users\User\Desktop\ОП\system of count\lib\x86_64-win64\&quot; &quot;-FEC:\Users\User\Desktop\ОП\system of count\&quot; &quot;-oC:\Users\User\Desktop\ОП\system of count\LabSS.exe&quot; LabSS.lpr"/>
-</CONFIG>

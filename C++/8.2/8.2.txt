@@ -1,0 +1,4 @@
+1)Remove the "stdafx.h" library
+2)Shorten the main function of the program to "int main()"
+3)Remove the "*" symbol before the variables
+The purpose of this program is to sort three numbers and calculate the difference between the largest and smallest numbers.

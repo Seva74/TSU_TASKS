@@ -7,7 +7,6 @@ using namespace std;
     bool l;
 void base(string s[])
 {
-    //cout<<q1<<" "<<q2<<endl;
     for(int i=0;i<k;i++)
     {
         l=0;
@@ -41,13 +40,13 @@ int main()
     ifstream in("input.txt");
     in>>n;
     string s[n];
-    int population[n];
+    bool population[n];
     for(int i=0;i<n;i++) population[i]=1;
     while(in>>q1>>q2)
     {
         if(q1=="0" && q2=="0")break;
-        population[stoi(q1)]--;
-        population[stoi(q2)]--;
+        population[stoi(q1)]=0;             // вместо -1 сделать boolean
+        population[stoi(q2)]=0;
         base(s);
     }
     for(int i = 0; i< k; i++) cout<<s[i]<<endl;

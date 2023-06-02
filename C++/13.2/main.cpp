@@ -52,6 +52,7 @@ void gauss_jordan(int M, int N, double **A) {
     }
 }
 
+
 int main() {
     ifstream fin("input.txt");
     int M, N;
@@ -67,8 +68,31 @@ int main() {
 
     // Induce matrix reduction function to step-like
     gauss_jordan(M, N, A);
+    ofstream fout("output.txt");
 
-    // Check if the system has a unique solution
+    // Check if the system has a solution
+    bool SolutionExists = true;
+    for (int i = 0; i < M; i++) {
+        bool ZeroRow = true;
+        for (int j = 0; j < N; j++) {
+            if (A[i][j] != 0) {
+                ZeroRow = false;
+                break;
+            }
+        }
+        if (ZeroRow && A[i][N] != 0) {
+            SolutionExists = false;
+            break;
+        }
+    }
+    if (!SolutionExists)
+    {
+        fout << "No solution exists" << endl;
+        delete[] A;
+        return 0;
+    }
+    else
+    {    // Check if the system has a unique solution
     bool Unique = true;
     for (int i = 0; i < M; i++) {
         bool ZeroRow = true;
@@ -83,18 +107,17 @@ int main() {
             break;
         }
     }
-
-    ofstream fout("output.txt");
-    if (Unique == true) {
+        if (Unique == true) {
         for (int i = 0; i < M; i++) {
             fout << "x" << i + 1 << " = " << A[i][N] << endl;
         }
-    } else {
+    }
+    else {
         fout << "No unique solution exists" << endl;
     }
 
     for (int i = 0; i < M; i++) {
         delete[] A[i];
     }
-    delete[] A;
+    }
 }

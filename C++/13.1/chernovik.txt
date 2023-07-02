@@ -115,7 +115,6 @@ int main() {
 
     if (!SolutionExists) {
         fout << "No solution exists" << endl;
-        return 0;
     } else {
         // Check if the system has a unique solution
         bool Unique = true;
@@ -133,12 +132,34 @@ int main() {
             }
         }
 
-        if (Unique) {
-            for (int i = 0; i < M; i++) {
-                fout << "x" << i + 1 << " = " << A[i][N] << endl;
-            }
+        if (Unique && N == 2) {
+            fout << "Unique solution:" << endl;
+            fout << "x = " << A[0][2] << endl;
+            fout << "y = " << A[1][2] << endl;
+        } else {
+            fout << "Infinite number of solutions" << endl;
         }
     }
+    fin.close();
+    fout.close();
+
+    // Generate plot script
+    ofstream plotScript("plot.py");
+    plotScript << "import matplotlib.pyplot as plt\n\n";
+    plotScript << "x = [0, " << A[0][N] << "]\n";
+    plotScript << "y = [0, " << A[1][N] << "]\n";
+    plotScript << "plt.plot(x, y, '-o')\n";
+    plotScript << "plt.xlabel('x')\n";
+    plotScript << "plt.ylabel('y')\n";
+    plotScript << "plt.title('Intersection Point')\n";
+    plotScript << "plt.grid(True)\n";
+    plotScript << "plt.show()\n";
+    plotScript.close();
+
+    // Run the plot script
+    system("python plot.py");
+
+
     cout << "Successfully compiled" << endl;
     return 0;
 }

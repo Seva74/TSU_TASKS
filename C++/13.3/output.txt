@@ -1,0 +1,4 @@
+Unique solution exists
+Solution:
+x1 = 1.25
+x2 = 1.5

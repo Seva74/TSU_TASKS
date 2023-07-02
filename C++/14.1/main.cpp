@@ -1,8 +1,10 @@
 #include <iostream>
 #include <fstream>
-#include <vector>
+#include <cstring>
 
 using namespace std;
+
+const int MAX_SIZE = 100;
 
 void createAdjacencyMatrix()
 {
@@ -11,7 +13,8 @@ void createAdjacencyMatrix()
     int n, m;
     in >> n >> m;
 
-    vector<vector<int>> adjacencyMatrix(n, vector<int>(n, 0));
+    int adjacencyMatrix[MAX_SIZE][MAX_SIZE];
+    memset(adjacencyMatrix, 0, sizeof(adjacencyMatrix));
 
     for (int i = 0; i < m; ++i) {
         int u, v;
@@ -20,14 +23,13 @@ void createAdjacencyMatrix()
         adjacencyMatrix[v][u] = 1;
     }
 
-
     out << n << " " << n << endl;
 
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             out << adjacencyMatrix[i][j] << " ";
         }
-        out << endl;
+        out << '\n';
     }
 
     in.close();
@@ -41,13 +43,17 @@ void createAdjacentVerticesArray()
     int n, m;
     in >> n >> m;
 
-    vector<vector<int>> adjacencyMatrix(n, vector<int>(n, 0));
+    int adjacencyMatrix[MAX_SIZE][MAX_SIZE];
 
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             in >> adjacencyMatrix[i][j];
         }
     }
+
+    in.close();
+
+    out << n << " " << n << '\n';
 
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
@@ -55,39 +61,43 @@ void createAdjacentVerticesArray()
                 out << j << " ";
             }
         }
-        out << endl;
+        out << '\n';
     }
-    in.close();
+
     out.close();
 }
 
 void createEdgeSequence()
 {
-    ifstream in("adjacency_matrix.txt");
+    ifstream in("adjacent_vertices.txt");
     ofstream out("edge_sequence.txt");
     int n, m;
     in >> n >> m;
 
-    vector<vector<int>> adjacencyMatrix(n, vector<int>(n, 0));
+    int adjacentVertices[MAX_SIZE][MAX_SIZE];
 
     for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
-            in >> adjacencyMatrix[i][j];
-        }
-    }
-
-    for (int i = 0; i < n; ++i) {
-        for (int j = i + 1; j < n; ++j) {
-            if (adjacencyMatrix[i][j] >= 1) {
-                out << i << " " << j << endl;
+        for (int j = 0; j < m; ++j) {
+            int vertex;
+            in >> vertex;
+            if (vertex == 1) {
+                adjacentVertices[i][j] = 1;
             }
         }
     }
 
     in.close();
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            if (adjacentVertices[i][j] == 1) {
+                out << i << "-" << j << '\n';
+            }
+        }
+    }
+
     out.close();
 }
-
 
 int main()
 {

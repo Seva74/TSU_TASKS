@@ -82,20 +82,20 @@ void gauss_jordan(int M, int N, vector<vector<double>>& A) {
 }
 
 int main() {
-    ifstream fin("input.txt");
+    // Read equations from input.txt
+    ifstream infile("input.txt");
     int M, N;
-    fin >> M >> N;
+    infile >> M >> N;
 
     vector<vector<double>> A(M, vector<double>(N + 1));
     for (int i = 0; i < M; i++) {
         for (int j = 0; j <= N; j++) {
-            fin >> A[i][j];
+            infile >> A[i][j];
         }
     }
 
     // Induce matrix reduction function to step-like
     gauss_jordan(M, N, A);
-    ofstream fout("output.txt");
 
     // Check if the system has a solution
     bool SolutionExists = true;
@@ -114,7 +114,7 @@ int main() {
     }
 
     if (!SolutionExists) {
-        fout << "No solution exists" << endl;
+        cout << "No solution exists" << endl;
         return 0;
     } else {
         // Check if the system has a unique solution
@@ -134,11 +134,33 @@ int main() {
         }
 
         if (Unique) {
+            cout << "Unique solution exists" << endl;
+            cout << "Solution:" << endl;
             for (int i = 0; i < M; i++) {
-                fout << "x" << i + 1 << " = " << A[i][N] << endl;
+                cout << "x" << i + 1 << " = " << A[i][N] << endl;
             }
+        } else {
+            cout << "Multiple solutions exist" << endl;
         }
     }
+
+    // Write equations back to input.txt
+    ofstream outfile("input.txt");
+    outfile << M << " " << N << endl;
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j <= N; j++) {
+            outfile << A[i][j] << " ";
+        }
+        outfile << endl;
+    }
+
+    // Close the files
+    infile.close();
+    outfile.close();
+
+    // Run plot.py script
+    system("python plot.py");
+
     cout << "Successfully compiled" << endl;
     return 0;
 }

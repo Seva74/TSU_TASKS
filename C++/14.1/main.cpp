@@ -1,37 +1,37 @@
 #include <iostream>
 #include <fstream>
-#include <cstring>
 
 using namespace std;
-
-const int MAX_SIZE = 100;
 
 void createAdjacencyMatrix()
 {
     ifstream in("input.txt");
     ofstream out("adjacency_matrix.txt");
-    int n, m;
+    int n, m,a,b;
     in >> n >> m;
-
-    int adjacencyMatrix[MAX_SIZE][MAX_SIZE];
-    memset(adjacencyMatrix, 0, sizeof(adjacencyMatrix));
-
-    for (int i = 0; i < m; ++i) {
-        int u, v;
-        in >> u >> v;
-        adjacencyMatrix[u][v] = 1;
-        adjacencyMatrix[v][u] = 1;
-    }
-
-    out << n << " " << n << endl;
-
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
-            out << adjacencyMatrix[i][j] << " ";
+    out<<n<<" "<<m<<endl;
+    int adjacencyMatrix[n][n];
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            adjacencyMatrix[i][j]=0;
         }
-        out << '\n';
     }
+    while(in>>a>>b)
+    {
+        adjacencyMatrix[a][b]=1;
+        adjacencyMatrix[b][a]=1;
+    }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
 
+            out<<adjacencyMatrix[i][j]<<" ";
+        }
+        out<<endl;
+    }
     in.close();
     out.close();
 }
@@ -40,30 +40,31 @@ void createAdjacentVerticesArray()
 {
     ifstream in("adjacency_matrix.txt");
     ofstream out("adjacent_vertices.txt");
-    int n, m;
+    int n, m, k[n];
     in >> n >> m;
 
-    int adjacencyMatrix[MAX_SIZE][MAX_SIZE];
+    int adjacencyMatrix[n][n];
 
     for (int i = 0; i < n; ++i) {
+        k[i]=0;
         for (int j = 0; j < n; ++j) {
             in >> adjacencyMatrix[i][j];
+            if (adjacencyMatrix[i][j] == 1)k[i]++;
         }
     }
 
-    in.close();
-
-    out << n << " " << n << '\n';
+    out << n << " " << endl;
 
     for (int i = 0; i < n; ++i) {
+            out<<k[i]<<" ";
         for (int j = 0; j < n; ++j) {
             if (adjacencyMatrix[i][j] == 1) {
                 out << j << " ";
             }
         }
-        out << '\n';
+        out << endl;
     }
-
+    in.close();
     out.close();
 }
 
@@ -71,31 +72,20 @@ void createEdgeSequence()
 {
     ifstream in("adjacent_vertices.txt");
     ofstream out("edge_sequence.txt");
-    int n, m;
-    in >> n >> m;
+    int n, m, k, a;
+    in >> n ;
 
-    int adjacentVertices[MAX_SIZE][MAX_SIZE];
+    int adjacentVertices[n][n];
 
     for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j) {
-            int vertex;
-            in >> vertex;
-            if (vertex == 1) {
-                adjacentVertices[i][j] = 1;
-            }
+        in>>k;
+        for (int j = 0; j < k; j++) {
+            in>>a;
+            out<<i<<" "<<a<<endl;
         }
     }
 
     in.close();
-
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j) {
-            if (adjacentVertices[i][j] == 1) {
-                out << i << "-" << j << '\n';
-            }
-        }
-    }
-
     out.close();
 }
 

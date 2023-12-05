@@ -43,3 +43,16 @@
 *.lps
 *.res
 *.ico
+*.vcxproj
+*.filters
+*.user
+*.ilk
+*.recipe
+*.log
+*.idb
+*.pdb
+*.tlog
+*.lastbuildstate
+*.suo
+*.db
+*.ipch

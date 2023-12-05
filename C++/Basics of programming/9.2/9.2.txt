@@ -1,5 +1,0 @@
-str_s: a string variable containing the text "there is an example of a string constant"
-str_d: a pointer used for allocating memory for a string, initializing it, and copying the contents of str_s to a new string
-pd: a pointer used for displaying the string on the screen
-
-As a result of the program execution, it prints the str_s "there is an example of a string constant" will be printed.

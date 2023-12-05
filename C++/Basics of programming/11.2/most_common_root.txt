@@ -1,2 +1,0 @@
-Most common root: g8ur
-Number of words with most common root: 6

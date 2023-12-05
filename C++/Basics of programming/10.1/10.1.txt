@@ -1,0 +1,4 @@
+1) 10 10 10 10 10. 
+2) 10 9 8 7 6
+In the first program, the pointer points to the first character, so the length of the remaining string is 10. Therefore, the program will output the number 10 five times.
+In the second program, the pointer is shifted one character to the right each time, so the answer will decrease by one with each iteration."

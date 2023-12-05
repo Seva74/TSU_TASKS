@@ -1,0 +1,4 @@
+const char*: used to define pointers to string literals that cannot be changed during program execution.
+str_s: a pointer for the string "the first line of the paragraph", which is defined using the const char* constant.
+s: a variable defined as a pointer to a character and initialized with the value of the str_s variable.
+As a result, the program will print the string "the first line of the paragraph" starting from the second character.

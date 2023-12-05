@@ -56,3 +56,8 @@
 *.suo
 *.db
 *.ipch
+*.pdb
+*.VC.db
+
+x64/
+.vs/

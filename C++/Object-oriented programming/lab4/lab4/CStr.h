@@ -15,7 +15,7 @@ public:
     ~CStr();
 
     CStr& operator=(CStr& obj);
-    CStr& operator=(char* str);
+    CStr& operator=(const char* str);
     bool operator>(CStr& obj);
     CStr& operator=(const CStr& obj);
     bool operator==(CStr& obj);

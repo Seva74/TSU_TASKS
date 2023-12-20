@@ -79,7 +79,7 @@ CStr& CStr::operator=(CStr& obj)
 }
 
 // Оператор присваивания строки (char *)
-CStr& CStr::operator=(char* str)
+CStr& CStr::operator=(const char* str)
 {
     int length = 0;
     while (str[length] != '\0')
@@ -149,4 +149,3 @@ ostream& operator<<(ostream& stream, CStr& obj)
     stream << obj.string;
     return stream;
 }
-

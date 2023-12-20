@@ -86,6 +86,7 @@ ostream& operator<<(ostream& stream, CStrArray& obj)
     for (int i = 0; i < obj.length; ++i)
     {
         stream << obj.arr[i] << endl;
+        
     }
     return stream;
 }

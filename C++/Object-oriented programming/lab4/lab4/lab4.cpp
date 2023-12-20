@@ -6,7 +6,6 @@ using namespace std;
 int main()
 {
     srand(time(0));
-    //Пример:
     CStr str1; // конструктор по умолчанию, создающий случайную строку
     CStr str2("Hello world"); // онструктор с параметром "строка"
     CStr str3(8); // конструктор с параметром "длина строки"
@@ -35,8 +34,8 @@ int main()
 
 
 
-    // Создаем объект CStrArray с массивом заданной длины
-    int arrayLength = 10; // Задайте желаемую длину массива
+    // объект CStrArray с массивом заданной длины
+    int arrayLength = 10;
     CStrArray strArray(arrayLength);
 
     // Заполняем массив случайными строками
@@ -65,12 +64,12 @@ int main()
         std::cout << "Array is not ordered.\n";
 
     // Бинарный поиск
-    CStr searchStr = strArray[3]; // Пример: используем строку из массива для поиска
+    CStr searchStr = strArray[3]; // Используем строку из массива для поиска
     int index = strArray.bin_search(searchStr);
     if (index != -1)
         std::cout << "String found at index " << index << ".\n";
     else
         std::cout << "String not found.\n";
 
-    return 0;
+    //return 0;
 }

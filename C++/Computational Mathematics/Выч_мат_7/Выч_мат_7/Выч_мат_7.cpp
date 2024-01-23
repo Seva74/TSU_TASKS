@@ -16,6 +16,7 @@ double integral(double x) {
     //return (1 / (1 + pow(x, 3)));
     //return 1 / (1 + pow(x, 2));
     return log(x) / x;
+    //return 1 / (2 + x);
 }
 double* nodes(int n, double* t)
 {
@@ -75,7 +76,7 @@ double cheb(int n) {
         double xi = (b + a) / 2 + (b - a) * t[i] / 2;
         result += integral(xi);
     }
-    result /= n;
+    result *= (b-a)/n;
     for (int i = 1; i <= n; i++)
     {
         //cout << "t" << i << " = " << t[i] << endl;
@@ -84,7 +85,7 @@ double cheb(int n) {
 }
 
 double trapez() {
-    int intervals = 10000000; // количество интервалов
+    int intervals = 1000; // количество интервалов
     double h = (b - a) / intervals;
     double sum = 0.5 * (integral(a) + integral(b));
 
@@ -96,8 +97,8 @@ double trapez() {
     return sum * h;
 }
 
-double simpson() {
-    int intervals = 1000; // количество интервалов (должно быть четным)
+double simpson(int intervals) {
+    //int intervals = 1000; // количество интервалов (должно быть четным)
     double h = (b - a) / intervals;
     double sum = integral(a) + integral(b);
 
@@ -117,20 +118,33 @@ double simpson() {
 int main() {
     setlocale(LC_ALL, "");
 
-    cout << setprecision(7) << "Результат вычисления интеграла для 7 ординат: " << cheb(n) << endl;
+    cout << setprecision(7) << "Результат вычисления интеграла для " << n << " ординат: " << cheb(n) << endl;
 
-    /*cout << setprecision(10) << "Исследование точности вычисления интеграла в зависимости от количества узлов разбиения" << endl;
+    cout << setprecision(10) << "Исследование точности вычисления интеграла в зависимости от количества узлов разбиения" << endl;
     int custom_n[] = { 2,3,4,5,6,7 };
     for (double n : custom_n) {
         double custom_root = cheb(n);
         result /= n;
         cout << "for n = " << n << ", root = " << custom_root << endl;
-    }*/
+    }
 
-    cout << setprecision(7) << "Результат вычисления интеграла методом трапеций: " << trapez() << endl;
+    double epsilon_simpson = 1e-6; // Заданная точность для Симпсона
+    int intervals_simpson = 2; // Начальное количество интервалов
+    double prevResultSimpson;
+    double ResultSimpson = simpson(intervals_simpson);
 
-    cout << setprecision(7) << "Результат вычисления интеграла методом Симпсона: " << simpson() << endl;
+    do {
+        prevResultSimpson = ResultSimpson;
+        intervals_simpson *= 2;
+        ResultSimpson = simpson(intervals_simpson); 
+        
+    } while (abs(ResultSimpson - prevResultSimpson) >= epsilon_simpson);
 
+    cout << setprecision(7) << "Результат вычисления интеграла методом Симпсона: " << prevResultSimpson <<" был достигнут при "<< intervals_simpson<<" интервалах для eps = "<< epsilon_simpson << endl;
+
+    cout << setprecision(7) << "Результат вычисления интеграла методом Симпсона: " << simpson(1000) <<" при 1000 интервалах"<< endl;
+
+    cout << setprecision(7) << "Результат вычисления интеграла методом трапеций: " << trapez() << " при 1000 интервалах" << endl;
     return 0;
 }
 //0,636294

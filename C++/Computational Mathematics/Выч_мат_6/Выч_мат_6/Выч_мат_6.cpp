@@ -521,14 +521,14 @@ int main() {
  //   checkSolution(A2, B2, x, n); cout << endl;
 
 
-    // 8-9. исследование скорости сходимости в зависимости от заданной точности
-    cout << setprecision(8) << "8-9. исследование скорости сходимости в зависимости от заданной точности и альтернативного алгоритма" << endl;
-    double custom_epsilons[] = { 1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7 };
-    for (double epsilon : custom_epsilons) {
-        cout << setprecision(10) << "for epsilon = " << epsilon << " using method relax method:" << endl; relaxMethod(A2, B2, x, xn, n, epsilon, w);
-    // 9. исследование скорости сходимости в зависимости от алгоритма
-        cout << setprecision(10) << "for epsilon = " << epsilon << " using iter method:" << endl; jacobiIterationMethod(A2, B2, x, xn, n, epsilon); cout << endl;
-    }
+    //// 8-9. исследование скорости сходимости в зависимости от заданной точности
+    //cout << setprecision(8) << "8-9. исследование скорости сходимости в зависимости от заданной точности и альтернативного алгоритма" << endl;
+    //double custom_epsilons[] = { 1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7 };
+    //for (double epsilon : custom_epsilons) {
+    //    cout << setprecision(10) << "for epsilon = " << epsilon << " using method relax method:" << endl; relaxMethod(A2, B2, x, xn, n, epsilon, w);
+    //// 9. исследование скорости сходимости в зависимости от алгоритма
+    //    cout << setprecision(10) << "for epsilon = " << epsilon << " using iter method:" << endl; jacobiIterationMethod(A2, B2, x, xn, n, epsilon); cout << endl;
+    //}
 
      //10 exercise
     int ngenerated = 3;

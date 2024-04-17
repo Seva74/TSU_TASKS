@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <iomanip>
 
+using namespace std;
+
 template <typename T>
 class Sort {
 public:
@@ -31,7 +33,7 @@ public:
             heapify(array, n, i, comparisons);
         }
         for (int i = static_cast<int>(n) - 1; i > 0; i--) {
-            std::swap(array[0], array[i]);
+            swap(array[0], array[i]);
             comparisons++;
             heapify(array, i, 0, comparisons);
         }
@@ -52,7 +54,7 @@ private:
         }
         comparisons++;
         if (largest != root) {
-            std::swap(array[root], array[largest]);
+            swap(array[root], array[largest]);
             heapify(array, n, largest, comparisons);
         }
     }
@@ -79,12 +81,12 @@ public:
         return id > other.id;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Participant& participant) {
-        os << std::setw(5) << participant.id
-            << std::setw(10) << participant.solved
-            << std::setw(10) << participant.time
-            << std::setw(10) << participant.points
-            << std::setw(10) << participant.attempts;
+    friend ostream& operator<<(ostream& os, const Participant& participant) {
+        os << setw(5) << participant.id
+            << setw(10) << participant.solved
+            << setw(10) << participant.time
+            << setw(10) << participant.points
+            << setw(10) << participant.attempts;
         return os;
     }
 
@@ -96,14 +98,14 @@ private:
     int attempts;
 };
 
-std::vector<Participant*> readParticipants(const std::string& filename) {
-    std::ifstream file(filename);
+vector<Participant*> readParticipants(const string& filename) {
+    ifstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Error opening file: " << filename << std::endl;
-        exit(1);
+        cout << "Error opening file: " << filename << endl;
+        exit;
     }
 
-    std::vector<Participant*> participants;
+    vector<Participant*> participants;
     int id, solved, time, points, attempts;
     while (file >> id >> solved >> time >> points >> attempts) {
         Participant* participant = new Participant(id, solved, time, points, attempts);
@@ -114,36 +116,35 @@ std::vector<Participant*> readParticipants(const std::string& filename) {
     return participants;
 }
 
-void writeResults(const std::vector<Participant*>& participants, const std::string& filename) {
-    std::ofstream file(filename);
+void writeResults(const vector<Participant*>& participants, const string& filename) {
+    ofstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Error opening file for writing: " << filename << std::endl;
-        exit(1);
+        cout << "Error opening file for writing: " << filename << endl;
+        exit;
     }
 
-    file << std::setw(5) << "ID"
-        << std::setw(10) << "Solved"
-        << std::setw(10) << "Time"
-        << std::setw(10) << "Points"
-        << std::setw(10) << "Attempts" << std::endl;
+    file << setw(5) << "ID"
+        << setw(10) << "Solved"
+        << setw(10) << "Time"
+        << setw(10) << "Points"
+        << setw(10) << "Attempts" << endl;
 
     for (const auto& participant : participants) {
-        file << *participant << std::endl;
+        file << *participant << endl;
     }
 
     file.close();
 }
 
 int main() {
-    std::vector<Participant*> participants = readParticipants("participants.txt");
+    vector<Participant*> participants = readParticipants("participants.txt");
 
-    Sort<Participant>::heapSort(participants.data(), participants.size());
+    Sort<Participant>::shellSort(participants.data(), participants.size());
 
     writeResults(participants, "results.txt");
 
     for (auto participant : participants) {
         delete participant;
     }
-
     return 0;
 }

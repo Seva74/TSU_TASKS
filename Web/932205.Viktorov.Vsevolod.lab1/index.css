@@ -1,0 +1,81 @@
+body {
+    color: white;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    background-color: green;
+    font-family: "Courier New";
+    padding: 10px 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+.mainblock {
+    width: 500px;
+    background-color: blue;
+    font-family: "Arial";
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 25px;
+    font-size: 16px;
+}
+
+.shape {
+    width: 100px;
+    border: 4px solid white;
+    height: 100px;
+    float: left;
+    border-radius: 20px 0px;
+    margin: 5px 20px 20px 0;
+    margin-top: -5px;
+}
+
+a {
+    color: red;
+    padding-left: 180px;
+}
+
+p {
+    line-height: 110%;
+}
+
+img {
+    padding-top: 30px;
+    float: right
+}
+
+h2 {
+    margin-bottom: -15px;
+}
+
+li {
+    margin: 10px 0;
+}
+
+.visuals {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -20px;
+}
+
+table {
+    border: 1px solid white;
+    margin-top: 20px;
+}
+
+td {
+    border: 1px solid white;
+    padding: 15px;
+    padding-bottom: 0;
+}
+
+footer {
+    width: 100%;
+    background-color: green;
+    font-family: "Arial";
+    padding: 10px 0;
+    font-size: 18px;
+    text-align: center;
+}

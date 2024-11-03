@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    font-family: Arial;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 10px;
+}
+
+.objects {
+    max-width: 600px;
+}
+
+.objects__item {
+    display: flex;
+}
+
+.objects__item input {
+    padding: 0 5px;
+}
+
+.objects__btn {
+    width: 25px;
+    padding: 3px;
+}
+
+.objects__actions button {
+    padding: 2px;
+    display: block;
+}
+
+.objects__saved {
+    font-size: 20px;
+    font-family: monospace;
+    letter-spacing: 2px;
+}

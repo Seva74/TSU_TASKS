@@ -1,0 +1,57 @@
+E:\Вуз\3 курс\web\lab11\lab11\bin\Debug\net6.0\appsettings.Development.json
+E:\Вуз\3 курс\web\lab11\lab11\bin\Debug\net6.0\appsettings.json
+E:\Вуз\3 курс\web\lab11\lab11\bin\Debug\net6.0\lab11.staticwebassets.runtime.json
+E:\Вуз\3 курс\web\lab11\lab11\bin\Debug\net6.0\lab11.exe
+E:\Вуз\3 курс\web\lab11\lab11\bin\Debug\net6.0\lab11.deps.json
+E:\Вуз\3 курс\web\lab11\lab11\bin\Debug\net6.0\lab11.runtimeconfig.json
+E:\Вуз\3 курс\web\lab11\lab11\bin\Debug\net6.0\lab11.dll
+E:\Вуз\3 курс\web\lab11\lab11\bin\Debug\net6.0\lab11.pdb
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\lab11.csproj.AssemblyReference.cache
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\lab11.GeneratedMSBuildEditorConfig.editorconfig
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\lab11.AssemblyInfoInputs.cache
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\lab11.AssemblyInfo.cs
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\lab11.csproj.CoreCompileInputs.cache
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\lab11.MvcApplicationPartsAssemblyInfo.cache
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\lab11.RazorAssemblyInfo.cache
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\lab11.RazorAssemblyInfo.cs
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\staticwebassets.build.json
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\staticwebassets.development.json
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\scopedcss\bundle\lab11.styles.css
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\scopedcss\projectbundle\lab11.bundle.scp.css
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\lab11.dll
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\refint\lab11.dll
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\lab11.pdb
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\lab11.genruntimeconfig.cache
+E:\Вуз\3 курс\web\lab11\lab11\obj\Debug\net6.0\ref\lab11.dll
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\bin\Debug\net6.0\appsettings.Development.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\bin\Debug\net6.0\appsettings.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\bin\Debug\net6.0\lab11.staticwebassets.runtime.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\bin\Debug\net6.0\lab11.exe
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\bin\Debug\net6.0\lab11.deps.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\bin\Debug\net6.0\lab11.runtimeconfig.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\bin\Debug\net6.0\lab11.dll
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\bin\Debug\net6.0\lab11.pdb
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\lab11.GeneratedMSBuildEditorConfig.editorconfig
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\lab11.AssemblyInfoInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\lab11.AssemblyInfo.cs
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\lab11.csproj.CoreCompileInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\lab11.MvcApplicationPartsAssemblyInfo.cache
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\lab11.RazorAssemblyInfo.cache
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\lab11.RazorAssemblyInfo.cs
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\lab11.sourcelink.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\staticwebassets.build.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\staticwebassets.development.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\staticwebassets\msbuild.lab11.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\staticwebassets\msbuild.build.lab11.props
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.lab11.props
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.lab11.props
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\scopedcss\bundle\lab11.styles.css
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\scopedcss\projectbundle\lab11.bundle.scp.css
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\lab11.dll
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\refint\lab11.dll
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\lab11.pdb
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\lab11.genruntimeconfig.cache
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab11\lab11\obj\Debug\net6.0\ref\lab11.dll

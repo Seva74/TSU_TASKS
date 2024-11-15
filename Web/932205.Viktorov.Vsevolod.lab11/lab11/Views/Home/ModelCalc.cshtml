@@ -1,0 +1,20 @@
+﻿@model CalculationModel
+@{
+    ViewData["Title"] = "Home Page";
+    var firstNumber = @Model.firstNumber;
+    var secondNumber = @Model.secondNumber;
+}
+
+<h2>PassUsingModel</h2>
+<p class="bold">First number: @firstNumber</p>
+<p class="bold">Second number: @secondNumber</p>
+<p class="bold">Add:</p>
+<p>@firstNumber + @secondNumber = @(firstNumber + secondNumber)</p>
+<p class="bold">Sub:</p>
+<p>@firstNumber - @secondNumber = @(firstNumber - secondNumber)</p>
+<p class="bold">Mult:</p>
+<p>@firstNumber * @secondNumber = @(firstNumber * secondNumber)</p>
+<p class="bold">Div:</p>
+<p>@(firstNumber) / @secondNumber = @(secondNumber != 0 ? Math.Floor((double)firstNumber / secondNumber) : "error")</p>
+@{
+}

@@ -1,0 +1,21 @@
+﻿@using lab11.Services
+@inject CalculationService CalculationServiceImpl
+@{
+    ViewData["Title"] = "Home Page";
+    var firstNumber = CalculationServiceImpl.getNumber();
+    var secondNumber = CalculationServiceImpl.getNumber();
+}
+
+<h2>AccessServiceDirectly</h2>
+<p class="bold">First number: @firstNumber</p>
+<p class="bold">Second number: @secondNumber</p>
+<p class="bold">Add:</p>
+<p>@firstNumber + @secondNumber = @(CalculationServiceImpl.add(firstNumber, secondNumber))</p>
+<p class="bold">Sub:</p>
+<p>@firstNumber - @secondNumber = @(CalculationServiceImpl.sub(firstNumber, secondNumber))</p>
+<p class="bold">Mult:</p>
+<p>@firstNumber * @secondNumber = @(CalculationServiceImpl.mult(firstNumber, secondNumber))</p>
+<p class="bold">Div:</p>
+<p>@(firstNumber) / @secondNumber = @(CalculationServiceImpl.div(firstNumber, secondNumber))</p>
+@{
+}

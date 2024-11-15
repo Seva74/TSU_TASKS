@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    font-family: Arial;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    background-color: #000;
+}
+
+.img img {
+    width: 100%;
+    height: 100%;
+}
+
+.background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    background-position: bottom;
+    transition: transform 0.2s ease;
+    z-index: 100;
+}
+
+.background:hover {
+    transform: translateY(-5%);
+}
+
+.background.remove {
+    transition: transform 1s ease;
+    transform: translateY(-100%);
+}
+
+.light {
+    border-bottom: 650px solid yellow;
+    border-left: 400px solid transparent;
+    border-right: 400px solid transparent;
+    width: 900px;
+    height: 0;
+    position: absolute;
+    top: 68px;
+    left: calc(50% - 450px);
+    z-index: 15;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.light.on {
+    visibility: visible;
+    opacity: 0.5;
+}
+
+.objects {
+    display: grid;
+    gap: 100px;
+}
+
+.objects__lamp {
+    display: flex;
+    justify-content: center;
+}
+
+.lamp__image {
+    width: 300px;
+    height: 300px;
+    position: relative;
+}
+
+.lamp__image img {
+    z-index: 10;
+}
+
+.lamp__hang {
+    position: absolute;
+    top: 68px;
+    left: 117px;
+    width: 15px;
+    height: 65px;
+    background-color: #000;
+    transition: height 0.1s ease;
+}
+
+.lamp__hang:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(50% - 1px);
+    width: 2px;
+    height: 100%;
+    border-radius: 50%;
+    background-color: grey;
+}
+
+.lamp__hang:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 5px);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: darkgoldenrod;
+}
+
+.lamp__image.mousedown .lamp__hang {
+    height: 75px;
+}
+
+.objects__figures {
+    display: none;
+}
+
+.objects__figures.display {
+    display: flex;
+}
+
+.objects__girl {
+    flex: 0 0 70%;
+}
+
+.focus {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.objects__focus {
+    flex: 0 0 30%;
+}
+
+.objects__bird, .objects__rabbit {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 20%;
+    visibility: visible;
+    opacity: 0.5;
+    transition: all 0.5s ease;
+    z-index: 20;
+}
+
+.objects__bird.hide, .objects__rabbit.hide {
+    top: 40%;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.objects__hat {
+    max-width: 150px;
+    max-height: 150px;
+}

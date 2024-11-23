@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab11\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5EA71484-3CB7-496F-829D-86A80410647A}|lab11\\lab11.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab11\\lab11\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EA71484-3CB7-496F-829D-86A80410647A}|lab11\\lab11.csproj|solutionrelative:lab11\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5EA71484-3CB7-496F-829D-86A80410647A}|lab11\\lab11.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab11\\lab11\\services\\calculationserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5EA71484-3CB7-496F-829D-86A80410647A}|lab11\\lab11.csproj|solutionrelative:lab11\\services\\calculationserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{5EA71484-3CB7-496F-829D-86A80410647A}|lab11\\lab11.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab11\\lab11\\views\\home\\injectioncalc.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5EA71484-3CB7-496F-829D-86A80410647A}|lab11\\lab11.csproj|solutionrelative:lab11\\views\\home\\injectioncalc.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5EA71484-3CB7-496F-829D-86A80410647A}|lab11\\lab11.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab11\\lab11\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EA71484-3CB7-496F-829D-86A80410647A}|lab11\\lab11.csproj|solutionrelative:lab11\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5EA71484-3CB7-496F-829D-86A80410647A}|lab11\\lab11.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab11\\lab11\\views\\home\\viewdatacalc.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -102,7 +102,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -110,19 +110,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab11\\lab11\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "lab11\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab11\\lab11\\Controllers\\HomeController.cs",
               "RelativeToolTip": "lab11\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAQwCYAAAAnAAAA",
+              "ViewState": "AQIAACQAAAAAAAAAAAA7wDkAAABgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T13:21:05.535Z"
+              "WhenOpened": "2024-11-15T13:21:05.535Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab11\\lab11\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "lab11\\Views\\Home\\Privacy.cshtml",
@@ -130,8 +131,7 @@
               "RelativeToolTip": "lab11\\Views\\Home\\Privacy.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-15T13:21:05.616Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T13:21:05.616Z"
             },
             {
               "$type": "Document",
@@ -171,7 +171,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab11\\lab11\\Program.cs",
               "RelativeDocumentMoniker": "lab11\\Program.cs",
@@ -179,12 +179,11 @@
               "RelativeToolTip": "lab11\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T13:21:05.639Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T13:21:05.639Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "CalculationService.cs",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab11\\lab11\\Services\\CalculationService.cs",
               "RelativeDocumentMoniker": "lab11\\Services\\CalculationService.cs",
@@ -192,12 +191,11 @@
               "RelativeToolTip": "lab11\\Services\\CalculationService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T13:21:05.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T13:21:05.646Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CalculationServiceImpl.cs",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab11\\lab11\\Services\\CalculationServiceImpl.cs",
               "RelativeDocumentMoniker": "lab11\\Services\\CalculationServiceImpl.cs",
@@ -210,7 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "InjectionCalc.cshtml",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab11\\lab11\\Views\\Home\\InjectionCalc.cshtml",
               "RelativeDocumentMoniker": "lab11\\Views\\Home\\InjectionCalc.cshtml",

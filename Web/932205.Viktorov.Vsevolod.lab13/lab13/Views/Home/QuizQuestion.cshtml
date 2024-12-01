@@ -1,0 +1,19 @@
+﻿@model lab13.Models.QuizModel
+@using lab13.Services
+@inject IQuizService QuizService
+@{
+	string action = ViewContext.RouteData.Values["Action"].ToString();
+	ViewData["Title"] = action;
+	var quizQuestion = QuizService.getCurrentQuestion(Model.quiz);
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@quizQuestion.firstNumber @quizQuestion.operation @quizQuestion.secondNumber =
+@using (Html.BeginForm(action, "Home", FormMethod.Post))
+{
+	<input type="number" name="answer"/>
+	Html.HiddenFor(model => model.quiz);
+	<input type="submit" name="action" value="next"/>
+	<input type="submit" name="action" value="finish"/>
+}

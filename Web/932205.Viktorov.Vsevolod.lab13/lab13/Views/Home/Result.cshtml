@@ -1,0 +1,30 @@
+﻿@using lab13.Services
+@inject IQuizService QuizService
+@model lab13.Models.Quiz
+@{
+    ViewData["Title"] = "Quiz results";
+
+    Quiz quiz = QuizService.getCurrentQuiz();
+    var rightQuestions = 0;
+    List<string> answers = new();
+    for(int i = 0; i < quiz.quizQuestions.Count; i++)
+    {
+        var currentQuestion = quiz.quizQuestions[i];
+        if(i >= quiz.quizQuestionAnswers.Count)
+        {
+            answers.Add($"{i+1}. {currentQuestion.firstNumber} {currentQuestion.operation} {currentQuestion.secondNumber} = no Answer");
+            continue;
+        }
+        var currentAnswer = quiz.quizQuestionAnswers[i];
+
+        if (currentAnswer.answer == currentQuestion.answer) rightQuestions++;
+        answers.Add($"{i+1}. {currentQuestion.firstNumber} {currentQuestion.operation} {currentQuestion.secondNumber} = {currentAnswer.answer}");
+    }
+}
+<h1>@ViewData["Title"]</h1>
+
+Right answers @rightQuestions out @quiz.quizQuestions.Count
+@foreach(var ans in answers)
+{
+    <br />@ans
+}

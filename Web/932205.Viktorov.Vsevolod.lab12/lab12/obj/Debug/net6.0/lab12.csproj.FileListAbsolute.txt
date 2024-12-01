@@ -1,0 +1,88 @@
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\lab12.csproj.AssemblyReference.cache
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\lab12.GeneratedMSBuildEditorConfig.editorconfig
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\lab12.AssemblyInfoInputs.cache
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\lab12.AssemblyInfo.cs
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\lab12.csproj.CoreCompileInputs.cache
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\lab12.MvcApplicationPartsAssemblyInfo.cache
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\lab12.RazorAssemblyInfo.cache
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\lab12.RazorAssemblyInfo.cs
+E:\Вуз\3 курс\web\lab12\lab12\bin\Debug\net6.0\appsettings.Development.json
+E:\Вуз\3 курс\web\lab12\lab12\bin\Debug\net6.0\appsettings.json
+E:\Вуз\3 курс\web\lab12\lab12\bin\Debug\net6.0\lab12.staticwebassets.runtime.json
+E:\Вуз\3 курс\web\lab12\lab12\bin\Debug\net6.0\lab12.exe
+E:\Вуз\3 курс\web\lab12\lab12\bin\Debug\net6.0\lab12.deps.json
+E:\Вуз\3 курс\web\lab12\lab12\bin\Debug\net6.0\lab12.runtimeconfig.json
+E:\Вуз\3 курс\web\lab12\lab12\bin\Debug\net6.0\lab12.dll
+E:\Вуз\3 курс\web\lab12\lab12\bin\Debug\net6.0\lab12.pdb
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\staticwebassets.build.json
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\staticwebassets.development.json
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\scopedcss\bundle\lab12.styles.css
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\scopedcss\projectbundle\lab12.bundle.scp.css
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\lab12.dll
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\refint\lab12.dll
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\lab12.pdb
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\lab12.genruntimeconfig.cache
+E:\Вуз\3 курс\web\lab12\lab12\obj\Debug\net6.0\ref\lab12.dll
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\bin\Debug\net6.0\appsettings.json
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\bin\Debug\net6.0\lab12.staticwebassets.runtime.json
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\bin\Debug\net6.0\lab12.exe
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\bin\Debug\net6.0\lab12.deps.json
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\bin\Debug\net6.0\lab12.runtimeconfig.json
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\bin\Debug\net6.0\lab12.dll
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\bin\Debug\net6.0\lab12.pdb
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\lab12.csproj.AssemblyReference.cache
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\lab12.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\lab12.AssemblyInfoInputs.cache
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\lab12.AssemblyInfo.cs
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\lab12.csproj.CoreCompileInputs.cache
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\lab12.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\lab12.RazorAssemblyInfo.cache
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\lab12.RazorAssemblyInfo.cs
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\staticwebassets\msbuild.lab12.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\staticwebassets\msbuild.build.lab12.props
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.lab12.props
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.lab12.props
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\scopedcss\bundle\lab12.styles.css
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\scopedcss\projectbundle\lab12.bundle.scp.css
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\lab12.dll
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\refint\lab12.dll
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\lab12.pdb
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\lab12.genruntimeconfig.cache
+C:\Users\danil\Desktop\универ\web\932101.kopylov.danila.lab12\lab12\obj\Debug\net6.0\ref\lab12.dll
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\bin\Debug\net6.0\appsettings.Development.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\bin\Debug\net6.0\appsettings.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\bin\Debug\net6.0\lab12.staticwebassets.runtime.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\bin\Debug\net6.0\lab12.exe
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\bin\Debug\net6.0\lab12.deps.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\bin\Debug\net6.0\lab12.runtimeconfig.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\bin\Debug\net6.0\lab12.dll
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\bin\Debug\net6.0\lab12.pdb
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\lab12.GeneratedMSBuildEditorConfig.editorconfig
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\lab12.AssemblyInfoInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\lab12.AssemblyInfo.cs
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\lab12.csproj.CoreCompileInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\lab12.MvcApplicationPartsAssemblyInfo.cache
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\lab12.RazorAssemblyInfo.cache
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\lab12.RazorAssemblyInfo.cs
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\lab12.sourcelink.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\staticwebassets.build.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\staticwebassets.development.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\staticwebassets\msbuild.lab12.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\staticwebassets\msbuild.build.lab12.props
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.lab12.props
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.lab12.props
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\scopedcss\bundle\lab12.styles.css
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\scopedcss\projectbundle\lab12.bundle.scp.css
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\lab12.dll
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\refint\lab12.dll
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\lab12.pdb
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\lab12.genruntimeconfig.cache
+C:\Seva\GitHub\TSU_TASKS\Web\932205.Viktorov.Vsevolod.lab12\lab12\obj\Debug\net6.0\ref\lab12.dll

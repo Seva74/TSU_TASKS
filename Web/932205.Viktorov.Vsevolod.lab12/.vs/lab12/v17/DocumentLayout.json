@@ -1,0 +1,293 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\views\\home\\inputform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\views\\home\\inputform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\services\\calculationserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\services\\calculationserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\services\\calculationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\services\\calculationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\views\\home\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\views\\home\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\models\\calculationexpressionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\models\\calculationexpressionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|c:\\seva\\github\\tsu_tasks\\web\\932205.viktorov.vsevolod.lab12\\lab12\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D233119E-8C8B-455E-BB3A-5232D196EE58}|lab12\\lab12.csproj|solutionrelative:lab12\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "lab12\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "lab12\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:14:40.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "lab12\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "lab12\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:14:40.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "lab12\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "lab12\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:14:40.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml.css",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeDocumentMoniker": "lab12\\Views\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeToolTip": "lab12\\Views\\Shared\\_Layout.cshtml.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-12-01T09:14:40.577Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "lab12\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "lab12\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:14:40.58Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "result.cshtml",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Home\\result.cshtml",
+              "RelativeDocumentMoniker": "lab12\\Views\\Home\\result.cshtml",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Home\\result.cshtml",
+              "RelativeToolTip": "lab12\\Views\\Home\\result.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:14:40.582Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CalculationServiceImpl.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Services\\CalculationServiceImpl.cs",
+              "RelativeDocumentMoniker": "lab12\\Services\\CalculationServiceImpl.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Services\\CalculationServiceImpl.cs",
+              "RelativeToolTip": "lab12\\Services\\CalculationServiceImpl.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T09:14:40.585Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "lab12\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "lab12\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAIwDoAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T09:14:40.588Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "inputForm.cshtml",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Home\\inputForm.cshtml",
+              "RelativeDocumentMoniker": "lab12\\Views\\Home\\inputForm.cshtml",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Home\\inputForm.cshtml",
+              "RelativeToolTip": "lab12\\Views\\Home\\inputForm.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:14:40.59Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CalculationService.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Services\\CalculationService.cs",
+              "RelativeDocumentMoniker": "lab12\\Services\\CalculationService.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Services\\CalculationService.cs",
+              "RelativeToolTip": "lab12\\Services\\CalculationService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T09:14:40.592Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CalculationExpressionModel.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Models\\CalculationExpressionModel.cs",
+              "RelativeDocumentMoniker": "lab12\\Models\\CalculationExpressionModel.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Models\\CalculationExpressionModel.cs",
+              "RelativeToolTip": "lab12\\Models\\CalculationExpressionModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T09:14:40.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "lab12\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "lab12\\Views\\_ViewStart.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:14:40.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "lab12\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "lab12\\Views\\_ViewImports.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:14:40.6Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Program.cs",
+              "RelativeDocumentMoniker": "lab12\\Program.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Program.cs",
+              "RelativeToolTip": "lab12\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T09:14:40.602Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "lab12\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "lab12\\Models\\ErrorViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T09:14:40.604Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "lab12\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "lab12\\wwwroot\\css\\site.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEcAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-12-01T09:14:40.607Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "lab12\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Web\\932205.Viktorov.Vsevolod.lab12\\lab12\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "lab12\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T09:14:40.609Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

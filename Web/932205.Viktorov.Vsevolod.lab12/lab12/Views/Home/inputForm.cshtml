@@ -1,0 +1,19 @@
+﻿@model lab12.Models.CalculationExpressionModel
+
+@{
+    string action = ViewContext.RouteData.Values["Action"].ToString();
+    ViewData["Title"] = action;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@using (Html.BeginForm(action, "Home", FormMethod.Post))
+{
+    @Html.EditorFor(m => m.firstNumber,"0")<br />
+    @Html.DropDownListFor(m => m.operation, new SelectList(new[] {"-","+","*","/"}))<br />    
+    @Html.EditorFor(m => m.secondNumber, "0")<br />
+
+    <input type="submit" value="Отправить" />
+}
+@{
+}

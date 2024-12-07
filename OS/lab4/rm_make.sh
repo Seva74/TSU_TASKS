@@ -1,0 +1,1 @@
+rm tsulab.ko  tsulab.mod  tsulab.mod.c  tsulab.mod.o  tsulab.o modules.order Module.symvers

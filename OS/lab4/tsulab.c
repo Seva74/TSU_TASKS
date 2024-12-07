@@ -1,3 +1,5 @@
+// Файл: tsulab.c
+
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -8,25 +10,35 @@
 #define PROCFS_NAME "tsu"
 
 static struct proc_dir_entry *our_proc_file = NULL;
+static unsigned long current_value = 5; // Начальное значение геометрической прогрессии
 
+// Обработчик чтения из файла в /proc
 static ssize_t procfile_read(struct file *file_pointer, char __user *buffer,
                               size_t buffer_length, loff_t *offset)
 {
-    const char s[] = "Tomsk\n";
-    size_t len = sizeof(s) - 1;
+    char s[32];
+    int len;
 
-    if (*offset >= len)
+    if (*offset > 0)
         return 0;
+
+    // Формируем строку с текущим значением прогрессии
+    len = snprintf(s, sizeof(s), "%lu\n", current_value);
 
     if (copy_to_user(buffer, s, len))
         return -EFAULT;
 
     *offset += len;
 
-    pr_info("procfile read: %s\n", file_pointer->f_path.dentry->d_name.name);
+    pr_info("procfile read: %s, current value: %lu\n", file_pointer->f_path.dentry->d_name.name, current_value);
+
+    // Увеличиваем текущее значение прогрессии
+    current_value *= 2;
+
     return len;
 }
 
+// Указатель на функции обработчика в зависимости от версии ядра
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 6, 0)
 static const struct proc_ops proc_file_fops = {
     .proc_read = procfile_read,
@@ -37,6 +49,7 @@ static const struct file_operations proc_file_fops = {
 };
 #endif
 
+// Функция инициализации модуля
 static int __init procfs1_init(void)
 {
     our_proc_file = proc_create(PROCFS_NAME, 0644, NULL, &proc_file_fops);
@@ -50,6 +63,7 @@ static int __init procfs1_init(void)
     return 0;
 }
 
+// Функция завершения работы модуля
 static void __exit procfs1_exit(void)
 {
     proc_remove(our_proc_file);
@@ -61,4 +75,4 @@ module_exit(procfs1_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Seva");
-MODULE_DESCRIPTION("Пример модуля ядра Linux с файлом в /proc");
+MODULE_DESCRIPTION("Пример модуля ядра Linux с файлом в /proc и геометрической прогрессией");

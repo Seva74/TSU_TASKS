@@ -8,7 +8,7 @@
 #define PROCFS_NAME "tsu"
 
 static struct proc_dir_entry *our_proc_file = NULL;
-static unsigned long current_value = 5; // Ќачальное значение геометрической прогрессии
+static unsigned long current_value = 5;
 
 static ssize_t procfile_read(struct file *file_pointer, char __user *buffer,
                               size_t buffer_length, loff_t *offset)

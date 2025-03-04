@@ -1,0 +1,84 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab2\\Currency_Modeling\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{33312EAB-4BBE-4D9F-B7AF-1E4C60F80942}|lab 2 (exchange rates)\\lab 2 (exchange rates).csproj|c:\\seva\\github\\tsu_tasks\\simulation_modeling\\imitation.lab2\\currency_modeling\\lab 2 (exchange rates)\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33312EAB-4BBE-4D9F-B7AF-1E4C60F80942}|lab 2 (exchange rates)\\lab 2 (exchange rates).csproj|solutionrelative:lab 2 (exchange rates)\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33312EAB-4BBE-4D9F-B7AF-1E4C60F80942}|lab 2 (exchange rates)\\lab 2 (exchange rates).csproj|C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab2\\Currency_Modeling\\lab 2 (exchange rates)\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33312EAB-4BBE-4D9F-B7AF-1E4C60F80942}|lab 2 (exchange rates)\\lab 2 (exchange rates).csproj|solutionrelative:lab 2 (exchange rates)\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33312EAB-4BBE-4D9F-B7AF-1E4C60F80942}|lab 2 (exchange rates)\\lab 2 (exchange rates).csproj|C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab2\\Currency_Modeling\\lab 2 (exchange rates)\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33312EAB-4BBE-4D9F-B7AF-1E4C60F80942}|lab 2 (exchange rates)\\lab 2 (exchange rates).csproj|solutionrelative:lab 2 (exchange rates)\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33312EAB-4BBE-4D9F-B7AF-1E4C60F80942}|lab 2 (exchange rates)\\lab 2 (exchange rates).csproj|C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab2\\Currency_Modeling\\lab 2 (exchange rates)\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{33312EAB-4BBE-4D9F-B7AF-1E4C60F80942}|lab 2 (exchange rates)\\lab 2 (exchange rates).csproj|solutionrelative:lab 2 (exchange rates)\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab2\\Currency_Modeling\\lab 2 (exchange rates)\\Form1.cs",
+              "RelativeDocumentMoniker": "lab 2 (exchange rates)\\Form1.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab2\\Currency_Modeling\\lab 2 (exchange rates)\\Form1.cs",
+              "RelativeToolTip": "lab 2 (exchange rates)\\Form1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-04T10:07:07.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab2\\Currency_Modeling\\lab 2 (exchange rates)\\Program.cs",
+              "RelativeDocumentMoniker": "lab 2 (exchange rates)\\Program.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab2\\Currency_Modeling\\lab 2 (exchange rates)\\Program.cs",
+              "RelativeToolTip": "lab 2 (exchange rates)\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-04T10:07:03.41Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab2\\Currency_Modeling\\lab 2 (exchange rates)\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "lab 2 (exchange rates)\\Form1.Designer.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab2\\Currency_Modeling\\lab 2 (exchange rates)\\Form1.Designer.cs",
+              "RelativeToolTip": "lab 2 (exchange rates)\\Form1.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-04T10:07:02.034Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab2\\Currency_Modeling\\lab 2 (exchange rates)\\Form1.cs",
+              "RelativeDocumentMoniker": "lab 2 (exchange rates)\\Form1.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab2\\Currency_Modeling\\lab 2 (exchange rates)\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "lab 2 (exchange rates)\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-04T10:06:59.872Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

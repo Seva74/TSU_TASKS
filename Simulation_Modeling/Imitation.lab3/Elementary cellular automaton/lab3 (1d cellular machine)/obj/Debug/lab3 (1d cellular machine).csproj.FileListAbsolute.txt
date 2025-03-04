@@ -1,0 +1,30 @@
+D:\С#\ИМ\lab3 (1d cellular machine)\lab3 (1d cellular machine)\bin\Debug\lab3 (1d cellular machine).exe.config
+D:\С#\ИМ\lab3 (1d cellular machine)\lab3 (1d cellular machine)\bin\Debug\lab3 (1d cellular machine).exe
+D:\С#\ИМ\lab3 (1d cellular machine)\lab3 (1d cellular machine)\bin\Debug\lab3 (1d cellular machine).pdb
+D:\С#\ИМ\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).csproj.AssemblyReference.cache
+D:\С#\ИМ\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3__1d_cellular_machine_.Form1.resources
+D:\С#\ИМ\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3__1d_cellular_machine_.Properties.Resources.resources
+D:\С#\ИМ\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).csproj.GenerateResource.cache
+D:\С#\ИМ\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).csproj.CoreCompileInputs.cache
+D:\С#\ИМ\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).exe
+D:\С#\ИМ\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).pdb
+C:\Users\danil\Desktop\универ\имитация\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).csproj.AssemblyReference.cache
+C:\Users\danil\Desktop\универ\имитация\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3__1d_cellular_machine_.Form1.resources
+C:\Users\danil\Desktop\универ\имитация\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3__1d_cellular_machine_.Properties.Resources.resources
+C:\Users\danil\Desktop\универ\имитация\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).csproj.GenerateResource.cache
+C:\Users\danil\Desktop\универ\имитация\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).csproj.CoreCompileInputs.cache
+C:\Users\danil\Desktop\универ\имитация\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).exe
+C:\Users\danil\Desktop\универ\имитация\lab3 (1d cellular machine)\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).pdb
+C:\Users\danil\Desktop\универ\имитация\lab3 (1d cellular machine)\lab3 (1d cellular machine)\bin\Debug\lab3 (1d cellular machine).exe.config
+C:\Users\danil\Desktop\универ\имитация\lab3 (1d cellular machine)\lab3 (1d cellular machine)\bin\Debug\lab3 (1d cellular machine).exe
+C:\Users\danil\Desktop\универ\имитация\lab3 (1d cellular machine)\lab3 (1d cellular machine)\bin\Debug\lab3 (1d cellular machine).pdb
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab3\Elementary cellular automaton\lab3 (1d cellular machine)\bin\Debug\lab3 (1d cellular machine).exe.config
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab3\Elementary cellular automaton\lab3 (1d cellular machine)\bin\Debug\lab3 (1d cellular machine).exe
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab3\Elementary cellular automaton\lab3 (1d cellular machine)\bin\Debug\lab3 (1d cellular machine).pdb
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab3\Elementary cellular automaton\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).csproj.AssemblyReference.cache
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab3\Elementary cellular automaton\lab3 (1d cellular machine)\obj\Debug\lab3__1d_cellular_machine_.Form1.resources
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab3\Elementary cellular automaton\lab3 (1d cellular machine)\obj\Debug\lab3__1d_cellular_machine_.Properties.Resources.resources
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab3\Elementary cellular automaton\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).csproj.GenerateResource.cache
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab3\Elementary cellular automaton\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).csproj.CoreCompileInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab3\Elementary cellular automaton\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).exe
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab3\Elementary cellular automaton\lab3 (1d cellular machine)\obj\Debug\lab3 (1d cellular machine).pdb

@@ -7,15 +7,15 @@
       "RelativeMoniker": "D:0:0:{7D93CBB0-229C-4C91-97A9-439038AB2A8A}|With_GUI\\With_GUI.csproj|solutionrelative:with_gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D93CBB0-229C-4C91-97A9-439038AB2A8A}|With_GUI\\With_GUI.csproj|c:\\seva\\github\\tsu_tasks\\object-oriented analysis and design\\factory_method\\with_gui\\with_gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D93CBB0-229C-4C91-97A9-439038AB2A8A}|With_GUI\\With_GUI.csproj|solutionrelative:with_gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7D93CBB0-229C-4C91-97A9-439038AB2A8A}|With_GUI\\With_GUI.csproj|c:\\seva\\github\\tsu_tasks\\object-oriented analysis and design\\factory_method\\with_gui\\with_gui\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D93CBB0-229C-4C91-97A9-439038AB2A8A}|With_GUI\\With_GUI.csproj|solutionrelative:with_gui\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D93CBB0-229C-4C91-97A9-439038AB2A8A}|With_GUI\\With_GUI.csproj|c:\\seva\\github\\tsu_tasks\\object-oriented analysis and design\\factory_method\\with_gui\\with_gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{7D93CBB0-229C-4C91-97A9-439038AB2A8A}|With_GUI\\With_GUI.csproj|c:\\seva\\github\\tsu_tasks\\object-oriented analysis and design\\factory_method\\with_gui\\with_gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D93CBB0-229C-4C91-97A9-439038AB2A8A}|With_GUI\\With_GUI.csproj|solutionrelative:with_gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D93CBB0-229C-4C91-97A9-439038AB2A8A}|With_GUI\\With_GUI.csproj|C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Factory_Method\\With_GUI\\with_gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{7D93CBB0-229C-4C91-97A9-439038AB2A8A}|With_GUI\\With_GUI.csproj|solutionrelative:with_gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -26,11 +26,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Factory_Method\\With_GUI\\With_GUI\\Form1.cs",
+              "RelativeDocumentMoniker": "With_GUI\\Form1.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Factory_Method\\With_GUI\\With_GUI\\Form1.cs",
+              "RelativeToolTip": "With_GUI\\Form1.cs",
+              "ViewState": "AgIAANMAAAAAAAAAAAA+wOQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T08:10:13.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Factory_Method\\With_GUI\\With_GUI\\Program.cs",
               "RelativeDocumentMoniker": "With_GUI\\Program.cs",
@@ -43,7 +56,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Factory_Method\\With_GUI\\With_GUI\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "With_GUI\\Form1.Designer.cs",
@@ -56,19 +69,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Factory_Method\\With_GUI\\With_GUI\\Form1.cs",
-              "RelativeDocumentMoniker": "With_GUI\\Form1.cs",
-              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Factory_Method\\With_GUI\\With_GUI\\Form1.cs",
-              "RelativeToolTip": "With_GUI\\Form1.cs",
-              "ViewState": "AgIAAKkAAAAAAAAAAAAcwBwAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T08:10:13.758Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Factory_Method\\With_GUI\\With_GUI\\Form1.cs",
@@ -76,8 +76,7 @@
               "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Factory_Method\\With_GUI\\With_GUI\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "With_GUI\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T08:09:44.588Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-02-27T08:09:44.588Z"
             }
           ]
         }

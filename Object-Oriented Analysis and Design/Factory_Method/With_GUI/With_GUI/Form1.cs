@@ -14,6 +14,8 @@ namespace With_GUI
         private Label lblTest = new Label();
         private Label lblTask = new Label();
         private Label lblLecture = new Label();
+        private Label lblTitleInput = new Label(); // Новая подпись для поля ввода
+        private TextBox txtTitleInput = new TextBox(); // Новое поле ввода
         private TextBox txtOutput = new TextBox();
         private Teacher teacher;
 
@@ -29,50 +31,59 @@ namespace With_GUI
             // Заголовок формы
             this.Text = "Учебные материалы";
             this.Width = 500;
-            this.Height = 400;
+            this.Height = 450; // Увеличил высоту, чтобы вместить новое поле
+
+            // Поле ввода названия
+            lblTitleInput.Text = "Название материала:";
+            lblTitleInput.Location = new System.Drawing.Point(20, 20);
+            lblTitleInput.Width = 100;
+
+            txtTitleInput.Width = 340;
+            txtTitleInput.Location = new System.Drawing.Point(120, 20);
+            txtTitleInput.Text = "Введите название"; // Значение по умолчанию
 
             // Подпись и кнопка для теста
             lblTest.Text = "Тест:";
-            lblTest.Location = new System.Drawing.Point(20, 20);
+            lblTest.Location = new System.Drawing.Point(20, 60);
             lblTest.Width = 100;
 
             btnCreateTest.Text = "Создать";
-            btnCreateTest.Location = new System.Drawing.Point(120, 20);
+            btnCreateTest.Location = new System.Drawing.Point(120, 60);
             btnCreateTest.Width = 100;
             btnCreateTest.Click += BtnCreateTest_Click;
 
             btnTakeTest.Text = "Пройти";
-            btnTakeTest.Location = new System.Drawing.Point(230, 20);
+            btnTakeTest.Location = new System.Drawing.Point(230, 60);
             btnTakeTest.Width = 100;
             btnTakeTest.Click += BtnTakeTest_Click;
 
             // Подпись и кнопка для практической задачи
             lblTask.Text = "Практическая задача:";
-            lblTask.Location = new System.Drawing.Point(20, 60);
+            lblTask.Location = new System.Drawing.Point(20, 100);
             lblTask.Width = 100;
 
             btnCreateTask.Text = "Создать";
-            btnCreateTask.Location = new System.Drawing.Point(120, 60);
+            btnCreateTask.Location = new System.Drawing.Point(120, 100);
             btnCreateTask.Width = 100;
             btnCreateTask.Click += BtnCreateTask_Click;
 
             btnSubmitTask.Text = "Сдать";
-            btnSubmitTask.Location = new System.Drawing.Point(230, 60);
+            btnSubmitTask.Location = new System.Drawing.Point(230, 100);
             btnSubmitTask.Width = 100;
             btnSubmitTask.Click += BtnSubmitTask_Click;
 
             // Подпись и кнопка для лекции
             lblLecture.Text = "Лекция:";
-            lblLecture.Location = new System.Drawing.Point(20, 100);
+            lblLecture.Location = new System.Drawing.Point(20, 140);
             lblLecture.Width = 100;
 
             btnCreateLecture.Text = "Создать";
-            btnCreateLecture.Location = new System.Drawing.Point(120, 100);
+            btnCreateLecture.Location = new System.Drawing.Point(120, 140);
             btnCreateLecture.Width = 100;
             btnCreateLecture.Click += BtnCreateLecture_Click;
 
             btnDownloadLecture.Text = "Скачать";
-            btnDownloadLecture.Location = new System.Drawing.Point(230, 100);
+            btnDownloadLecture.Location = new System.Drawing.Point(230, 140);
             btnDownloadLecture.Width = 100;
             btnDownloadLecture.Click += BtnDownloadLecture_Click;
 
@@ -80,10 +91,12 @@ namespace With_GUI
             txtOutput.Multiline = true;
             txtOutput.Width = 440;
             txtOutput.Height = 200;
-            txtOutput.Location = new System.Drawing.Point(20, 140);
+            txtOutput.Location = new System.Drawing.Point(20, 180);
             txtOutput.ReadOnly = true;
 
             // Добавление элементов на форму
+            this.Controls.Add(lblTitleInput);
+            this.Controls.Add(txtTitleInput);
             this.Controls.Add(lblTest);
             this.Controls.Add(btnCreateTest);
             this.Controls.Add(btnTakeTest);
@@ -96,12 +109,13 @@ namespace With_GUI
             this.Controls.Add(txtOutput);
         }
 
-        private LearningMaterial? lastCreatedMaterial; // Храним последний созданный материал
+        private LearningMaterial? lastCreatedMaterial;
 
         private void BtnCreateTest_Click(object? sender, EventArgs e)
         {
             LearningMaterialFactory factory = new TestFactory();
             lastCreatedMaterial = teacher.CreateMaterial(factory);
+            lastCreatedMaterial.Title = string.IsNullOrEmpty(txtTitleInput.Text) ? "Sample Test" : txtTitleInput.Text;
             lastCreatedMaterial.View();
             txtOutput.Text += $"Создан: {lastCreatedMaterial.Title}\r\n";
         }
@@ -110,6 +124,7 @@ namespace With_GUI
         {
             LearningMaterialFactory factory = new PracticalTaskFactory();
             lastCreatedMaterial = teacher.CreateMaterial(factory);
+            lastCreatedMaterial.Title = string.IsNullOrEmpty(txtTitleInput.Text) ? "Sample Task" : txtTitleInput.Text;
             lastCreatedMaterial.View();
             txtOutput.Text += $"Создан: {lastCreatedMaterial.Title}\r\n";
         }
@@ -118,6 +133,7 @@ namespace With_GUI
         {
             LearningMaterialFactory factory = new LectureFactory();
             lastCreatedMaterial = teacher.CreateMaterial(factory);
+            lastCreatedMaterial.Title = string.IsNullOrEmpty(txtTitleInput.Text) ? "Sample Lecture" : txtTitleInput.Text;
             lastCreatedMaterial.View();
             txtOutput.Text += $"Создан: {lastCreatedMaterial.Title}\r\n";
         }
@@ -199,17 +215,17 @@ namespace With_GUI
     // Конкретные фабрики
     class TestFactory : LearningMaterialFactory
     {
-        public override LearningMaterial CreateMaterial() => new Test { Title = "Sample Test", Content = "Test Content" };
+        public override LearningMaterial CreateMaterial() => new Test { Content = "Test Content" }; // Title теперь задаётся через поле ввода
     }
 
     class PracticalTaskFactory : LearningMaterialFactory
     {
-        public override LearningMaterial CreateMaterial() => new PracticalTask { Title = "Sample Task", Content = "Task Content" };
+        public override LearningMaterial CreateMaterial() => new PracticalTask { Content = "Task Content" };
     }
 
     class LectureFactory : LearningMaterialFactory
     {
-        public override LearningMaterial CreateMaterial() => new Lecture { Title = "Sample Lecture", Content = "Lecture Content" };
+        public override LearningMaterial CreateMaterial() => new Lecture { Content = "Lecture Content" };
     }
 
     // Класс преподавателя

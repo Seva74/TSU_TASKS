@@ -28,3 +28,13 @@ C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\lab 1 (Flying with a
 C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\lab 1 (Flying with atmosphere)\obj\Debug\lab 1 (Flying with atmosphere).csproj.CoreCompileInputs.cache
 C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\lab 1 (Flying with atmosphere)\obj\Debug\lab 1 (Flying with atmosphere).exe
 C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\lab 1 (Flying with atmosphere)\obj\Debug\lab 1 (Flying with atmosphere).pdb
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\Simulation of body flight in the atmosphere\lab 1 (Flying with atmosphere)\bin\Debug\lab 1 (Flying with atmosphere).exe.config
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\Simulation of body flight in the atmosphere\lab 1 (Flying with atmosphere)\bin\Debug\lab 1 (Flying with atmosphere).exe
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\Simulation of body flight in the atmosphere\lab 1 (Flying with atmosphere)\bin\Debug\lab 1 (Flying with atmosphere).pdb
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\Simulation of body flight in the atmosphere\lab 1 (Flying with atmosphere)\obj\Debug\lab 1 (Flying with atmosphere).csproj.AssemblyReference.cache
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\Simulation of body flight in the atmosphere\lab 1 (Flying with atmosphere)\obj\Debug\lab_1__Flying_with_atmosphere_.Form1.resources
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\Simulation of body flight in the atmosphere\lab 1 (Flying with atmosphere)\obj\Debug\lab_1__Flying_with_atmosphere_.Properties.Resources.resources
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\Simulation of body flight in the atmosphere\lab 1 (Flying with atmosphere)\obj\Debug\lab 1 (Flying with atmosphere).csproj.GenerateResource.cache
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\Simulation of body flight in the atmosphere\lab 1 (Flying with atmosphere)\obj\Debug\lab 1 (Flying with atmosphere).csproj.CoreCompileInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\Simulation of body flight in the atmosphere\lab 1 (Flying with atmosphere)\obj\Debug\lab 1 (Flying with atmosphere).exe
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab1\Simulation of body flight in the atmosphere\lab 1 (Flying with atmosphere)\obj\Debug\lab 1 (Flying with atmosphere).pdb

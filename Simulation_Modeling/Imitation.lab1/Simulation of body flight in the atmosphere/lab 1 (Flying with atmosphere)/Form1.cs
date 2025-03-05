@@ -35,6 +35,11 @@ namespace lab_1__Flying_with_atmosphere_
 
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private List<Point> points = new List<Point>();
         private List<(double timeStep, double distance, double maxHeight, double endSpeed)> results = new List<(double, double, double, double)>();
 

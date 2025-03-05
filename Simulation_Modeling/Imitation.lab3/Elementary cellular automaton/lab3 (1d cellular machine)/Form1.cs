@@ -15,19 +15,19 @@ namespace lab3__1d_cellular_machine_
         private Random random = new Random();
         private Dictionary<(bool, bool, bool), bool> currentRule = new Dictionary<(bool, bool, bool), bool>();
         private int lines = 100;
-        private int Ypos = 0;
         private int Xpos = 0;
-        private List<List<bool>> data = new List<List<bool>>();
         private readonly Brush whiteBrush = new SolidBrush(Color.White);
         private readonly Brush blackBrush = new SolidBrush(Color.Black);
         private Graphics g;
-        private List<bool> genZero = new List<bool>();
+        private List<bool> currentState;
         private int ruleNumber;
+        private bool isFirstRun = true;
 
         public Form1()
         {
             InitializeComponent();
             g = panel1.CreateGraphics();
+            currentState = new List<bool>();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,11 +37,11 @@ namespace lab3__1d_cellular_machine_
 
             if (ruleNumber < 0 || ruleNumber > 255 || lines <= 0)
             {
-                MessageBox.Show("Введите правило от 0 до 255 и положительное число строк.");
+                MessageBox.Show("Введите правило от 0 до 255 и положительное число клеток.");
                 return;
             }
 
-            g.Clear(Color.Black); // Очистка панели
+            g.Clear(Color.Black);
 
             var binary = Convert.ToString(ruleNumber, 2).PadLeft(8, '0').ToCharArray();
             currentRule.Clear();
@@ -54,37 +54,37 @@ namespace lab3__1d_cellular_machine_
             currentRule.Add((true, true, false), binary[6] == '1');
             currentRule.Add((true, true, true), binary[7] == '1');
 
-            genZero.Clear();
-            for (int i = 0; i < lines; i++)
+            if (isFirstRun)
             {
-                genZero.Add(random.NextDouble() >= 0.5); // Более равномерное распределение
-            }
-
-            data.Clear();
-            data.Add(new List<bool>(genZero));
-            for (int i = 1; i < lines; i++)
-            {
-                data.Add(new List<bool>());
-                for (int j = 0; j < lines; j++)
+                currentState.Clear();
+                for (int i = 0; i < lines; i++)
                 {
-                    data[i].Add(currentRule[(data[i - 1][(j - 1 + lines) % lines], data[i - 1][j], data[i - 1][(j + 1) % lines])]);
+                    currentState.Add(random.NextDouble() >= 0.5);
                 }
+                isFirstRun = false;
             }
 
-            for (int i = 0; i < lines; i++)
+            List<bool> nextState = new List<bool>();
+            for (int j = 0; j < lines; j++)
             {
-                Ypos = 10 + i * 10;
-                for (int j = 0; j < lines; j++)
+                bool left = currentState[(j - 1 + lines) % lines];
+                bool center = currentState[j];
+                bool right = currentState[(j + 1) % lines];
+                nextState.Add(currentRule[(left, center, right)]);
+            }
+
+            currentState = nextState;
+
+            for (int j = 0; j < lines; j++)
+            {
+                Xpos = 10 + j * 10;
+                if (currentState[j])
                 {
-                    Xpos = 10 + j * 10;
-                    if (data[i][j])
-                    {
-                        g.FillRectangle(whiteBrush, Xpos, Ypos, 10, 10);
-                    }
-                    else
-                    {
-                        g.FillRectangle(blackBrush, Xpos, Ypos, 10, 10);
-                    }
+                    g.FillRectangle(whiteBrush, Xpos, 10, 10, 10);
+                }
+                else
+                {
+                    g.FillRectangle(blackBrush, Xpos, 10, 10, 10);
                 }
             }
         }

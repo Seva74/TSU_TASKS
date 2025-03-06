@@ -1,0 +1,23 @@
+f_bonus = @(x) x .* exp(-0.5 * abs(x)); % f(x) = x * exp(-0.5 * |x|)
+
+x_vals = linspace(-10, 10, 1000); 
+f_values = f_bonus(x_vals); 
+
+[min_value_bonus, min_idx_bonus] = min(f_values); 
+[max_value_bonus, max_idx_bonus] = max(f_values); 
+
+x_min_bonus = x_vals(min_idx_bonus); 
+x_max_bonus = x_vals(max_idx_bonus); 
+
+figure;
+plot(x_vals, f_values, 'LineWidth', 2); 
+hold on;
+
+text(x_min_bonus, min_value_bonus, 'Минимум', 'FontSize', 12, 'Color', 'blue');
+text(x_max_bonus, max_value_bonus, 'Максимум', 'FontSize', 12, 'Color', 'red');
+
+title('График функции f(x) = x * exp(-0.5 * |x|) с экстремальными точками');
+xlabel('x');
+ylabel('f(x)');
+grid on;
+legend('f(x)', 'Минимум', 'Максимум');

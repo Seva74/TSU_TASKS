@@ -1,0 +1,27 @@
+% 3.1 Визуализация точек экстремума для функции Эггхолдера
+
+[min_value, min_idx] = min(f(:)); 
+[max_value, max_idx] = max(f(:)); 
+
+[row_min, col_min] = ind2sub(size(f), min_idx); 
+[row_max, col_max] = ind2sub(size(f), max_idx);
+
+x_min = x1(row_min, col_min);
+x2_min = x2(row_min, col_min);
+
+x_max = x1(row_max, col_max);
+x2_max = x2(row_max, col_max);
+
+figure;
+surf(x1, x2, f);
+shading interp; % Плавная заливка
+colormap(jet); % Цветовая палитра
+colorbar; % Цветовая шкала
+
+text(x_min, x2_min, min_value, 'Минимум', 'FontSize', 12, 'Color', 'blue');
+text(x_max, x2_max, max_value, 'Максимум', 'FontSize', 12, 'Color', 'red');
+
+title('Функция Эггхолдера с экстремальными точками');
+xlabel('x1');
+ylabel('x2');
+zlabel('f(x1, x2)');

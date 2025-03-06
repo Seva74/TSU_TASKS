@@ -1,0 +1,51 @@
+stages = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+predecessors = {[], 'A', 'A', 'B', 'C', {'D', 'E'}, 'F'};
+
+T_h = [2, 3, 4, 5, 2, 3, 4];
+T_u = [1, 1, 1, 2, 1, 1, 2];
+C_h = [20, 30, 30, 40, 15, 25, 50];
+C_n = [25, 40, 60, 49, 25, 35, 80];
+
+Z = T_h - T_u; 
+k = (C_n - C_h) ./ Z; 
+
+n = length(stages); 
+m = n; 
+
+
+f = [zeros(1, n), k]; 
+lb = [zeros(1, n), zeros(1, m)];
+ub = [inf(1, n), Z];
+
+A = [];
+b = [];
+for j = 1:n
+    if ~isempty(predecessors{j}) 
+        if ischar(predecessors{j})
+            predecessors{j} = {predecessors{j}};
+        end
+        for i = 1:length(predecessors{j})
+            pred_idx = find(strcmp(stages, predecessors{j}{i})); 
+            A_row = zeros(1, n + m);
+            A_row(j) = -1; % x_j
+            A_row(pred_idx) = 1; % x_i
+            A_row(n + j) = -1; % y(i, j)
+            A = [A; A_row];
+            b = [b; -T_h(j)];
+        end
+    end
+end
+
+T0 = 14;
+A = [A; zeros(1, n + m)];
+A(end, n) = 1;
+b = [b; T0];
+
+options = optimoptions('linprog', 'Display', 'iter');
+[x, cost] = linprog(f, A, b, [], [], lb, ub, options);
+
+disp('Время начала событий (x_i):');
+disp(x(1:n));
+disp('Сокращение времени выполнения работ (y(i, j)):');
+disp(x(n+1:end));
+disp(['Минимальная стоимость проекта: ', num2str(cost)]);

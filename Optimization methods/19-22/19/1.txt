@@ -1,0 +1,24 @@
+a = -10;
+b = 2;
+h = 1;
+x = a:h:b;
+
+% Ваша функция
+f_x = x .* exp(-(1/2) * abs(x));
+
+% Построение графика методом plot
+plot(x, f_x, '--rX'); % Красная штриховая линия с маркерами "кресты"
+
+grid on;
+
+xlabel('x');
+ylabel('f(x)');
+
+title('$$f(x) = x \cdot e^{-\frac{1}{2} |x|}$$', 'Interpreter', 'latex');
+
+hold on;
+
+% Построение графика методом fplot
+fplot(@(x) x .* exp(-(1/2) * abs(x)), [a b], '-y'); % Жёлтая сплошная линия
+
+legend('Метод plot', 'Метод fplot', 'Location', 'north', 'Orientation', 'horizontal');

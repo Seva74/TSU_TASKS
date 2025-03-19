@@ -1,0 +1,219 @@
+{
+  "id": "befd1fe7-3f70-43bf-95d6-ca5fe4beb72c",
+  "version": "2.0",
+  "name": "7_lab_Viktorov",
+  "url": "https://learn.microsoft.com",
+  "tests": [{
+    "id": "64f88204-b035-4e6c-b169-8ea30f6fa48d",
+    "name": "Learn Header",
+    "commands": [{
+      "id": "fa408659-6225-4e8a-8a14-77e035fa603c",
+      "comment": "",
+      "command": "open",
+      "target": "/ru-ru/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "60275db1-1e15-4138-b9fb-529dd6f8e75b",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.site-header-brand:nth-child(3) > span",
+      "targets": [
+        ["css=.site-header-brand:nth-child(3) > span", "css:finder"],
+        ["xpath=//div[@id='ms--primary-nav']/a[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/span", "xpath:position"]
+      ],
+      "value": "Learn"
+    }]
+  }, {
+    "id": "18e4eb2a-5981-4cdd-919c-ddbdb0a2bfeb",
+    "name": "Footer",
+    "commands": [{
+      "id": "9343f3d2-9334-46e9-a66f-895a4b41ad9d",
+      "comment": "",
+      "command": "open",
+      "target": "/ru-ru/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "590f93a4-5ce1-41a9-9c00-0c765de98f6c",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "id=footer",
+      "targets": [
+        ["id=footer", "id"],
+        ["css=#footer", "css:finder"],
+        ["xpath=//footer[@id='footer']", "xpath:attributes"],
+        ["xpath=//section/footer", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "43fb7c12-4f8a-4ee0-8264-976788d98fa3",
+    "name": "Search block",
+    "commands": [{
+      "id": "12a9683c-a1f0-4d0b-b332-778c2d60d172",
+      "comment": "",
+      "command": "open",
+      "target": "/ru-ru/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a1c4469a-e761-4aee-b47a-c4f24a08ceaf",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.hero-content",
+      "targets": [
+        ["css=.hero-content", "css:finder"],
+        ["xpath=//section[@id='welcome-hero']/div", "xpath:idRelative"],
+        ["xpath=//main/div[2]/section/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "66436060-3ee6-4fa6-b9ba-421baaee18c2",
+    "name": "Authorization button click",
+    "commands": [{
+      "id": "45876b0b-2c55-4099-ad19-317cfe1bbd73",
+      "comment": "",
+      "command": "open",
+      "target": "/ru-ru/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "af074479-6f4d-429b-8a80-0b7ca51705b8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Войти",
+      "targets": [
+        ["linkText=Войти", "linkText"],
+        ["css=#ms--primary-nav > .link-button", "css:finder"],
+        ["xpath=//div[@id='ms--primary-nav']/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[4]", "xpath:href"],
+        ["xpath=//div[2]/a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "afa81fa6-1ef2-42c6-8a4e-77fddbbd896d",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "id=idSIButton9",
+      "targets": [
+        ["id=idSIButton9", "id"],
+        ["css=#idSIButton9", "css:finder"],
+        ["xpath=//input[@id='idSIButton9']", "xpath:attributes"],
+        ["xpath=//div[@id='lightbox']/div[3]/div/div/div/div[4]/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "748ccefd-2e3a-4681-b159-5444e8c691da",
+    "name": "Microsoft logo click",
+    "commands": [{
+      "id": "870e3784-3f2b-4943-b614-4a930e316b8f",
+      "comment": "",
+      "command": "open",
+      "target": "/ru-ru/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5b14c20-ce66-4be1-ab9b-0d83a0f63c54",
+      "comment": "",
+      "command": "click",
+      "target": "css=.site-header-logo:nth-child(1) path:nth-child(1)",
+      "targets": [
+        ["css=.site-header-logo:nth-child(1) path:nth-child(1)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "660c681f-06fc-4338-8435-a61d51d94d8b",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.c-image",
+      "targets": [
+        ["css=.c-image", "css:finder"],
+        ["xpath=//img[contains(@src,'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31')]", "xpath:img"],
+        ["xpath=//a[@id='uhfLogo']/img", "xpath:idRelative"],
+        ["xpath=//a/img", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "cc484ed4-b6a8-4bfd-a89d-6283062cd6fe",
+    "name": "Microsoft blog click",
+    "commands": [{
+      "id": "85518ce4-abbe-4e35-8df3-13c0963fb7c4",
+      "comment": "",
+      "command": "open",
+      "target": "/ru-ru/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5cba5d65-ef94-4c83-8ec1-5b346fcee701",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Блог",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bd96e8e9-8ec5-4a87-9b8e-7282ca6d3f14",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.HeroBanner_lia-title__J66ah",
+      "targets": [
+        ["css=.HeroBanner_lia-title__J66ah", "css:finder"],
+        ["xpath=//div[@id='__next']/header/div[4]/article/section/div/div/div/div/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Microsoft Learn Blog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "ebf624c7-cef3-4589-bfaa-9d8f2b08168f",
+    "name": "Language selection click",
+    "commands": [{
+      "id": "4f20a270-4cd6-4005-9ee9-c45af7cea490",
+      "comment": "",
+      "command": "open",
+      "target": "/ru-ru/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b68bca64-92fa-4282-a766-19ee2812ff2b",
+      "comment": "",
+      "command": "click",
+      "target": "css=#footer .local-selector-link-text",
+      "targets": [
+        ["css=#footer .local-selector-link-text", "css:finder"],
+        ["xpath=//footer[@id='footer']/div/a/span[2]", "xpath:idRelative"],
+        ["xpath=//section/footer/div/a/span[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "16bdb1e5-cd8f-4faf-a465-6712231ccedc",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "id=select-a-language",
+      "targets": [
+        ["id=select-a-language", "id"],
+        ["css=#select-a-language", "css:finder"],
+        ["xpath=//h1[@id='select-a-language']", "xpath:attributes"],
+        ["xpath=//main[@id='main']/div[2]/div/section/div/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Выбор языка')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "19e0de0d-8e77-4757-9458-4507b5eebd46",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["64f88204-b035-4e6c-b169-8ea30f6fa48d"]
+  }],
+  "urls": ["https://learn.microsoft.com/"],
+  "plugins": []
+}

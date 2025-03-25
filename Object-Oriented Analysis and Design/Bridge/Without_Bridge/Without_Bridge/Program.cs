@@ -1,66 +1,67 @@
 ﻿using System;
 using System.IO;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas.Parser;
 
-public abstract class Document
+public class TextDocument
 {
-    public string Content { get; set; }
+    public string FilePath;
 
-    protected Document()
+    public TextDocument(string filePath)
     {
-        Content = "";
+        FilePath = filePath;
     }
 
-    public abstract void ProcessToScreen();
-    public abstract void ProcessToFile(string filePath);
-}
-
-public class TextDocument : Document
-{
-    public TextDocument() : base() { }
-
-    public override void ProcessToScreen()
+    public void ProcessToScreen()
     {
-        Content = "Это текстовый документ.";
-        Console.WriteLine($"Вывод на экран:\n{Content}");
+        string content = File.ReadAllText(FilePath);
+        Console.WriteLine($"Вывод на экран:\n{content}\n---");
     }
 
-    public override void ProcessToFile(string filePath)
+    public void ProcessToFile(string outputPath)
     {
-        Content = "Это текстовый документ.";
-        try
-        {
-            File.WriteAllText(filePath, Content);
-            Console.WriteLine($"Содержимое успешно сохранено в файл: {filePath}\n---");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Ошибка при сохранении в файл {filePath}: {ex.Message}");
-        }
+        string content = File.ReadAllText(FilePath);
+        File.WriteAllText(outputPath, content);
+        Console.WriteLine($"Содержимое успешно сохранено в файл: {outputPath}\n---");
     }
 }
 
-public class PdfDocument : Document
+public class PdfDocument
 {
-    public PdfDocument() : base() { }
+    public string FilePath;
 
-    public override void ProcessToScreen()
+    public PdfDocument(string filePath)
     {
-        Content = "Это PDF-документ с форматированием.";
-        Console.WriteLine($"Вывод на экран:\n{Content}");
+        FilePath = filePath;
     }
 
-    public override void ProcessToFile(string filePath)
+    public void ProcessToScreen()
     {
-        Content = "Это PDF-документ с форматированием.";
-        try
+        string content = string.Empty;
+        using (var pdfReader = new PdfReader(FilePath))
+        using (var pdfDoc = new iText.Kernel.Pdf.PdfDocument(pdfReader))
         {
-            File.WriteAllText(filePath, Content);
-            Console.WriteLine($"Содержимое успешно сохранено в файл: {filePath}\n---");
+            for (int i = 1; i <= pdfDoc.GetNumberOfPages(); i++)
+            {
+                content += PdfTextExtractor.GetTextFromPage(pdfDoc.GetPage(i));
+            }
         }
-        catch (Exception ex)
+        Console.WriteLine($"Вывод на экран:\n{content}\n---");
+    }
+
+    public void ProcessToFile(string outputPath)
+    {
+        string content = string.Empty;
+        using (var pdfReader = new PdfReader(FilePath))
+        using (var pdfDoc = new iText.Kernel.Pdf.PdfDocument(pdfReader))
         {
-            Console.WriteLine($"Ошибка при сохранении в файл {filePath}: {ex.Message}");
+            for (int i = 1; i <= pdfDoc.GetNumberOfPages(); i++)
+            {
+                content += PdfTextExtractor.GetTextFromPage(pdfDoc.GetPage(i));
+            }
         }
+        File.WriteAllText(outputPath, content);
+        Console.WriteLine($"Содержимое успешно сохранено в файл: {outputPath}\n---");
     }
 }
 
@@ -68,14 +69,54 @@ class Program
 {
     static void Main(string[] args)
     {
-        Document textDocOnScreen = new TextDocument();
-        Document textDocToFile = new TextDocument();
-        Document pdfDocOnScreen = new PdfDocument();
-        Document pdfDocToFile = new PdfDocument();
+        Console.WriteLine("Программа обработки документов");
+        Console.WriteLine("Поддерживаются файлы: .txt и .pdf\n");
 
-        textDocOnScreen.ProcessToScreen();
-        textDocToFile.ProcessToFile("output.txt");
-        pdfDocOnScreen.ProcessToScreen();
-        pdfDocToFile.ProcessToFile("output.txt");
+        Console.Write("Введите путь к входному файлу (.txt или .pdf): ");
+        string inputPath = Console.ReadLine()!;
+
+        string extension = Path.GetExtension(inputPath).ToLower();
+
+        Console.WriteLine("\nВыберите режим вывода:");
+        Console.WriteLine("1 - Вывод на экран");
+        Console.WriteLine("2 - Сохранение в файл");
+        Console.Write("Введите номер (1 или 2): ");
+        string choice = Console.ReadLine()!;
+
+        if (extension == ".txt")
+        {
+            TextDocument textDoc = new TextDocument(inputPath);
+            if (choice == "1")
+            {
+                Console.WriteLine("\nОбработка файла...");
+                textDoc.ProcessToScreen();
+            }
+            else
+            {
+                Console.Write("Введите путь для сохранения файла (например, output.txt): ");
+                string outputPath = Console.ReadLine()!;
+                Console.WriteLine("\nОбработка файла...");
+                textDoc.ProcessToFile(outputPath);
+            }
+        }
+        else
+        {
+            PdfDocument pdfDoc = new PdfDocument(inputPath);
+            if (choice == "1")
+            {
+                Console.WriteLine("\nОбработка файла...");
+                pdfDoc.ProcessToScreen();
+            }
+            else
+            {
+                Console.Write("Введите путь для сохранения файла (например, output.txt): ");
+                string outputPath = Console.ReadLine()!;
+                Console.WriteLine("\nОбработка файла...");
+                pdfDoc.ProcessToFile(outputPath);
+            }
+        }
+
+        Console.WriteLine("Нажмите любую клавишу для выхода...");
+        Console.ReadKey();
     }
 }

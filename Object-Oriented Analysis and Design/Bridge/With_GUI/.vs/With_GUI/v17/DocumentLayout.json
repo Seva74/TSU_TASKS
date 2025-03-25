@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Bridge\\With_GUI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{EFAA367C-A91C-4DE0-B675-C0A6EB21BB99}|With_GUI\\With_GUI.csproj|c:\\seva\\github\\tsu_tasks\\object-oriented analysis and design\\bridge\\with_gui\\with_gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFAA367C-A91C-4DE0-B675-C0A6EB21BB99}|With_GUI\\With_GUI.csproj|solutionrelative:with_gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EFAA367C-A91C-4DE0-B675-C0A6EB21BB99}|With_GUI\\With_GUI.csproj|c:\\seva\\github\\tsu_tasks\\object-oriented analysis and design\\bridge\\with_gui\\with_gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EFAA367C-A91C-4DE0-B675-C0A6EB21BB99}|With_GUI\\With_GUI.csproj|solutionrelative:with_gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,11 +15,7 @@
       "RelativeMoniker": "D:0:0:{EFAA367C-A91C-4DE0-B675-C0A6EB21BB99}|With_GUI\\With_GUI.csproj|solutionrelative:with_gui\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EFAA367C-A91C-4DE0-B675-C0A6EB21BB99}|With_GUI\\With_GUI.csproj|c:\\seva\\github\\tsu_tasks\\object-oriented analysis and design\\bridge\\with_gui\\with_gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EFAA367C-A91C-4DE0-B675-C0A6EB21BB99}|With_GUI\\With_GUI.csproj|solutionrelative:with_gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EFAA367C-A91C-4DE0-B675-C0A6EB21BB99}|With_GUI\\With_GUI.csproj|c:\\seva\\github\\tsu_tasks\\object-oriented analysis and design\\bridge\\with_gui\\with_gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{EFAA367C-A91C-4DE0-B675-C0A6EB21BB99}|With_GUI\\With_GUI.csproj|C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Bridge\\With_GUI\\with_gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EFAA367C-A91C-4DE0-B675-C0A6EB21BB99}|With_GUI\\With_GUI.csproj|solutionrelative:with_gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -35,25 +35,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Bridge\\With_GUI\\With_GUI\\Form1.cs",
-              "RelativeDocumentMoniker": "With_GUI\\Form1.cs",
-              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Bridge\\With_GUI\\With_GUI\\Form1.cs",
-              "RelativeToolTip": "With_GUI\\Form1.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwDsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T14:15:03.061Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Bridge\\With_GUI\\With_GUI\\Program.cs",
               "RelativeDocumentMoniker": "With_GUI\\Program.cs",
               "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Bridge\\With_GUI\\With_GUI\\Program.cs",
               "RelativeToolTip": "With_GUI\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAAALAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-12T14:14:54.692Z",
               "EditorCaption": ""
@@ -61,12 +48,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Bridge\\With_GUI\\With_GUI\\Form1.cs",
+              "RelativeDocumentMoniker": "With_GUI\\Form1.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Bridge\\With_GUI\\With_GUI\\Form1.cs",
+              "RelativeToolTip": "With_GUI\\Form1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T14:15:03.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Bridge\\With_GUI\\With_GUI\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "With_GUI\\Form1.Designer.cs",
               "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Bridge\\With_GUI\\With_GUI\\Form1.Designer.cs",
               "RelativeToolTip": "With_GUI\\Form1.Designer.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAmwCsAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAA1wOIAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-12T14:14:52.801Z",
               "EditorCaption": ""

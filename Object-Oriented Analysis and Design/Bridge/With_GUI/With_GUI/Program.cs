@@ -11,13 +11,11 @@ using Xceed.Words.NET;
 
 namespace BridgePatternApp
 {
-    // Интерфейс рендера (реализация в паттерне "Мост")
     public interface IDocumentRenderer
     {
         void Render(string content, Image? image = null);
     }
 
-    // Рендер на экран через форму
     public class ScreenRenderer : IDocumentRenderer
     {
         private readonly Form1 form;
@@ -33,7 +31,6 @@ namespace BridgePatternApp
         }
     }
 
-    // Рендер в Word-файл
     public class WordFileRenderer : IDocumentRenderer
     {
         private readonly string filePath;

@@ -113,7 +113,7 @@ public class ShoppingCart
 
     public string GetDiscountDescription()
     {
-        return discountStrategy != null ? discountStrategy.GetDescription() : "Без скидки";
+        return discountStrategy.GetDescription();
     }
 
     public void DisplayCart()

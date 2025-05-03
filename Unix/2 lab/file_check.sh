@@ -1,0 +1,1 @@
+docker run --rm -it --mount type=volume,src=shared_volume,dst=/shared_volume ubuntu:22.04 ls /shared_volume

@@ -1,0 +1,1 @@
+docker run --rm -it --mount type=volume,src=shared_volume,dst=/shared_volume ubuntu:22.04 watch -n 0.1 ls /shared_volume

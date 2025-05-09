@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Imitation.lab10")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5311afd4ca6975313a12b254e044a101d1944c2b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cfe4c55a32226bf3026591e3e796c847774f038f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Imitation.lab10")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Imitation.lab10")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

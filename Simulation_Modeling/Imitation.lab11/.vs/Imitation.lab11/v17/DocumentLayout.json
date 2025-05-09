@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab11\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2154276-05AC-43F2-A066-CC694A4A9FCB}|Imitation.lab11.csproj|c:\\seva\\github\\tsu_tasks\\simulation_modeling\\imitation.lab11\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2154276-05AC-43F2-A066-CC694A4A9FCB}|Imitation.lab11.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2154276-05AC-43F2-A066-CC694A4A9FCB}|Imitation.lab11.csproj|c:\\seva\\github\\tsu_tasks\\simulation_modeling\\imitation.lab11\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2154276-05AC-43F2-A066-CC694A4A9FCB}|Imitation.lab11.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2154276-05AC-43F2-A066-CC694A4A9FCB}|Imitation.lab11.csproj|c:\\seva\\github\\tsu_tasks\\simulation_modeling\\imitation.lab11\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2154276-05AC-43F2-A066-CC694A4A9FCB}|Imitation.lab11.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2154276-05AC-43F2-A066-CC694A4A9FCB}|Imitation.lab11.csproj|C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab11\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A2154276-05AC-43F2-A066-CC694A4A9FCB}|Imitation.lab11.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab11\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "Form1.Designer.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab11\\Form1.Designer.cs",
+              "RelativeToolTip": "Form1.Designer.cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAYwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T11:32:02.196Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab11\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab11\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAQwGoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T11:31:59.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab11\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab11\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T11:31:52.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab11\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Simulation_Modeling\\Imitation.lab11\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T11:31:45.681Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

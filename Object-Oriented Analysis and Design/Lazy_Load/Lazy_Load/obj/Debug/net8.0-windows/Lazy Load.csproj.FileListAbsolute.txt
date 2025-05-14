@@ -1,0 +1,34 @@
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\bin\Debug\net8.0-windows\Lazy Load.exe
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\bin\Debug\net8.0-windows\Lazy Load.deps.json
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\bin\Debug\net8.0-windows\Lazy Load.runtimeconfig.json
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\bin\Debug\net8.0-windows\Lazy Load.dll
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\bin\Debug\net8.0-windows\Lazy Load.pdb
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\obj\Debug\net8.0-windows\Lazy Load.csproj.GenerateResource.cache
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\obj\Debug\net8.0-windows\Lazy Load.GeneratedMSBuildEditorConfig.editorconfig
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\obj\Debug\net8.0-windows\Lazy Load.AssemblyInfoInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\obj\Debug\net8.0-windows\Lazy Load.AssemblyInfo.cs
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\obj\Debug\net8.0-windows\Lazy Load.csproj.CoreCompileInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\obj\Debug\net8.0-windows\Lazy Load.sourcelink.json
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\obj\Debug\net8.0-windows\Lazy Load.dll
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\obj\Debug\net8.0-windows\refint\Lazy Load.dll
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\obj\Debug\net8.0-windows\Lazy Load.pdb
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\obj\Debug\net8.0-windows\Lazy Load.genruntimeconfig.cache
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\obj\Debug\net8.0-windows\ref\Lazy Load.dll
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy Load\Lazy Load\obj\Debug\net8.0-windows\LazyLoadDemo.Form1.resources
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\bin\Debug\net8.0-windows\Lazy Load.exe
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\bin\Debug\net8.0-windows\Lazy Load.deps.json
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\bin\Debug\net8.0-windows\Lazy Load.runtimeconfig.json
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\bin\Debug\net8.0-windows\Lazy Load.dll
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\bin\Debug\net8.0-windows\Lazy Load.pdb
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\obj\Debug\net8.0-windows\Lazy Load.csproj.GenerateResource.cache
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\obj\Debug\net8.0-windows\Lazy Load.GeneratedMSBuildEditorConfig.editorconfig
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\obj\Debug\net8.0-windows\Lazy Load.AssemblyInfoInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\obj\Debug\net8.0-windows\Lazy Load.AssemblyInfo.cs
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\obj\Debug\net8.0-windows\Lazy Load.csproj.CoreCompileInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\obj\Debug\net8.0-windows\Lazy Load.sourcelink.json
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\obj\Debug\net8.0-windows\Lazy Load.dll
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\obj\Debug\net8.0-windows\refint\Lazy Load.dll
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\obj\Debug\net8.0-windows\Lazy Load.pdb
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\obj\Debug\net8.0-windows\Lazy Load.genruntimeconfig.cache
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\obj\Debug\net8.0-windows\ref\Lazy Load.dll
+C:\Seva\GitHub\TSU_TASKS\Object-Oriented Analysis and Design\Lazy_Load\Lazy_Load\obj\Debug\net8.0-windows\LazyLoadDemo.NewsItem.resources

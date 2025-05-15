@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using System.Diagnostics;
 
 namespace LazyLoadDemo
 {
@@ -25,7 +26,7 @@ namespace LazyLoadDemo
         {
             if (!isLoaded)
             {
-                Console.WriteLine($"Загрузка содержимого из {Filename}...");
+                Debug.WriteLine($"Загрузка содержимого из {Filename}...");
                 Thread.Sleep(2000);
                 try
                 {
@@ -36,7 +37,7 @@ namespace LazyLoadDemo
                     content = $"<html><body><h1>Ошибка загрузки</h1><p>{ex.Message}</p></body></html>";
                 }
                 isLoaded = true;
-                Console.WriteLine($"Содержимое загружено из {Filename}.");
+                Debug.WriteLine($"Содержимое загружено из {Filename}.");
             }
             return content;
         }

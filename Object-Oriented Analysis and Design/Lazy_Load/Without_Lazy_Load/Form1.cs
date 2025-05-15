@@ -4,9 +4,11 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using System.Diagnostics;
 
 namespace NoLazyLoadDemo
 {
+    
     public class NewsItem
     {
         public string Title { get; }
@@ -17,7 +19,7 @@ namespace NoLazyLoadDemo
         {
             Title = title;
             Filename = filename;
-            Console.WriteLine($"Загрузка содержимого из {filename}...");
+            Debug.WriteLine($"Загрузка содержимого из {filename}...");
             Thread.Sleep(2000);
             try
             {
@@ -27,7 +29,7 @@ namespace NoLazyLoadDemo
             {
                 content = $"<html><body><h1>Ошибка загрузки</h1><p>{ex.Message}</p></body></html>";
             }
-            Console.WriteLine($"Содержимое загружено из {filename}.");
+            Debug.WriteLine($"Содержимое загружено из {filename}.");
         }
 
         public string GetContent()

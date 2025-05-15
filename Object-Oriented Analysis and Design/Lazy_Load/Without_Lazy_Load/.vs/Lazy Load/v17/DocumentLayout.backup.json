@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Lazy_Load\\Without_Lazy_Load\\Form1.cs*",
               "RelativeToolTip": "Form1.cs*",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAIwGYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-05T12:52:27.561Z",
               "EditorCaption": ""
@@ -51,12 +51,11 @@
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Lazy_Load\\Without_Lazy_Load\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "Form1.Designer.cs",
-              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Lazy_Load\\Without_Lazy_Load\\Form1.Designer.cs*",
-              "RelativeToolTip": "Form1.Designer.cs*",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Lazy_Load\\Without_Lazy_Load\\Form1.Designer.cs",
+              "RelativeToolTip": "Form1.Designer.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAswF8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T12:52:15.1Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T12:52:15.1Z"
             },
             {
               "$type": "Document",
@@ -64,12 +63,11 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Lazy_Load\\Without_Lazy_Load\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Lazy_Load\\Without_Lazy_Load\\Program.cs*",
-              "RelativeToolTip": "Program.cs*",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\Object-Oriented Analysis and Design\\Lazy_Load\\Without_Lazy_Load\\Program.cs",
+              "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T12:52:12.844Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T12:52:12.844Z"
             },
             {
               "$type": "Document",

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    networks:
+      - mynet
+  manager:
+    image: service_manager:latest
+    depends_on:
+      - rabbitmq
+    networks:
+      - mynet
+
+  worker:
+    image: service_worker:latest
+    depends_on:
+      - rabbitmq
+    deploy:
+      replicas: 3
+    networks:
+      - mynet
+
+networks:
+  mynet:

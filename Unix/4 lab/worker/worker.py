@@ -30,6 +30,7 @@ def callback(ch, method, properties, body):
     logger.info(f" [x] Received {body}")
     time.sleep(5)    
     logger.info(f" [x] Done {body}")
+    ch.basic_ack(delivery_tag=method.delivery_tag)
 
 channel.basic_consume(queue='tasks', on_message_callback=callback, auto_ack=False)
 

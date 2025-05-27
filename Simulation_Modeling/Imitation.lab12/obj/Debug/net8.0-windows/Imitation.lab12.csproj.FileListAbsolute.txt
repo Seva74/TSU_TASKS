@@ -1,0 +1,17 @@
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\obj\Debug\net8.0-windows\Imitation.lab12.csproj.GenerateResource.cache
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\obj\Debug\net8.0-windows\Imitation.lab12.GeneratedMSBuildEditorConfig.editorconfig
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\obj\Debug\net8.0-windows\Imitation.lab12.AssemblyInfoInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\obj\Debug\net8.0-windows\Imitation.lab12.AssemblyInfo.cs
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\obj\Debug\net8.0-windows\Imitation.lab12.csproj.CoreCompileInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\obj\Debug\net8.0-windows\Imitation.lab12.sourcelink.json
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\obj\Debug\net8.0-windows\Form1.resources
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\bin\Debug\net8.0-windows\Imitation.lab12.exe
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\bin\Debug\net8.0-windows\Imitation.lab12.deps.json
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\bin\Debug\net8.0-windows\Imitation.lab12.runtimeconfig.json
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\bin\Debug\net8.0-windows\Imitation.lab12.dll
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\bin\Debug\net8.0-windows\Imitation.lab12.pdb
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\obj\Debug\net8.0-windows\Imitation.lab12.dll
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\obj\Debug\net8.0-windows\refint\Imitation.lab12.dll
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\obj\Debug\net8.0-windows\Imitation.lab12.pdb
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\obj\Debug\net8.0-windows\Imitation.lab12.genruntimeconfig.cache
+C:\Seva\GitHub\TSU_TASKS\Simulation_Modeling\Imitation.lab12\obj\Debug\net8.0-windows\ref\Imitation.lab12.dll

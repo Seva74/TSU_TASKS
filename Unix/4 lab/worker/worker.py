@@ -31,7 +31,7 @@ def callback(ch, method, properties, body):
     time.sleep(5)    
     logger.info(f" [x] Done {body}")
 
-channel.basic_consume(queue='tasks', on_message_callback=callback, auto_ack=True)
+channel.basic_consume(queue='tasks', on_message_callback=callback, auto_ack=False)
 
 logger.info(' [*] Waiting for messages')
 channel.start_consuming()

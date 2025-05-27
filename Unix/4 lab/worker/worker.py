@@ -33,5 +33,5 @@ def callback(ch, method, properties, body):
 
 channel.basic_consume(queue='tasks', on_message_callback=callback, auto_ack=True)
 
-logger.info(' [*] Waiting for messages. To exit press CTRL+C')
+logger.info(' [*] Waiting for messages')
 channel.start_consuming()

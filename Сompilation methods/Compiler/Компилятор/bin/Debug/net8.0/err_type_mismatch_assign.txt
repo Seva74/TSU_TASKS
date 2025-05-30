@@ -1,0 +1,4 @@
+int a;
+string s;
+a = "hello"; 
+s = 10; 

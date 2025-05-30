@@ -1,0 +1,41 @@
+int a;
+int b;
+int c;
+int result;
+
+input(a);
+input(b);
+input(c);
+
+result = a + b * c;
+output(result);
+
+result = (a + b) * c;
+output(result);
+
+result = a - b / c;
+output(result);
+
+result = (a - b) / c;
+output(result);
+
+result = a * b + c / 2 + 10;
+output(result);
+
+bool flag1;
+bool flag2;
+flag1 = true;
+flag2 = false;
+result = 0;
+
+if (flag1 && (a > b || b < c)) {
+    result = a + b;
+} else {
+    result = a - b;
+}
+output(result);
+
+if (!flag2) {
+    result = c * 2;
+}
+output(result); 

@@ -1,12 +1,20 @@
 ﻿namespace Компилятор
 {
+    /// Статический класс, отвечающий за синтаксический анализ последовательности терминалов.
+    /// Проверяет соответствие кода грамматике языка и строит (неявно) дерево разбора.
     public static class SyntacticalAnalyzer
     {
+        /// Строка для логирования процесса синтаксического анализа (для отладки).
         private static string _log = string.Empty;
         
+        /// Счетчик для нумерации записей в логе.
         private static int _logCounter = 0;
+        /// Строка с текущим уровнем отступов для лога (для лучшей читаемости).
         private static string _tabs = string.Empty;
+        /// Счетчик текущего уровня вложенности правил грамматики (для отступов в логе).
         private static int _tabsCounter = 0;
+        /// Свойство для управления уровнем отступов в логе синтаксического анализа.
+        /// Увеличивает или уменьшает количество символов табуляции в строке `_tabs`.
         public static int Tabs
         {
             get
@@ -27,6 +35,8 @@
                 }
             }
         }
+        /// Свойство для добавления записей в лог синтаксического анализа.
+        /// Каждая запись нумеруется и форматируется с текущим уровнем отступов.
         private static string Log
         {
             get
@@ -40,24 +50,29 @@
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="terminals"></param>
-        /// <returns></returns>
+        /// Запускает синтаксический анализ для предоставленного списка терминалов.
+        /// Начинает разбор с правила "Блок инструкций".
+        /// Результаты логирования записываются в файл "SAlog.txt".
+        /// name="terminals" Список терминалов, полученных от лексического анализатора
+        /// <returns>True, если синтаксический анализ прошел успешно, иначе False
         public static bool IsSyntacticalCorrect(List<Terminal> terminals)
         {
+            // Начинаем разбор с основного правила грамматики - "Блок инструкций".
             bool result = ParseInstructionBlock(terminals);
+            // Записываем лог синтаксического анализа в файл.
             File.WriteAllText("SAlog.txt", Log);
             return result;
         }
 
-        /// <summary>
-        /// Нахождение индекса парной закрывающейся скобки
-        /// </summary>
+        /// Находит индекс парной закрывающей скобки для заданной открывающей скобки.
+        /// Поддерживает круглые '()', фигурные '{}' и квадратные '[]' скобки.
+        /// <param name="leftParenIndex">Индекс открывающей скобки в списке терминалов.</param>
+        /// <param name="terminals">Список терминалов для поиска.</param>
+        /// <returns>Индекс парной закрывающей скобки или -1, если пара не найдена.</returns>
         private static int FindPairedClosingBracket(int leftParenIndex, List<Terminal> terminals)
         {
             var openingBracket = terminals[leftParenIndex].TerminalType;
+            // Определяем тип ожидаемой закрывающей скобки на основе открывающей.
             var closingBracket = openingBracket switch
             {
                 ETerminalType.LeftParen => ETerminalType.RightParen,
@@ -65,31 +80,26 @@
                 ETerminalType.LeftBracket => ETerminalType.RightBracket,
                 _ => throw new ArgumentException(),
             };
-            int counter = 0;
+            int counter = 0; // Счетчик для отслеживания вложенности скобок.
             for (int i = leftParenIndex; i < terminals.Count; i++)
             {
                 if (terminals[i].TerminalType == openingBracket)
                 {
-                    counter++;
+                    counter++; // Увеличиваем счетчик при встрече открывающей скобки.
                 }
                 if (terminals[i].TerminalType == closingBracket)
                 {
-                    counter--;
-                    if (counter == 0)
+                    counter--; // Уменьшаем счетчик при встрече закрывающей скобки.
+                    if (counter == 0) // Если счетчик равен 0, значит найдена парная скобка.
                     {
                         return i;
                     }
                 }
             }
-            return -1;
+            return -1; // Парная скобка не найдена.
         }
 
-        
-
-
-        /// <summary>
         /// 1. Блок инструкций
-        /// </summary>
         private static bool ParseInstructionBlock(List<Terminal> terminals)
         {
             Tabs++;
@@ -301,7 +311,7 @@
 
             // 1.5 Output(<Идентификатор>) ; <Последующая инструкция>
             Log = $"1.5 Output(<Идентификатор>) ; <Последующая инструкция> →";
-            // если начинается с Input
+            // если начинается с Output (было Input)
             if (terminals.ElementAtOrDefault(0)?.TerminalType == ETerminalType.Output)
             {
                 // предполагаемый индекс (
@@ -394,329 +404,48 @@
 
 
 
-        /// <summary>
         /// 2. Последующая инструкция
-        /// </summary>
+        // <Последующая инструкция> -> <Блок инструкций>
+        //                           | epsilon
+        // (По сути, это рекурсивный вызов для обработки следующей полноценной инструкции, 
+        //  либо завершение, если инструкций больше нет)
         private static bool ParseFollowingInstruction(List<Terminal> terminals)
         {
             Tabs++;
             Log = $"2. <Последующая инструкция> →";
             Tabs++;
-            // если есть хотя бы один терминал
+            // если есть хотя бы один терминал, пытаемся разобрать его как <Блок инструкций>
             if (terminals.Count != 0)
             {
-                // 2.1 while ( <Логическое или> ) { <Блок инструкций> } <Последующая инструкция>
-                Log = $"2.1 while ( <Логическое или> ) {{ <Блок инструкций> }} <Последующая инструкция> →";
-                // если начинается с while
-                if (terminals.ElementAtOrDefault(0)?.TerminalType == ETerminalType.While)
+                // 2.1 <Блок инструкций>
+                Log = $"2.1 <Блок инструкций> →";
+                if (ParseInstructionBlock(terminals)) // Рекурсивно вызываем ParseInstructionBlock
                 {
-                    // предполагаемый индекс (
-                    int leftParenIndex = 1;
-                    // если по индексу действительно (
-                    if (terminals.ElementAtOrDefault(leftParenIndex)?.TerminalType == ETerminalType.LeftParen)
-                    {
-                        // находим индекс парной )
-                        int rightParenIndex = FindPairedClosingBracket(leftParenIndex, terminals);
-                        // если парная ) успешно нашлась
-                        if (rightParenIndex != -1)
-                        {
-                            // предполагаемый индекс {
-                            int leftBraceIndex = rightParenIndex + 1;
-                            // если по индексу действительно {
-                            if (terminals.ElementAtOrDefault(leftBraceIndex)?.TerminalType == ETerminalType.LeftBrace)
-                            {
-                                // находим индекс парной }
-                                int rightBraceIndex = FindPairedClosingBracket(leftBraceIndex, terminals);
-                                // если парная } успешно нашлась
-                                if (rightBraceIndex != -1)
-                                {
-                                    // выделяем подпоследовательности для парсинга
-                                    var partForLogicalOR = terminals[(leftParenIndex + 1)..rightParenIndex];
-                                    var partForInstructionBlock = terminals[(leftBraceIndex + 1)..rightBraceIndex];
-                                    var partForFollowingInstruction = terminals[(rightBraceIndex + 1)..];
-                                    // Если подподпоследоватльности терминалов прошли парсинг
-                                    if (ParseLogicalOR(partForLogicalOR) &&
-                                        ParseInstructionBlock(partForInstructionBlock) &&
-                                        ParseFollowingInstruction(partForFollowingInstruction))
-                                    {
-                                        Log = $"2.1 while ( <Логическое или> ) {{ <Блок инструкций> }} <Последующая инструкция> → TRUE";
-                                        Tabs--;
-                                        Log = $"2. <Последующая инструкция> →TRUE";
-                                        Tabs--;
-                                        return true;
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    Log = $"2.1 <Блок инструкций> → TRUE";
+                    Tabs--;
+                    Log = $"2. <Последующая инструкция> → TRUE";
+                    Tabs--;
+                    return true;
                 }
-                Log = $"2.1 while ( <Логическое или> ) {{ <Блок инструкций> }} <Последующая инструкция> → FALSE";
-
-                // 2.2 if ( <Логическое или> ) { <Блок инструкций> } <Последующая инструкция>
-                Log = $"2.2 if ( <Логическое или> ) {{ <Блок инструкций> }} <Последующая инструкция> →";
-                // если начинается с if
-                if (terminals.ElementAtOrDefault(0)?.TerminalType == ETerminalType.If)
-                {
-                    // предполагаемый индекс (
-                    int leftParenIndex = 1;
-                    // если по индексу действительно (
-                    if (terminals.ElementAtOrDefault(leftParenIndex)?.TerminalType == ETerminalType.LeftParen)
-                    {
-                        // находим индекс парной )
-                        int rightParenIndex = FindPairedClosingBracket(leftParenIndex, terminals);
-                        // если парная ) успешно нашлась
-                        if (rightParenIndex != -1)
-                        {
-                            // предполагаемый индекс {
-                            int leftBraceIndex = rightParenIndex + 1;
-                            // если по индексу действительно {
-                            if (terminals.ElementAtOrDefault(leftBraceIndex)?.TerminalType == ETerminalType.LeftBrace)
-                            {
-                                // находим индекс парной }
-                                int rightBraceIndex = FindPairedClosingBracket(leftBraceIndex, terminals);
-                                // если парная } успешно нашлась
-                                if (rightBraceIndex != -1)
-                                {
-                                    // выделяем подпоследовательности для парсинга
-                                    var partForLogicalOR = terminals[(leftParenIndex + 1)..rightParenIndex];
-                                    var partForInstructionBlock = terminals[(leftBraceIndex + 1)..rightBraceIndex];
-                                    var partForFollowingInstruction = terminals[(rightBraceIndex + 1)..];
-                                    // Если подподпоследоватльности терминалов прошли парсинг
-                                    if (ParseLogicalOR(partForLogicalOR) &&
-                                        ParseInstructionBlock(partForInstructionBlock) &&
-                                        ParseFollowingInstruction(partForFollowingInstruction))
-                                    {
-                                        Log = $"2.2 if ( <Логическое или> ) {{ <Блок инструкций> }} <Последующая инструкция> → TRUE";
-                                        Tabs--;
-                                        Log = $"2. <Последующая инструкция> →TRUE";
-                                        Tabs--;
-                                        return true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                Log = $"2.2 if ( <Логическое или> ) {{ <Блок инструкций> }} <Последующая инструкция> → FALSE";
-
-                // 2.3 if ( <Логическое или> ) { <Блок инструкций> } <Последующая инструкция> else { <Блок инструкций> } <Последующая инструкция>
-                Log = $"2.3 if ( <Логическое или> ) {{ <Блок инструкций> }} <Последующая инструкция> else {{ <Блок инструкций> }} <Последующая инструкция> →";
-                // если начинается с if
-                if (terminals.ElementAtOrDefault(0)?.TerminalType == ETerminalType.If)
-                {
-                    // предполагаемый индекс (
-                    int leftParenIndex = 1;
-                    // если по индексу действительно (
-                    if (terminals.ElementAtOrDefault(leftParenIndex)?.TerminalType == ETerminalType.LeftParen)
-                    {
-                        // находим индекс парной )
-                        int rightParenIndex = FindPairedClosingBracket(leftParenIndex, terminals);
-                        // если парная ) успешно нашлась
-                        if (rightParenIndex != -1)
-                        {
-                            // предполагаемый индекс {
-                            int firstLeftBraceIndex = rightParenIndex + 1;
-                            // если по индексу действительно {
-                            if (terminals.ElementAtOrDefault(firstLeftBraceIndex)?.TerminalType == ETerminalType.LeftBrace)
-                            {
-                                // находим индекс парной }
-                                int firstRightBraceIndex = FindPairedClosingBracket(firstLeftBraceIndex, terminals);
-                                // если парная } успешно нашлась
-                                if (firstRightBraceIndex != -1)
-                                {
-                                    // предполагаемый индекс else
-                                    int elseIndex = firstRightBraceIndex + 1;
-
-                                    // если по индексу действительно else
-                                    if (terminals.ElementAtOrDefault(elseIndex)?.TerminalType == ETerminalType.Else)
-                                    {
-                                        // предполагаемый индекс {
-                                        int secondLeftBraceIndex = elseIndex + 1;
-
-                                        // если по индексу действительно {
-                                        if (terminals.ElementAtOrDefault(secondLeftBraceIndex)?.TerminalType == ETerminalType.LeftBrace)
-                                        {
-                                            // находим индекс парной }
-                                            int secondRightBraceIndex = FindPairedClosingBracket(secondLeftBraceIndex, terminals);
-                                            // если парная } успешно нашлась
-                                            if (secondRightBraceIndex != -1)
-                                            {
-                                                // выделяем подпоследовательности для парсинга
-                                                var partForLogicalOR = terminals[(leftParenIndex + 1)..rightParenIndex];
-                                                var partForFirstInstructionBlock = terminals[(firstLeftBraceIndex + 1)..firstRightBraceIndex];
-                                                var partForSecondInstructionBlock = terminals[(secondLeftBraceIndex + 1)..secondRightBraceIndex];
-                                                var partForFollowingInstruction = terminals[(secondRightBraceIndex + 1)..];
-                                                // Если подподпоследоватльности терминалов прошли парсинг
-                                                if (ParseLogicalOR(partForLogicalOR) &&
-                                                    ParseInstructionBlock(partForFirstInstructionBlock) &&
-                                                    ParseInstructionBlock(partForSecondInstructionBlock) &&
-                                                    ParseFollowingInstruction(partForFollowingInstruction))
-                                                {
-                                                    Log = $"2.3 if ( <Логическое или> ) {{ <Блок инструкций> }} <Последующая инструкция> else {{ <Блок инструкций> }} <Последующая инструкция> → TRUE";
-                                                    Tabs--;
-                                                    Log = $"2. <Последующая инструкция> →TRUE";
-                                                    Tabs--;
-                                                    return true;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                Log = $"2.3 if ( <Логическое или> ) {{ <Блок инструкций> }} <Последующая инструкция> else {{ <Блок инструкций> }} <Последующая инструкция> → FALSE";
-
-                // 2.4 Input(<Идентификатор>) ; <Последующая инструкция>
-                Log = $"2.4 Input(<Идентификатор>) ; <Последующая инструкция> →";
-                // если начинается с Input
-                if (terminals.ElementAtOrDefault(0)?.TerminalType == ETerminalType.Input)
-                {
-                    // предполагаемый индекс (
-                    int leftParenIndex = 1;
-
-                    // если по индексу действительно (
-                    if (terminals.ElementAtOrDefault(leftParenIndex)?.TerminalType == ETerminalType.LeftParen)
-                    {
-                        // находим индекс парной )
-                        int rightParenIndex = FindPairedClosingBracket(leftParenIndex, terminals);
-                        // если парная ) успешно нашлась
-                        if (rightParenIndex != -1)
-                        {
-                            // предполагаемый индекс ;
-                            int semicolonIndex = rightParenIndex + 1;
-
-                            // если по индексу действительно ;
-                            if (terminals.ElementAtOrDefault(semicolonIndex)?.TerminalType == ETerminalType.Semicolon)
-                            {
-                                // выделяем подпоследовательности для парсинга
-                                var partForIdentifier = terminals[(leftParenIndex + 1)..rightParenIndex];
-                                var partForFollowingInstruction = terminals[(semicolonIndex + 1)..];
-                                // Если подподпоследоватльности терминалов прошли парсинг
-                                if (ParseIdentifier(partForIdentifier) &&
-                                    ParseFollowingInstruction(partForFollowingInstruction))
-                                {
-                                    Log = $"2.4 Input(<Идентификатор>) ; <Последующая инструкция> → TRUE";
-                                    Tabs--;
-                                    Log = $"2. <Последующая инструкция> →TRUE";
-                                    Tabs--;
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-                }
-                Log = $"2.4 Input(<Идентификатор>) ; <Последующая инструкция> → FALSE";
-
-                // 2.5 Output(<Идентификатор>) ; <Последующая инструкция>
-                Log = $"2.5 Output(<Идентификатор>) ; <Последующая инструкция> →";
-                // если начинается с Input
-                if (terminals.ElementAtOrDefault(0)?.TerminalType == ETerminalType.Output)
-                {
-                    // предполагаемый индекс (
-                    int leftParenIndex = 1;
-
-                    // если по индексу действительно (
-                    if (terminals.ElementAtOrDefault(leftParenIndex)?.TerminalType == ETerminalType.LeftParen)
-                    {
-                        // находим индекс парной )
-                        int rightParenIndex = FindPairedClosingBracket(leftParenIndex, terminals);
-                        // если парная ) успешно нашлась
-                        if (rightParenIndex != -1)
-                        {
-                            // предполагаемый индекс ;
-                            int semicolonIndex = rightParenIndex + 1;
-
-                            // если по индексу действительно ;
-                            if (terminals.ElementAtOrDefault(semicolonIndex)?.TerminalType == ETerminalType.Semicolon)
-                            {
-                                // выделяем подпоследовательности для парсинга
-                                var partForIdentifier = terminals[(leftParenIndex + 1)..rightParenIndex];
-                                var partForFollowingInstruction = terminals[(semicolonIndex + 1)..];
-                                // Если подподпоследоватльности терминалов прошли парсинг
-                                if (ParseIdentifier(partForIdentifier) &&
-                                    ParseFollowingInstruction(partForFollowingInstruction))
-                                {
-                                    Log = $"2.5 Output(<Идентификатор>) ; <Последующая инструкция> → TRUE";
-                                    Tabs--;
-                                    Log = $"2. <Последующая инструкция> →TRUE";
-                                    Tabs--;
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-                }
-                Log = $"2.5 Output(<Идентификатор>) ; <Последующая инструкция> → FALSE";
-
-                // находим индекс первой точки с запятой
-                int firstSemicolon = terminals.FindIndex(t => t.TerminalType == ETerminalType.Semicolon);
-
-                // 2.6 <Инициализация переменной> ; <Последующая инструкция>
-                Log = $"2.6 <Инициализация переменной> ; <Последующая инструкция> →";
-                // если в последовательности есть ;
-                if (firstSemicolon != -1)
-                {
-                    // выделяем подпоследовательности для парсинга
-                    var partForVariableInitialization = terminals[..firstSemicolon];
-                    var partForFollowingInstruction = terminals[(firstSemicolon + 1)..];
-                    // проверяем подпоследовательности
-                    if (ParseVariableInitialization(partForVariableInitialization) &&
-                        ParseFollowingInstruction(partForFollowingInstruction))
-                    {
-                        Log = $"2.6 <Инициализация переменной> ; <Последующая инструкция> → TRUE";
-                        Tabs--;
-                        Log = $"2. <Последующая инструкция> →TRUE";
-                        Tabs--;
-                        return true;
-                    }
-                }
-                Log = $"2.6 <Инициализация переменной> ; <Последующая инструкция> → FALSE";
-
-                // 2.7 <Присваивание> ; <Последующая инструкция>
-                Log = $"2.7 <Присваивание> ; <Последующая инструкция> →";
-                // если в последовательности есть ;
-                if (firstSemicolon != -1)
-                {
-                    // выделяем подпоследовательности для парсинга
-                    var partForAssignment = terminals[..firstSemicolon];
-                    var partForFollowingInstruction = terminals[(firstSemicolon + 1)..];
-                    // проверяем подпоследовательности
-                    if (ParseAssignment(partForAssignment) &&
-                        ParseFollowingInstruction(partForFollowingInstruction))
-                    {
-                        Log = $"2.7 <Присваивание> ; <Последующая инструкция> → TRUE";
-                        Tabs--;
-                        Log = $"2. <Последующая инструкция> →TRUE";
-                        Tabs--;
-                        return true;
-                    }
-                }
-                Log = $"2.7 <Присваивание> ; <Последующая инструкция> → FALSE";
-
-                // последовательность не подпадает ни под один из шаблонов
+                Log = $"2.1 <Блок инструкций> → FALSE";
+                
                 Tabs--;
-                Log = $"2. <Последующая инструкция> → FALSE";
+                Log = $"2. <Последующая инструкция> → FALSE (не удалось разобрать как блок инструкций)";
                 Tabs--;
-                return false;
+                return false; 
             }
-            else
+            else // если терминалов нет - это эпсилон-переход (успешное завершение)
             {
-                // последовательность - лямбда
-                Log = $"2.8 λ → TRUE";
+                // 2.2 λ (пустая строка)
+                Log = $"2.2 λ → TRUE";
                 Tabs--;
-                Log = $"2. <Последующая инструкция> → TRUE";
+                Log = $"2. <Последующая инструкция> → TRUE (пусто)";
                 Tabs--;
                 return true;
             }
         }
 
-
-
-        /// <summary>
         /// 3. Инициализация переменной
-        /// </summary>
         private static bool ParseVariableInitialization(List<Terminal> terminals)
         {
             Tabs++;
@@ -877,9 +606,7 @@
 
 
 
-        /// <summary>
         /// 4. Присваивание
-        /// </summary>
         private static bool ParseAssignment(List<Terminal> terminals)
         {
             Tabs++;
@@ -916,11 +643,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 5. Аргумент присваивания
-        /// </summary>
         private static bool ParseAssignmentArgument(List<Terminal> terminals)
         {
             Tabs++;
@@ -972,11 +695,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 6. Логическое ИЛИ
-        /// </summary>
         private static bool ParseLogicalOR(List<Terminal> terminals)
         {
             Tabs++;
@@ -1026,11 +745,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 7. Логическое И
-        /// </summary>
         private static bool ParseLogicalAND(List<Terminal> terminals)
         {
             Tabs++;
@@ -1079,11 +794,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 8. Аргумент логического И
-        /// </summary>
         private static bool ParseLogicalANDArgument(List<Terminal> terminals)
         {
             Tabs++;
@@ -1135,11 +846,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 9. Отрицание
-        /// </summary>
         private static bool ParseNegation(List<Terminal> terminals)
         {
             Tabs++;
@@ -1184,11 +891,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 10. Аргумент отрицания
-        /// </summary>
         private static bool ParseNegationArgument(List<Terminal> terminals)
         {
             Tabs++;
@@ -1260,11 +963,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 11. Строковое сравнение
-        /// </summary>
         private static bool ParseStringComparison(List<Terminal> terminals)
         {
             Tabs++;
@@ -1302,11 +1001,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 12. Конкатенация
-        /// </summary>
         private static bool ParseConcatenation(List<Terminal> terminals)
         {
             Tabs++;
@@ -1355,11 +1050,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 13. Аргумент конкатенации
-        /// </summary>
         private static bool ParseConcatenationArgument(List<Terminal> terminals)
         {
             Tabs++;
@@ -1402,11 +1093,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 14. Числовое сравнение
-        /// </summary>
         private static bool ParseNumericalComparison(List<Terminal> terminals)
         {
             Tabs++;
@@ -1453,21 +1140,13 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 15. Оператор сравнения
-        /// </summary>
         private static bool ParseComparisonOperator(List<Terminal> terminals)
         {
             throw new NotImplementedException();
         }
 
-
-
-        /// <summary>
         /// 16. Сложение и вычитание
-        /// </summary>
         private static bool ParseAdditionAndSubtraction(List<Terminal> terminals)
         {
             Tabs++;
@@ -1539,11 +1218,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 17. Умножение и деление
-        /// </summary>
         private static bool ParseMultiplicationAndDivision(List<Terminal> terminals)
         {
             Tabs++;
@@ -1638,11 +1313,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 18. Унарный минус
-        /// </summary>
         private static bool ParseUnaryMinus(List<Terminal> terminals)
         {
             Tabs++;
@@ -1687,11 +1358,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 19. Аргумент унарного минуса
-        /// </summary>
         private static bool ParseUnaryMinusArgument(List<Terminal> terminals)
         {
             Tabs++;
@@ -1763,11 +1430,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 20. Идентификатор
-        /// </summary>
         private static bool ParseIdentifier(List<Terminal> terminals)
         {
             Tabs++;
@@ -1832,11 +1495,7 @@
             return false;
         }
 
-
-
-        /// <summary>
         /// 21. Индексатор
-        /// </summary>
         private static bool ParseIndexer(List<Terminal> terminals)
         {
             Tabs++;

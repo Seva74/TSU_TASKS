@@ -1,0 +1,45 @@
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.exe
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.deps.json
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.runtimeconfig.json
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.dll
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.pdb
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.AssemblyInfoInputs.cache
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.AssemblyInfo.cs
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.csproj.CoreCompileInputs.cache
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.sourcelink.json
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.dll
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\obj\Debug\net8.0\refint\Компилятор.dll
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.pdb
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.genruntimeconfig.cache
+C:\Users\danil\OneDrive\Рабочий стол\универ\компиляция\Compiler\Компилятор\obj\Debug\net8.0\ref\Компилятор.dll
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.exe
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.deps.json
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.runtimeconfig.json
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.dll
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.pdb
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.AssemblyInfoInputs.cache
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.AssemblyInfo.cs
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.csproj.CoreCompileInputs.cache
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.sourcelink.json
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.dll
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\obj\Debug\net8.0\refint\Компилятор.dll
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.pdb
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.genruntimeconfig.cache
+C:\Users\User\Downloads\методы_компиляции\Compiler\Компилятор\obj\Debug\net8.0\ref\Компилятор.dll
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.exe
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.deps.json
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.runtimeconfig.json
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.dll
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\bin\Debug\net8.0\Компилятор.pdb
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.GeneratedMSBuildEditorConfig.editorconfig
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.AssemblyInfoInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.AssemblyInfo.cs
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.csproj.CoreCompileInputs.cache
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.sourcelink.json
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.dll
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\obj\Debug\net8.0\refint\Компилятор.dll
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.pdb
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\obj\Debug\net8.0\Компилятор.genruntimeconfig.cache
+C:\Seva\GitHub\TSU_TASKS\Сompilation methods\Compiler\Компилятор\obj\Debug\net8.0\ref\Компилятор.dll

@@ -1,0 +1,6 @@
+int a;
+string s;
+int result;
+a = 5;
+s = "text";
+result = a + s; 

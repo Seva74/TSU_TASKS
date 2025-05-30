@@ -1,0 +1,11 @@
+string a;
+string c;
+c = "fghij";
+a = "ab";
+a = a + "cde";
+a = a + c;
+output(a);
+
+int b;
+b = 10;
+b = b % 3;

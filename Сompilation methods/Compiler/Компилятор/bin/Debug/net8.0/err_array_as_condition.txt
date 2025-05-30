@@ -1,0 +1,4 @@
+int[5] arr;
+if (arr) { 
+    output(arr[0]);
+} 

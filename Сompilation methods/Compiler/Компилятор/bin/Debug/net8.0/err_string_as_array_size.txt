@@ -1,0 +1,4 @@
+string s;
+s = "5";
+int[s] arr; 
+output(s); 

@@ -2,16 +2,26 @@
 
 namespace Компилятор
 {
+    /// Статический класс, отвечающий за лексический анализ исходного кода.
+    /// Разбивает входную строку на последовательность токенов (терминалов).
     public static class LexicalAnalyzer
     {
+        /// Входная строка кода для анализа.
         private static string Data { get; set; }
+        /// Список терминалов (токенов), полученных в результате анализа.
         private static List<Terminal> Terminals { get; } = [];
 
+        /// Указатель на текущий символ в строке (относительно текущей строки).
         private static int _charPointer = 1;
+        /// Указатель на текущую строку.
         private static int _linePointer = 1;
+        /// Сохраненное значение указателя на символ в строке для текущего терминала.
         private static int _char = 1;
 
+        /// Указатель на текущий символ в общей входной строке `Data`.
         private static int _pointer = 0;
+        /// Свойство для доступа и инкрементации указателя `_pointer`.
+        /// При переходе на новую строку обновляет `_linePointer` и сбрасывает `_charPointer`.
         private static int Pointer
         {
             get
@@ -30,6 +40,7 @@ namespace Компилятор
                 }
             }
         }
+        /// Возвращает текущий символ из входной строки `Data` по указателю `Pointer`.
         private static char CurrentChar
         {
             get
@@ -37,29 +48,60 @@ namespace Компилятор
                 return Data[Pointer];
             }
         }
+        /// Выполняет лексический анализ входной строки кода.
+        /// data: Строка исходного кода.
+        /// returns: True, если лексический анализ прошел успешно, иначе выбрасывает исключение.
         public static bool IsLexicalCorrect(string data)
         {
             Data = data;
+            _pointer = 0;
+            _charPointer = 1;
+            _linePointer = 1;
+            _char = 1;
+            Terminals.Clear(); // Очистка списка терминалов перед новым анализом
 
-
-          
             while (Pointer < data.Length)
             {
-                Start_Analyse();
+                Start_Analyse(); // Запуск анализа для текущего символа
             }
             return true;
         }
+        
+        /// Возвращает список терминалов, полученных в результате лексического анализа.
+        /// returns: Список терминалов.
         public static List<Terminal> GetTerminals()
         {
             return Terminals;
         }
+
+        /// Пропускает пробельные символы, инкрементируя указатель.
+        internal static void SkipWhitespace()
+        {
+            Pointer++;
+        }
+
+        /// Обрабатывает простой токен (односимвольный или ключевое слово без значения) и добавляет его в список терминалов.
+        /// terminalType: Тип терминала.
+        internal static void ProcessSimpleToken(ETerminalType terminalType)
+        {
+            ReadTerminal(terminalType);
+            Pointer++;
+        }
+
+        /// Добавляет терминал указанного типа в список `Terminals`.
+        /// Используется для терминалов, не имеющих дополнительного значения (например, операторы, скобки).
+        /// terminalType: Тип добавляемого терминала.
         private static void ReadTerminal(ETerminalType terminalType)
         {
             Terminals.Add(new Terminal(terminalType, _linePointer, _char));
         }
+
+        /// Добавляет терминал указанного типа со значением в список `Terminals`.
+        /// Используется для чисел, строк, булевых значений и идентификаторов.
+        /// terminalType: Тип добавляемого терминала.
+        /// value: Значение терминала.
         private static void ReadTerminal(ETerminalType terminalType, string value)
         {
-            
             switch (terminalType)
             {
                 case ETerminalType.Number:
@@ -78,6 +120,10 @@ namespace Компилятор
                     throw new NotImplementedException("Невозможный тип терминала");
             }
         }
+
+        /// Определяет группу текущего символа (цифра, буква, кавычка, пробел, оператор и т.д.).
+        /// Эта информация используется таблицей переходов для определения следующего действия анализатора.
+        /// returns: Строковое представление группы символов (например, "<ц>" для цифры).
         private static string CurentCharGroup()
         {
             if (CurrentChar >= '0' && CurrentChar <= '9')
@@ -128,120 +174,29 @@ namespace Компилятор
             }
         }
         
+        /// Основной метод, запускающий анализ текущего символа на основе таблицы переходов.
+        /// Сохраняет текущую позицию символа перед анализом.
         private static void Start_Analyse()
         {
-            _char = _charPointer;
-            switch (CurentCharGroup())
+            _char = _charPointer; // Сохраняем позицию символа в строке для текущего токена
+            string charGroup = CurentCharGroup();
+            
+            // Пытаемся получить действие из таблицы переходов для текущей группы символов
+            if (TransitionTable.TryGetAction(charGroup, out var action))
             {
-                case "<ц>":
-                    NUM_Analyse();
-                    break;
-
-                case "<б>":
-                    ID_Analyse();
-                    break;
-
-                case "< >":
-                    Pointer++;
-                    break;
-
-                case "<\">":
-                    STR_Analyse();
-                    break;
-
-                case "<;>":
-                    ReadTerminal(ETerminalType.Semicolon);
-                    Pointer++;
-                    break;
-
-                case "<+>":
-                    ReadTerminal(ETerminalType.Plus);
-                    Pointer++;
-                    break;
-
-                case "<->":
-                    ReadTerminal(ETerminalType.Minus);
-                    Pointer++;
-                    break;
-
-                case "<*>":
-                    ReadTerminal(ETerminalType.Multiply);
-                    Pointer++;
-                    break;
-
-                case "</>":
-                    ReadTerminal(ETerminalType.Divide);
-                    Pointer++;
-                    break;
-
-                case "<%>":
-                    ReadTerminal(ETerminalType.Modulus);
-                    Pointer++;
-                    break;
-
-                case "<<>":
-                    LESS_Analyse();
-                    break;
-
-                case "<>>":
-                    MORE_Analyse();
-                    break;
-
-                case "<=>":
-                    EQUAL_Analyse();
-                    break;
-
-                case "<&>":
-                    AND_Analyse();
-                    break;
-
-                case "<|>":
-                    OR_Analyse();
-                    break;
-
-                case "<!>":
-                    ReadTerminal(ETerminalType.Not);
-                    Pointer++;
-                    break;
-
-                case "<(>":
-                    ReadTerminal(ETerminalType.LeftParen);
-                    Pointer++;
-                    break;
-
-                case "<)>":
-                    ReadTerminal(ETerminalType.RightParen);
-                    Pointer++;
-                    break;
-
-                case "<[>":
-                    ReadTerminal(ETerminalType.LeftBracket);
-                    Pointer++;
-                    break;
-
-                case "<]>":
-                    ReadTerminal(ETerminalType.RightBracket);
-                    Pointer++;
-                    break;
-
-                case "<{>":
-                    ReadTerminal(ETerminalType.LeftBrace);
-                    Pointer++;
-                    break;
-
-                case "<}>":
-                    ReadTerminal(ETerminalType.RightBrace);
-                    Pointer++;
-                    break;
-
-                default:
-                    Console.WriteLine($"Некорректный сомвол: {CurrentChar}" +
+                action(); // Выполняем действие (метод анализа конкретного типа токена)
+            }
+            else
+            {
+                Console.WriteLine($"Некорректный символ: {CurrentChar}" +
                     $"\tСтрока {_linePointer};" +
                     $"\tСимвол {_charPointer};");
-                    throw new Exception("Недопустимый символ.");
+                throw new Exception("Недопустимый символ.");
             }
         }
-        private static void NUM_Analyse()
+        
+        /// Анализирует последовательность цифр для формирования числового токена.
+        internal static void NUM_Analyse()
         {
             string number = string.Empty;
             do
@@ -249,10 +204,12 @@ namespace Компилятор
                 number += CurrentChar;
                 Pointer++;
             }
-            while (CurentCharGroup() == "<ц>");
+            while (Pointer < Data.Length && CurentCharGroup() == "<ц>"); // Продолжаем, пока текущий символ - цифра и не вышли за пределы строки
             ReadTerminal(ETerminalType.Number, number);
         }
-        private static void ID_Analyse()
+
+        /// Анализирует последовательность букв и цифр для формирования идентификатора или ключевого слова.
+        internal static void ID_Analyse()
         {
             string identifier = string.Empty;
             do
@@ -260,8 +217,9 @@ namespace Компилятор
                 identifier += CurrentChar;
                 Pointer++;
             }
-            while (CurentCharGroup() == "<ц>" || CurentCharGroup() == "<б>");
+            while (Pointer < Data.Length && (CurentCharGroup() == "<ц>" || CurentCharGroup() == "<б>")); // Продолжаем, пока текущий символ - буква или цифра и не вышли за пределы строки
             
+            // Проверка, является ли полученный идентификатор ключевым словом
             switch (identifier)
             {
                 case "while":
@@ -295,31 +253,42 @@ namespace Компилятор
                 case "sqrt":
                     ReadTerminal(ETerminalType.Sqrt);
                     break;
-                case "pow":
-                    ReadTerminal(ETerminalType.Pow);
-                    break;
                 default:
                     ReadTerminal(ETerminalType.VariableName, identifier);
                     break;
             }
-
         }
-        private static void STR_Analyse()
+
+        /// Анализирует строковый литерал, заключенный в двойные кавычки.
+        internal static void STR_Analyse()
         {
-            Pointer++;
             string textLine = string.Empty;
-            do
+            Pointer++; // Пропускаем открывающую кавычку
+            while (Pointer < Data.Length && CurrentChar != '"') // Читаем символы до закрывающей кавычки
             {
                 textLine += CurrentChar;
                 Pointer++;
             }
-            while (CurentCharGroup() != "<\">");
-            Pointer++;
-            ReadTerminal(ETerminalType.TextLine, textLine);
+            if (Pointer < Data.Length && CurrentChar == '"') // Если нашли закрывающую кавычку
+            {
+                Pointer++; // Пропускаем закрывающую кавычку
+                ReadTerminal(ETerminalType.TextLine, textLine);
+            }
+            else
+            {
+                // Ошибка: не найдена закрывающая кавычка
+                Console.WriteLine($"Незакрытая строка: " +
+                    $"\tСтрока {_linePointer};" +
+                    $"\tСимвол {_charPointer};");
+                throw new Exception("Незакрытая строка.");
+            }
         }
-        private static void LESS_Analyse()
+
+        /// Анализирует оператор '<' или '<='.
+        internal static void LESS_Analyse()
         {
-            if (Data[Pointer+1] == '=')
+            Pointer++; // Пропускаем первый символ '<'
+            if (Pointer < Data.Length && CurrentChar == '=') // Проверяем следующий символ на равенство
             {
                 ReadTerminal(ETerminalType.LessEqual);
                 Pointer++;
@@ -328,11 +297,13 @@ namespace Компилятор
             {
                 ReadTerminal(ETerminalType.Less);
             }
-            Pointer++;
         }
-        private static void MORE_Analyse()
+
+        /// Анализирует оператор '>' или '>='.
+        internal static void MORE_Analyse()
         {
-            if (Data[Pointer + 1] == '=')
+            Pointer++; // Пропускаем первый символ '>'
+            if (Pointer < Data.Length && CurrentChar == '=') // Проверяем следующий символ на равенство
             {
                 ReadTerminal(ETerminalType.GreaterEqual);
                 Pointer++;
@@ -341,11 +312,13 @@ namespace Компилятор
             {
                 ReadTerminal(ETerminalType.Greater);
             }
-            Pointer++;
         }
-        private static void EQUAL_Analyse()
+
+        /// Анализирует оператор '=' или '=='.
+        internal static void EQUAL_Analyse()
         {
-            if (Data[Pointer + 1] == '=')
+            Pointer++; // Пропускаем первый символ '='
+            if (Pointer < Data.Length && CurrentChar == '=') // Проверяем следующий символ на равенство
             {
                 ReadTerminal(ETerminalType.Equal);
                 Pointer++;
@@ -354,38 +327,43 @@ namespace Компилятор
             {
                 ReadTerminal(ETerminalType.Assignment);
             }
-            Pointer++;
         }
-        private static void AND_Analyse()
+
+        /// Анализирует оператор '&&'.
+        internal static void AND_Analyse()
         {
-            if (Data[Pointer + 1] == '&')
+            Pointer++; // Пропускаем первый символ '&'
+            if (Pointer < Data.Length && CurrentChar == '&') // Проверяем следующий символ на '&'
             {
                 ReadTerminal(ETerminalType.And);
-                Pointer++;
                 Pointer++;
             }
             else
             {
-                Console.WriteLine($"Некорректный символ: {CurrentChar}" +
+                // Ошибка: одиночный '&' не поддерживается
+                Console.WriteLine($"Некорректный оператор: одиночный '&'" +
                     $"\tСтрока {_linePointer};" +
                     $"\tСимвол {_charPointer};");
-                throw new NotImplementedException();
+                throw new Exception("Некорректный оператор: одиночный '&'. Используйте '&&'.");
             }
         }
-        private static void OR_Analyse()
+
+        /// Анализирует оператор '||'.
+        internal static void OR_Analyse()
         {
-            if (Data[Pointer + 1] == '|')
+            Pointer++; // Пропускаем первый символ '|'
+            if (Pointer < Data.Length && CurrentChar == '|') // Проверяем следующий символ на '|'
             {
-                ReadTerminal(ETerminalType.And);
-                Pointer++;
+                ReadTerminal(ETerminalType.Or);
                 Pointer++;
             }
             else
             {
-                Console.WriteLine($"Некорректный символ: {CurrentChar}" +
+                // Ошибка: одиночный '|' не поддерживается
+                Console.WriteLine($"Некорректный оператор: одиночный '|'" +
                     $"\tСтрока {_linePointer};" +
                     $"\tСимвол {_charPointer};");
-                throw new NotImplementedException();
+                throw new Exception("Некорректный оператор: одиночный '|'. Используйте '||'.");
             }
         }
     }

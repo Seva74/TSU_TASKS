@@ -1,0 +1,3 @@
+int[3] arr;
+arr[3] = 10; 
+output(arr[3]); 

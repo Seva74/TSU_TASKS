@@ -1,0 +1,4 @@
+int a;
+a = 5;
+b = a + 2; 
+output(b); 

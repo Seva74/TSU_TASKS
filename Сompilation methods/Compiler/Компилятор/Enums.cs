@@ -1,422 +1,197 @@
 ﻿namespace Компилятор
 {
+    /// Определяет типы терминалов (токенов), распознаваемых лексическим анализатором.
    public enum ETerminalType
     {
-        /// <summary>
         /// Целое число
-        /// </summary>
         Number,
-        
-        /// <summary>
         /// Строка текста
-        /// </summary>
         TextLine,
-        
-        /// <summary>
         /// True или False
-        /// </summary>
         Boolean,
-        // Operators
-        
-        /// <summary>
-        /// +
-        /// </summary>
-        Plus,         // +
-        
-        /// <summary>
-        /// -
-        /// </summary>
-        Minus,        // -
-        
-        /// <summary>
-        /// *
-        /// </summary>
-        Multiply,     // *
-        
-        /// <summary>
-        /// /
-        /// </summary>
-        Divide,       // /
-        
-        /// <summary>
-        /// %
-        /// </summary>
-        Modulus,      // %
-        
-        /// <summary>
-        /// &&
-        /// </summary>
-        And,          // &&
-        
-        /// <summary>
-        /// ||
-        /// </summary>
-        Or,           // ||
-        
-        /// <summary>
-        /// !
-        /// </summary>
-        Not,          // !
-
-        // Parentheses and Brackets
-        
-        /// <summary>
-        /// (
-        /// </summary>
-        LeftParen,    // (
-        
-        /// <summary>
-        /// )
-        /// </summary>
-        RightParen,   // )
-        
-        /// <summary>
-        /// [
-        /// </summary>
-        LeftBracket,  // [
-        
-        /// <summary>
-        /// ]
-        /// </summary>
-        RightBracket, // ]
-        
-        /// <summary>
-        /// {
-        /// </summary>
-        LeftBrace,    // {
-        
-        /// <summary>
-        /// }
-        /// </summary>
-        RightBrace,   // }
-
-        // Quotation mark
-        /// <summary>
-        /// "
-        /// </summary>
-        DoubleQuote,  // "
-
-        // Assignment
-        /// <summary>
-        /// =
-        /// </summary>
-        Assignment,        // =
-
-        // Identifiers and keywords
-       
-        /// <summary>
-        /// Пользовательская переменная
-        /// </summary>
-        VariableName,   // a...z, A...Z, _, а...я, А...Я
-        
-        /// <summary>
-        /// if
-        /// </summary>
+        // Арифметические операторы
+        /// Оператор сложения (+)
+        Plus,
+        /// Оператор вычитания (-)
+        Minus,
+        /// Оператор умножения (*)
+        Multiply,
+        /// Оператор деления (/)
+        Divide,
+        /// Оператор остатка от деления (%)
+        Modulus,
+        // Логические операторы
+        /// Логическое И (&&)
+        And,
+        /// Логическое ИЛИ (||)
+        Or,
+        /// Логическое НЕ (!)
+        Not,
+        // Скобки
+        /// Открывающая круглая скобка ( ( )
+        LeftParen,
+        /// Закрывающая круглая скобка ( ) )
+        RightParen,
+        /// Открывающая квадратная скобка ( [ )
+        LeftBracket,
+        /// Закрывающая квадратная скобка ( ] )
+        RightBracket,
+        /// Открывающая фигурная скобка ( { )
+        LeftBrace,
+        /// Закрывающая фигурная скобка ( } )
+        RightBrace,
+        // Кавычки
+        /// Двойная кавычка ( " )
+        DoubleQuote,
+        // Присваивание
+        /// Оператор присваивания ( = )
+        Assignment,
+        // Идентификаторы и ключевые слова
+        /// Имя переменной
+        VariableName,
+        /// Ключевое слово if
         If,
-        
-        /// <summary>
-        /// else
-        /// </summary>
+        /// Ключевое слово else
         Else,
-        
-        /// <summary>
-        /// ==
-        /// </summary>
-        Equal,        // ==
-        
-        /// <summary>
-        /// строго меньше 
-        /// </summary>
-        Less,         // <
-        
-        /// <summary>
-        /// >
-        /// </summary>
-        Greater,      // >
-
-        /// <summary>
-        /// меньше или равно 
-        /// </summary>
-        LessEqual,    // <=
-        
-        /// <summary>
-        /// >=
-        /// </summary>
-        GreaterEqual, // >=
-        
-        /// <summary>
-        /// while
-        /// </summary>
+        /// Оператор равенства ( == )
+        Equal,
+        /// Оператор "меньше" ( < )
+        Less,
+        /// Оператор "больше" ( > )
+        Greater,
+        /// Оператор "меньше или равно" ( <= )
+        LessEqual,
+        /// Оператор "больше или равно" ( >= )
+        GreaterEqual,
+        /// Ключевое слово while
         While,
-        
-        /// <summary>
-        /// int
-        /// </summary>
+        /// Ключевое слово int (тип данных)
         Int,
-        
-        /// <summary>
-        /// string
-        /// </summary>
+        /// Ключевое слово string (тип данных)
         String,
-        
-        /// <summary>
-        /// bool
-        /// </summary>
+        /// Ключевое слово bool (тип данных)
         Bool,
-        
-        /// <summary>
-        /// Функия вывода данных
-        /// </summary>
+        /// Ключевое слово output (функция вывода)
         Output,
-        
-        /// <summary>
-        /// Функция ввода данных в переменную
-        /// </summary>
+        /// Ключевое слово input (функция ввода)
         Input,
-        
-        /// <summary>
-        /// ;
-        /// </summary>
+        /// Точка с запятой ( ; )
         Semicolon,
-
-        /// <summary>
-        /// sqrt function
-        /// </summary>
+        // Стандартные функции (пример)
+        /// Функция квадратного корня (sqrt)
         Sqrt,
-
-        /// <summary>
-        /// pow function
-        /// </summary>
+        /// Функция возведения в степень (pow)
         Pow
-
     }
 
-    //RPN = Reverse Polish Notation = Обратная польская нотация = ОПН = ОПС
+    /// Определяет типы символов, используемых в обратной польской нотации (RPN).
+    // F_ (Function) - операции или функции.
+    // A_ (Argument) - операнды или аргументы.
+    // T_ (Token) - служебные токены RPN, не являющиеся операциями или аргументами напрямую (например, скобки RPN).
+    // М_ (Mark) - метки для переходов.
     public enum ERPNType
     {
-        //ОПЕРАЦИИ
-        // При описании операций буквами A и B обозначены, соответственно, первый и второй аргументы, используемые в этой операции
-        // AB+ == A+B и т.д.
-
-        /// <summary>
-        /// Output(A)
-        /// </summary>
+        // ОПЕРАЦИИ (F_)
+        /// Функция вывода: Output(A)
         F_Output,
-
-        /// <summary>
-        /// Input(A)
-        /// </summary>
+        /// Функция ввода: Input(A)
         F_Input,
-
-        /// <summary>
-        /// a=b
-        /// </summary>
-        F_Assignment,    // =
-
-        /// <summary>
-        /// A&&B
-        /// </summary>
-        F_And,          // &&
-
-        /// <summary>
-        /// A||B
-        /// </summary>
-        F_Or,           // ||
-
-        /// <summary>
-        /// A==B
-        /// </summary>
-        F_Equal,        // ==
-
-        /// <summary>
-        /// A<B
-        /// </summary>
-        F_Less,         // <
-
-        /// <summary>
-        /// A>B
-        /// </summary>
-        F_Greater,      // >
-
-        /// <summary>
-        /// A<=B
-        /// </summary>
-        F_LessEqual,    // <=
-
-        /// <summary>
-        /// A>=B
-        /// </summary>
-        F_GreaterEqual, // >=
-
-        /// <summary>
-        /// A+B
-        /// </summary>
-        F_Plus,         // +
-
-        /// <summary>
-        /// A-B
-        /// </summary>
-        F_Minus,        // -
-
-        /// <summary>
-        /// A*B
-        /// </summary>
-        F_Multiply,     // *
-
-        /// <summary>
-        /// A/B
-        /// </summary>
-        F_Divide,       // /
-
-        /// <summary>
-        /// A%B
-        /// </summary>
-        F_Modulus,      // %
-
-        /// <summary>
-        /// !A
-        /// </summary>
-        F_Not,          // !
-
-        /// <summary>
-        /// sqrt(A)
-        /// </summary>
+        /// Присваивание: A = B (в RPN: B A F_Assignment)
+        F_Assignment,
+        /// Логическое И: A && B
+        F_And,
+        /// Логическое ИЛИ: A || B
+        F_Or,
+        /// Равенство: A == B
+        F_Equal,
+        /// Меньше: A < B
+        F_Less,
+        /// Больше: A > B
+        F_Greater,
+        /// Меньше или равно: A <= B
+        F_LessEqual,
+        /// Больше или равно: A >= B
+        F_GreaterEqual,
+        /// Сложение/конкатенация: A + B
+        F_Plus,
+        /// Вычитание/унарный минус: A - B или -A
+        F_Minus,
+        /// Умножение: A * B
+        F_Multiply,
+        /// Деление: A / B
+        F_Divide,
+        /// Остаток от деления: A % B
+        F_Modulus,
+        /// Логическое НЕ: !A
+        F_Not,
+        /// Квадратный корень: sqrt(A)
         F_Sqrt,
-
-        /// <summary>
-        /// pow(A,B) A^B
-        /// </summary>
+        /// Возведение в степень: pow(A,B) (A^B)
         F_Pow,
-
-        /// <summary>
-        /// Взятие B-го элемента от массива A
-        /// </summary>
-        F_Index,      //[]
-
-        /// <summary>
-        /// int
-        /// </summary>
+        /// Доступ к элементу массива: A[B] (в RPN: A B F_Index)
+        F_Index,
+        /// Объявление переменной int: int A
         F_Int,
-
-        /// <summary>
-        /// string
-        /// </summary>
+        /// Объявление переменной string: string A
         F_String,
-
-        /// <summary>
-        /// Создание массива bool именем B числом элементов A
-        /// </summary>
+        /// Объявление переменной bool: bool A
         F_Bool,
-
-        /// <summary>
-        /// Создание массива int именем B числом элементов A
-        /// </summary>
+        /// Объявление массива int: int[] A (размер B) (в RPN: B A F_IntArray)
         F_IntArray,
-
-        /// <summary>
-        /// Создание массива string именем B числом элементов A
-        /// </summary>
+        /// Объявление массива string: string[] A (размер B)
         F_StringArray,
-
-        /// <summary>
-        /// bool
-        /// </summary>
+        /// Объявление массива bool: bool[] A (размер B)
         F_BoolArray,
-
-        //АРГУМЕНТЫ
-
-        /// <summary>
-        /// Целое число
-        /// </summary>
+        // АРГУМЕНТЫ/ОПЕРАНДЫ (A_)
+        /// Числовой литерал
         A_Number,
-
-        /// <summary>
-        /// Строка текста
-        /// </summary>
+        /// Строковый литерал
         A_TextLine,
-
-        /// <summary>
-        /// True или False
-        /// </summary>
+        /// Булевый литерал
         A_Boolean,
-
-        /// <summary>
-        /// Пользовательcкая переменная
-        /// </summary>
-        A_VariableName,   // a...z, A...Z, _, а...я, А...Я
-
-        // Identifiers and keywords
-
-        /// <summary>
-        /// if
-        /// </summary>
+        /// Имя переменной
+        A_VariableName,
+        // СЛУЖЕБНЫЕ ТОКЕНЫ RPN (T_)
+        /// Ключевое слово if (для RPN)
         T_If,
-
-        /// <summary>
-        /// else
-        /// </summary>
+        /// Ключевое слово else (для RPN)
         T_Else,
-
-        /// <summary>
-        /// while
-        /// </summary>
+        /// Ключевое слово while (для RPN)
         T_While,
-
-        /// <summary>
-        /// ;
-        /// </summary>
+        /// Точка с запятой (служебный символ RPN)
         T_Semicolon,
-
-        /// <summary>
-        /// (
-        /// </summary>
-        T_LeftParen,    // (
-
-        /// <summary>
-        /// )
-        /// </summary>
-        T_RightParen,   // )
-
-        /// <summary>
-        /// [
-        /// </summary>
-        T_LeftBracket,  // [
-
-        /// <summary>
-        /// ]
-        /// </summary>
-        T_RightBracket, // ]
-
-        /// <summary>
-        /// {
-        /// </summary>
-        T_LeftBrace,    // {
-
-        /// <summary>
-        /// }
-        /// </summary>
-        T_RightBrace,   // }
-
-        /// <summary>
-        /// Если TRUE - выполняется идущий дальше код, ина  че - переход к MarkIf
-        /// </summary>
+        /// Открывающая круглая скобка (служебный символ RPN)
+        T_LeftParen,
+        /// Закрывающая круглая скобка (служебный символ RPN)
+        T_RightParen,
+        /// Открывающая квадратная скобка (служебный символ RPN)
+        T_LeftBracket,
+        /// Закрывающая квадратная скобка (служебный символ RPN)
+        T_RightBracket,
+        /// Открывающая фигурная скобка (служебный символ RPN)
+        T_LeftBrace,
+        /// Закрывающая фигурная скобка (служебный символ RPN)
+        T_RightBrace,
+        // УПРАВЛЕНИЕ ПОТОКОМ (F_)
+        /// Условный переход: если на вершине стека FALSE, перейти к метке М_Mark
         F_ConditionalJumpToMark,
-
-        /// <summary>
-        /// Безусловный переход к MarkElse
-        /// </summary>
+        /// Безусловный переход к метке М_Mark
         F_UnconditionalJumpToMark,
-
-        /// <summary>
-        /// Метка-указатель
-        /// </summary>
+        // МЕТКИ (М_)
+        /// Метка-указатель для переходов
         М_Mark,
     }
+
+    /// Определяет конкретные типы меток, используемых в RPN для организации переходов.
     public enum EMarkType
     {
+        /// Метка для обозначения начала цикла while.
         WhileBeginMark,
+        /// Метка для обозначения конца тела цикла while (перед проверкой условия для следующей итерации).
         WhileEndMark,
+        /// Метка для перехода в случае ложности условия оператора if (переход к блоку else или за пределы if).
         IfMark,
+        /// Метка для безусловного перехода в конце блока if (чтобы пропустить блок else).
         ElseMark,
     }
 }

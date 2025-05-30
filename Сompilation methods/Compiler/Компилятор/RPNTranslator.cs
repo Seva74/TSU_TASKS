@@ -9,16 +9,24 @@ using System.Xml;
 
 namespace Компилятор
 {
+    /// Статический класс, отвечающий за трансляцию списка терминалов 
+    /// (результата синтаксического анализа) в обратную польскую нотацию (RPN).
     public static class RPNTranslator
     {
+        /// Входной список терминалов для трансляции.
         static List<Terminal> Input = new List<Terminal>();
+        /// Выходной список символов RPN.
         public static List<RPNSymbol> Output = new List<RPNSymbol>();
+        /// Список временных меток, используемых для условных переходов и циклов.
         public static List<RPNMark> TempMarks = new List<RPNMark>();
+        /// Список постоянных меток (в текущей реализации не используется активно, но может быть полезен для будущих расширений).
         public static List<RPNMark> ConstMarks = new List<RPNMark>();
+        /// Стек для хранения операций и скобок в процессе преобразования в RPN (алгоритм Дейкстры).
         static List<RPNSymbol> OperationStack = new List<RPNSymbol>();
-        /// <summary>
-        /// Возвращает список типа RPNTranslator в формате польской строки из входного списка типа Terminal
-        /// </summary>
+        /// Преобразует входной список терминалов в обратную польскую нотацию (RPN).
+        /// Реализует алгоритм сортировочной станции (алгоритм Дейкстры).
+        /// inputTerminals: Список терминалов для преобразования.
+        /// returns: Список символов RPN.
         public static List<RPNSymbol> ConvertToRPN(List<Terminal> inputTerminals)
         {
             // Переинициализация статических списков для каждого вызова
@@ -51,23 +59,113 @@ namespace Компилятор
                 //while обрабатывается особым образом
                 else if (Input[0].TerminalType == ETerminalType.While)
                 {
-                    OperationStack.Add(new RPNSymbol(ERPNType.F_ConditionalJumpToMark));
-                    OperationStack.Add(new RPNMark(ERPNType.М_Mark, EMarkType.WhileBeginMark));
-                    TempMarks.Add(new RPNMark(ERPNType.М_Mark, EMarkType.WhileBeginMark));
-                    TempMarks.Last().Position = Output.Count;
-                    Input.Remove(Input.First());
+                    // Создаем метку начала цикла
+                    var whileBeginMark = new RPNMark(ERPNType.М_Mark, EMarkType.WhileBeginMark);
+                    TempMarks.Add(whileBeginMark);
+                    whileBeginMark.Position = Output.Count;
+                    Output.Add(whileBeginMark);
+                    
+                    // Создаем метку конца цикла
+                    var whileEndMark = new RPNMark(ERPNType.М_Mark, EMarkType.WhileEndMark);
+                    TempMarks.Add(whileEndMark);
+                    
+                    // Сначала обрабатываем условие
+                    Input.Remove(Input.First()); // Удаляем while
+                    
+                    // Пропускаем открывающую скобку условия
+                    if (Input.Count > 0 && Input[0].TerminalType == ETerminalType.LeftParen)
+                    {
+                        Input.Remove(Input.First());
+                    }
+                    
+                    // Обрабатываем условие до закрывающей скобки
+                    while (Input.Count > 0 && Input[0].TerminalType != ETerminalType.RightParen)
+                    {
+                        if (IsOperationOrParenthesis(Input[0]))
+                        {
+                            ToStack(TranslateToRPNSymbol(Input[0]));
+                        }
+                        else if (IsOperand(Input[0]))
+                        {
+                            Output.Add(TranslateOperand(Input[0]));
+                        }
+                        Input.Remove(Input.First());
+                    }
+                    
+                    // Выталкиваем оставшиеся операции из стека
+                    while (OperationStack.Count > 0 && OperationStack.Last().RPNType != ERPNType.T_LeftParen)
+                    {
+                        if (IsWritableInOutput(OperationStack.Last()))
+                        {
+                            Output.Add(OperationStack.Last());
+                        }
+                        OperationStack.Remove(OperationStack.Last());
+                    }
+                    
+                    // Удаляем закрывающую скобку условия
+                    if (Input.Count > 0 && Input[0].TerminalType == ETerminalType.RightParen)
+                    {
+                        Input.Remove(Input.First());
+                    }
+                    
+                    // Добавляем метку конца цикла и условный переход в правильном порядке
+                    Output.Add(whileEndMark);
+                    Output.Add(new RPNSymbol(ERPNType.F_ConditionalJumpToMark));
                 }
                 //if обрабатывается особым образом
                 else if (Input[0].TerminalType == ETerminalType.If)
                 {
                     OperationStack.Add(new RPNSymbol(ERPNType.F_ConditionalJumpToMark));
-                    OperationStack.Add(new RPNMark(ERPNType.М_Mark,EMarkType.IfMark));
-                    TempMarks.Add(new RPNMark(ERPNType.М_Mark, EMarkType.IfMark));
+                    var ifMark = new RPNMark(ERPNType.М_Mark, EMarkType.IfMark);
+                    OperationStack.Add(ifMark);
+                    TempMarks.Add(ifMark);
                     Input.Remove(Input.First());
                 }
                 //else обрабатывается особым образом
                 else if (Input[0].TerminalType == ETerminalType.Else)
                 {
+                    var elseMark = new RPNMark(ERPNType.М_Mark, EMarkType.ElseMark);
+                    TempMarks.Add(elseMark);
+                    Output.Add(elseMark);
+                    Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark));
+                    Input.Remove(Input.First());
+                }
+                else if (Input[0].TerminalType == ETerminalType.RightBrace)
+                {
+                    //Если входная лексема - правая фигурная скобка, то в Output записываются все операции из OperationStack пока там не найдётся левая фигурная скобка
+                    while ((OperationStack.Count > 0) && (OperationStack.Last().RPNType != ERPNType.T_LeftBrace))
+                    {
+                        if (IsWritableInOutput(OperationStack.Last()))
+                        {
+                            Output.Add(OperationStack.Last());
+                        }
+                        OperationStack.Remove(OperationStack.Last());
+                    }
+                    
+                    //Если левая фигурная скобка - условие If или While, то в Output записываются соответствующие символы
+                    if (OperationStack.Count > 0)
+                    {
+                        OperationStack.Remove(OperationStack.Last());
+                    }
+                    
+                    // Проверяем, есть ли незавершенный цикл while
+                    var whileBeginMark = TempMarks.LastOrDefault(m => m.MarkType == EMarkType.WhileBeginMark);
+                    var whileEndMark = TempMarks.LastOrDefault(m => m.MarkType == EMarkType.WhileEndMark && m.Position == null);
+                    
+                    if (whileBeginMark != null && whileEndMark != null)
+                    {
+                        // Добавляем безусловный переход к началу цикла
+                        Output.Add(whileBeginMark);
+                        Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark));
+                        
+                        // Устанавливаем позицию метки конца цикла
+                        whileEndMark.Position = Output.Count;
+                        
+                        // Удаляем обработанные метки
+                        TempMarks.Remove(whileBeginMark);
+                        TempMarks.Remove(whileEndMark);
+                    }
+                    
                     Input.Remove(Input.First());
                 }
             }
@@ -77,12 +175,30 @@ namespace Компилятор
                 if (IsWritableInOutput(OperationStack.Last()))
                 {
                     Output.Add(OperationStack.Last());
+                    
+                    // Если это метка начала цикла while, добавляем безусловный переход
+                    if (OperationStack.Last() is RPNMark mark && mark.MarkType == EMarkType.WhileBeginMark)
+                    {
+                        // Добавляем безусловный переход к началу цикла
+                        Output.Add(TempMarks.FirstOrDefault(m => m.MarkType == EMarkType.WhileBeginMark && m.Position == null));
+                        Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark));
+                        
+                        // Устанавливаем позицию метки конца цикла
+                        var endMark = TempMarks.FirstOrDefault(m => m.MarkType == EMarkType.WhileEndMark && m.Position == null);
+                        if (endMark != null)
+                        {
+                            endMark.Position = Output.Count;
+                        }
+                    }
                 }
                 OperationStack.Remove(OperationStack.Last());
             }
             WriteMarks();
             return Output;
         }
+        /// Транслирует терминал-операнд (число, строка, булево, идентификатор) в соответствующий символ RPN.
+        /// input: Входной терминал.
+        /// returns: Символ RPN, представляющий операнд.
         public static RPNSymbol TranslateOperand(Terminal input)
         {
             if (input is Terminal.TextLine)
@@ -125,6 +241,8 @@ namespace Компилятор
             var ou = new RPNSymbol(ERPNType.A_VariableName);
             return ou;
         }
+        /// Проставляет значения позиций для меток в выходной RPN-строке.
+        /// В текущей реализации используется для `ConstMarks`, но может быть расширено.
         public static void WriteMarks()
         {
             for (int i = 0; i < Output.Count; i++)
@@ -144,9 +262,10 @@ namespace Компилятор
                 }
             }
         }
-        /// <summary>
-        /// Возвращает true если input можно записать в OperationStack
-        /// </summary>
+        /// Проверяет, можно ли данный символ RPN записать в стек операций `OperationStack`.
+        /// Скобки и некоторые другие служебные символы не записываются напрямую.
+        /// input: Символ RPN для проверки.
+        /// returns: True, если символ можно записать в стек операций.
         public static bool IsWritableInOperationStack(RPNSymbol input)
         {
             if ((input.RPNType == ERPNType.T_Semicolon) || (input.RPNType == ERPNType.T_RightParen) || (input.RPNType == ERPNType.T_RightBracket) || (input.RPNType == ERPNType.T_RightBrace) || (input.RPNType == ERPNType.T_LeftParen))
@@ -155,6 +274,9 @@ namespace Компилятор
             }
             return true;
         }
+        /// Проверяет, является ли входной терминал открывающей скобкой ({, (, [).
+        /// input: Входной терминал.
+        /// returns: True, если терминал является открывающей скобкой.
         public static bool IsOpeningParenthesis(Terminal input)
         {
             if ((input.TerminalType == ETerminalType.LeftParen) || (input.TerminalType == ETerminalType.LeftBracket) || (input.TerminalType == ETerminalType.LeftBrace))
@@ -163,9 +285,10 @@ namespace Компилятор
             }
             return false;
         }
-        /// <summary>
-        /// Возвращает true если input можно записать в Output
-        /// </summary>
+        /// Проверяет, можно ли данный символ RPN записать в выходную строку `Output`.
+        /// Скобки и некоторые другие служебные символы не записываются в выходную строку напрямую.
+        /// input: Символ RPN для проверки.
+        /// returns: True, если символ можно записать в выходную строку.
         public static bool IsWritableInOutput(RPNSymbol input)
         {
             if ((input.RPNType == ERPNType.T_Semicolon) || (input.RPNType == ERPNType.T_RightParen) || (input.RPNType == ERPNType.T_RightBracket) || (input.RPNType == ERPNType.T_RightBrace) || (input.RPNType == ERPNType.T_LeftBrace) || (input.RPNType == ERPNType.T_LeftParen) || (input.RPNType == ERPNType.T_LeftBracket))
@@ -174,9 +297,9 @@ namespace Компилятор
             }
             return true;
         }
-        /// <summary>
-        /// Возвращает true если input - операнд
-        /// </summary>
+        /// Проверяет, является ли входной терминал операндом (число, строка, булево, имя переменной).
+        /// input: Входной терминал.
+        /// returns: True, если терминал является операндом.
         public static bool IsOperand(Terminal input)
         {
             if ((input.TerminalType == ETerminalType.Number) || (input.TerminalType == ETerminalType.TextLine) || (input.TerminalType == ETerminalType.Boolean) || (input.TerminalType == ETerminalType.VariableName))
@@ -185,9 +308,9 @@ namespace Компилятор
             }
             return false;
         }
-        /// <summary>
-        /// Возвращает true если input - операция или скобка
-        /// </summary>
+        /// Проверяет, является ли входной терминал операцией или скобкой.
+        /// input: Входной терминал.
+        /// returns: True, если терминал является операцией или скобкой.
         public static bool IsOperationOrParenthesis(Terminal input)
         {
             if ((input.TerminalType == ETerminalType.Int) || (input.TerminalType == ETerminalType.String) || (input.TerminalType == ETerminalType.Bool) || (input.TerminalType == ETerminalType.Semicolon) || (input.TerminalType == ETerminalType.Output) || (input.TerminalType == ETerminalType.Input) || (input.TerminalType == ETerminalType.Assignment) || (input.TerminalType == ETerminalType.And) || (input.TerminalType == ETerminalType.Or) || (input.TerminalType == ETerminalType.Equal) || (input.TerminalType == ETerminalType.Less) || (input.TerminalType == ETerminalType.Greater) || (input.TerminalType == ETerminalType.GreaterEqual) || (input.TerminalType == ETerminalType.LessEqual) || (input.TerminalType == ETerminalType.Plus) || (input.TerminalType == ETerminalType.Minus) || (input.TerminalType == ETerminalType.Divide) || (input.TerminalType == ETerminalType.Multiply) || (input.TerminalType == ETerminalType.Modulus) || (input.TerminalType == ETerminalType.Not) ||  (input.TerminalType == ETerminalType.LeftParen) || (input.TerminalType == ETerminalType.RightParen) || (input.TerminalType == ETerminalType.RightBracket) || (input.TerminalType == ETerminalType.LeftBracket) || (input.TerminalType == ETerminalType.RightBrace) || (input.TerminalType == ETerminalType.LeftBrace))
@@ -196,9 +319,9 @@ namespace Компилятор
             }
             return false;
         }
-        /// <summary>
-        /// Возвращает true если input - функция инициализации переменной
-        /// </summary>
+        /// Проверяет, является ли входной символ RPN операцией инициализации переменной (int, string, bool).
+        /// input: Символ RPN для проверки.
+        /// returns: True, если символ является операцией инициализации переменной.
         public static bool IsVariableInitialization(RPNSymbol input)
         {
             if ((input.RPNType == ERPNType.F_Int) || (input.RPNType == ERPNType.F_String) || (input.RPNType == ERPNType.F_Bool))
@@ -208,9 +331,9 @@ namespace Компилятор
             return false;
         }
 
-        /// <summary>
-        /// Переносит оператор input из списка Input в OperatorStack
-        /// </summary>
+        /// Помещает входной символ RPN (операцию или скобку) в стек операций `OperationStack`,
+        /// согласно правилам алгоритма сортировочной станции (учитывая приоритеты операций).
+        /// input: Символ RPN для помещения в стек.
         public static void ToStack(RPNSymbol input)
         {
             if (OperationStack.Count > 0)
@@ -241,7 +364,6 @@ namespace Компилятор
                         }
                     }
                 }
-
                 else if ((OperationStack.Count > 0) && (input.RPNType == ERPNType.T_RightBracket))
                 {
                     //Если входная лексема - правая квадратная скобка, то в Output записываются все операции из OperationStack пока там не найдётся левая квадратная скобка
@@ -271,14 +393,16 @@ namespace Компилятор
                     //Иначе - в Output записывается операция индексации
                     else if (OperationStack.Count > 0)
                     {
+                        if (OperationStack.Last().RPNType == ERPNType.T_LeftBracket)
+                        {
+                            OperationStack.Remove(OperationStack.Last());
+                        }
                         Output.Add(new RPNSymbol(ERPNType.F_Index));
-                        OperationStack.Remove(OperationStack.Last());
                     }
                 }
-
-                //Если входная лексема - правая фигурная скобка, то в Output записываются все операции из OperationStack пока там не найдётся левая фигурная скобка
                 else if ((OperationStack.Count > 0) && (input.RPNType == ERPNType.T_RightBrace))
                 {
+                    //Если входная лексема - правая фигурная скобка, то в Output записываются все операции из OperationStack пока там не найдётся левая фигурная скобка
                     while ((OperationStack.Count > 0) && (OperationStack.Last().RPNType != ERPNType.T_LeftBrace))
                     {
                         if (IsWritableInOutput(OperationStack.Last()))
@@ -287,20 +411,20 @@ namespace Компилятор
                         }
                         OperationStack.Remove(OperationStack.Last());
                     }
-                    //Обработка while
+                    //Если левая фигурная скобка - условие If или While, то в Output записываются соответствующие символы
+                    if (OperationStack.Count > 0)
+                    {
+                        OperationStack.Remove(OperationStack.Last());
+                    }
                     if ((TempMarks.Count > 0) && (TempMarks.Last().MarkType == EMarkType.WhileBeginMark))
                     {
-                        TempMarks.Add(new RPNMark(ERPNType.М_Mark, EMarkType.WhileEndMark));
-                        Output.Add(new RPNMark(ERPNType.М_Mark, EMarkType.WhileEndMark));
+                        // Добавляем безусловный переход к началу цикла
+                        Output.Add(TempMarks.Last());
                         Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark));
-                        TempMarks.Last().Position = Output.Count;
-                        //TempMarks[TempMarks.Count-2].Position = TempMarks[TempMarks.Count - 2].Position;
+                        TempMarks.Last().Position = Output.Count();
                         ConstMarks.Add(TempMarks.Last());
-                        ConstMarks.Add(TempMarks[TempMarks.Count-2]);
-                        TempMarks.Remove(TempMarks.Last());
                         TempMarks.Remove(TempMarks.Last());
                     }
-                    //Обработка if
                     else if ((TempMarks.Count > 0) && (TempMarks.Last().MarkType == EMarkType.IfMark))
                     {
                         TempMarks.Last().Position = Output.Count();
@@ -309,9 +433,9 @@ namespace Компилятор
 
                         if ((Input.Count() > 1) && (Input[1].TerminalType == ETerminalType.Else))
                         {
-                            ConstMarks.Last().Position += 2;
-                            Output.Add(new RPNMark(ERPNType.М_Mark, EMarkType.ElseMark));
-                            TempMarks.Add(new RPNMark(ERPNType.М_Mark, EMarkType.ElseMark));
+                            var elseMark = new RPNMark(ERPNType.М_Mark, EMarkType.ElseMark);
+                            Output.Add(elseMark);
+                            TempMarks.Add(elseMark);
                             Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark));
                         }
                     }
@@ -322,10 +446,15 @@ namespace Компилятор
                         TempMarks.Remove(TempMarks.Last());
                     }
                 }
-
                 else
                 {
-                    while ((OperationStack.Count > 0) && (GetRPNSymbolPriority(OperationStack.Last()) > GetRPNSymbolPriority(input)))
+                    // Пока в стеке есть операции с приоритетом больше или равным текущей,
+                    // выталкиваем их в выходную строку
+                    while (OperationStack.Count > 0 && 
+                           OperationStack.Last().RPNType != ERPNType.T_LeftParen && 
+                           OperationStack.Last().RPNType != ERPNType.T_LeftBracket && 
+                           OperationStack.Last().RPNType != ERPNType.T_LeftBrace &&
+                           GetRPNSymbolPriority(OperationStack.Last()) >= GetRPNSymbolPriority(input))
                     {
                         if (IsWritableInOutput(OperationStack.Last()))
                         {
@@ -340,9 +469,7 @@ namespace Компилятор
                 OperationStack.Add(input);
             }
         }
-        /// <summary>
         /// Перевод терминала в символ ОПС
-        /// </summary>
         public static RPNSymbol TranslateToRPNSymbol(Terminal input) => input.TerminalType switch
         {
             ETerminalType.Assignment => new RPNSymbol(ERPNType.F_Assignment),
@@ -381,9 +508,7 @@ namespace Компилятор
             //ETerminalType.While => new RPNSymbol(ERPNType.ConditionalJumpToMark),
             _ => throw new NotImplementedException("КРАШНУТЬСЯ НАФИГ")
         };
-        /// <summary>
         /// Возвращает приоритет символа ОПС
-        /// </summary>
         public static int GetRPNSymbolPriority(RPNSymbol input) => input.RPNType switch
         {
             ERPNType.T_Semicolon => -1,
@@ -416,17 +541,15 @@ namespace Компилятор
             ERPNType.F_Input => 7,
             ERPNType.F_Output => 7,
             ERPNType.F_Index => 8,
-            _ => throw new NotImplementedException("КРАШНУТЬСЯ НАФИГ НО ПОНИЖЕ")
+            _ => throw new NotImplementedException("КРАШНУТЬСЯ ПОНИЖЕ")
         };
-        /// <summary>
         /// Перевод функции инициализации одной переменной в функцию инициализации массива этого же типа
-        /// </summary>
         public static ERPNType ToArrayInit(RPNSymbol input) => input.RPNType switch
         {
             ERPNType.F_Int => ERPNType.F_IntArray,
             ERPNType.F_String => ERPNType.F_StringArray,
             ERPNType.F_Bool => ERPNType.F_BoolArray,
-            _ => throw new NotImplementedException("КРАШНУТЬСЯ НАФИГ НО ЕЩЁ НИЖЕ")
+            _ => throw new NotImplementedException("КРАШНУТЬСЯ НИЖЕ")
         };
     }
 }

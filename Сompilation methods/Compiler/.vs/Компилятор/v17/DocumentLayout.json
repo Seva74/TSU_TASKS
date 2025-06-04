@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|c:\\seva\\github\\tsu_tasks\\\u0441ompilation methods\\compiler\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\transitiontable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\transitiontable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|c:\\seva\\github\\tsu_tasks\\\u0441ompilation methods\\compiler\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\lexicalanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\lexicalanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|c:\\seva\\github\\tsu_tasks\\\u0441ompilation methods\\compiler\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,15 +22,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TransitionTable.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\TransitionTable.cs",
+              "RelativeDocumentMoniker": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\TransitionTable.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\TransitionTable.cs",
+              "RelativeToolTip": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\TransitionTable.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCgAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T12:32:31.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LexicalAnalyzer.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\LexicalAnalyzer.cs",
+              "RelativeDocumentMoniker": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\LexicalAnalyzer.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\LexicalAnalyzer.cs",
+              "RelativeToolTip": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\LexicalAnalyzer.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T12:32:06.377Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\Program.cs",
               "RelativeDocumentMoniker": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\Program.cs",

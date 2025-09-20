@@ -170,7 +170,7 @@ namespace Компилятор
                 Console.WriteLine($"Некорректный символ: {CurrentChar}" +
                     $"\tСтрока {_linePointer};" +
                     $"\tСимвол {_charPointer};");
-                throw new ArgumentOutOfRangeException("символ \"" + CurrentChar + "\" недопустим в грамматике");
+                throw new CompilerException($"Недопустимый символ '{CurrentChar}' в грамматике", _linePointer, _charPointer);
             }
         }
         
@@ -191,7 +191,7 @@ namespace Компилятор
                 Console.WriteLine($"Некорректный символ: {CurrentChar}" +
                     $"\tСтрока {_linePointer};" +
                     $"\tСимвол {_charPointer};");
-                throw new Exception("Недопустимый символ.");
+                throw new CompilerException("Недопустимый символ.", _linePointer, _charPointer);
             }
         }
         
@@ -280,7 +280,7 @@ namespace Компилятор
                 Console.WriteLine($"Незакрытая строка: " +
                     $"\tСтрока {_linePointer};" +
                     $"\tСимвол {_charPointer};");
-                throw new Exception("Незакрытая строка.");
+                throw new CompilerException("Незакрытая строка: отсутствует закрывающая кавычка", _linePointer, _charPointer);
             }
         }
 
@@ -344,7 +344,7 @@ namespace Компилятор
                 Console.WriteLine($"Некорректный оператор: одиночный '&'" +
                     $"\tСтрока {_linePointer};" +
                     $"\tСимвол {_charPointer};");
-                throw new Exception("Некорректный оператор: одиночный '&'. Используйте '&&'.");
+                throw new CompilerException($"Одиночный символ '&' не поддерживается, используйте '&&'", _linePointer, _charPointer);
             }
         }
 
@@ -363,7 +363,7 @@ namespace Компилятор
                 Console.WriteLine($"Некорректный оператор: одиночный '|'" +
                     $"\tСтрока {_linePointer};" +
                     $"\tСимвол {_charPointer};");
-                throw new Exception("Некорректный оператор: одиночный '|'. Используйте '||'.");
+                throw new CompilerException($"Одиночный символ '|' не поддерживается, используйте '||'", _linePointer, _charPointer);
             }
         }
     }

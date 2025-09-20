@@ -1,0 +1,43 @@
+int[] arr = 20;
+arr[0] = 15;
+arr[1] = 7;
+arr[2] = 23;
+arr[3] = 4;
+arr[4] = 12;
+arr[5] = 9;
+arr[6] = 18;
+arr[7] = 3;
+arr[8] = 21;
+arr[9] = 6;
+arr[10] = 14;
+arr[11] = 8;
+arr[12] = 19;
+arr[13] = 2;
+arr[14] = 16;
+arr[15] = 5;
+arr[16] = 11;
+arr[17] = 13;
+arr[18] = 1;
+arr[19] = 10;
+
+// Сортировка массива
+int i = 0;
+while (i < 19) {
+    int j = 0;
+    while (j < 19 - i) {
+        if (arr[j] > arr[j + 1]) {
+            int temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+        }
+        j = j + 1;
+    }
+    i = i + 1;
+}
+
+// Вывод отсортированного массива
+i = 0;
+while (i < 20) {
+    Output(arr[i]);
+    i = i + 1;
+} 

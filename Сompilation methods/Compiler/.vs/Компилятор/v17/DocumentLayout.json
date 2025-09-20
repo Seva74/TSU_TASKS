@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|c:\\seva\\github\\tsu_tasks\\\u0441ompilation methods\\compiler\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\terminal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\terminal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|c:\\seva\\github\\tsu_tasks\\\u0441ompilation methods\\compiler\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\transitiontable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\transitiontable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|c:\\seva\\github\\tsu_tasks\\\u0441ompilation methods\\compiler\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\lexicalanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\lexicalanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|c:\\seva\\github\\tsu_tasks\\\u0441ompilation methods\\compiler\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|c:\\seva\\github\\tsu_tasks\\\u0441ompilation methods\\compiler\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\rpninterpreter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\rpninterpreter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,27 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TransitionTable.cs",
-              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\TransitionTable.cs",
-              "RelativeDocumentMoniker": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\TransitionTable.cs",
-              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\TransitionTable.cs",
-              "RelativeToolTip": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\TransitionTable.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCgAAAA6AAAAAAAAAA==",
+              "Title": "Terminal.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\Terminal.cs",
+              "RelativeDocumentMoniker": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\Terminal.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\Terminal.cs",
+              "RelativeToolTip": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\Terminal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T12:32:31.664Z",
+              "WhenOpened": "2025-06-06T02:41:20.834Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "LexicalAnalyzer.cs",
-              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\LexicalAnalyzer.cs",
-              "RelativeDocumentMoniker": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\LexicalAnalyzer.cs",
-              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\LexicalAnalyzer.cs",
-              "RelativeToolTip": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\LexicalAnalyzer.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Title": "TransitionTable.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\TransitionTable.cs",
+              "RelativeDocumentMoniker": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\TransitionTable.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\TransitionTable.cs",
+              "RelativeToolTip": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\TransitionTable.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T12:32:06.377Z",
+              "WhenOpened": "2025-06-06T02:41:13.878Z",
               "EditorCaption": ""
             },
             {
@@ -62,10 +66,22 @@
               "RelativeDocumentMoniker": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\Program.cs",
               "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\Program.cs",
               "RelativeToolTip": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAAA8AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T12:07:18.376Z",
+              "WhenOpened": "2025-06-05T17:56:40.75Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RPNInterpreter.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\RPNInterpreter.cs",
+              "RelativeDocumentMoniker": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\RPNInterpreter.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\RPNInterpreter.cs",
+              "RelativeToolTip": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\RPNInterpreter.cs",
+              "ViewState": "AgIAAJIDAAAAAAAAAAAawO8DAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T17:54:36.325Z"
             }
           ]
         }

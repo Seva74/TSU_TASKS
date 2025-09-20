@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|c:\\seva\\github\\tsu_tasks\\\u0441ompilation methods\\compiler\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|c:\\seva\\github\\tsu_tasks\\\u0441ompilation methods\\compiler\\\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\rpninterpreter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A4C50F0-9E67-4FF1-8AF6-2176FA7EEDA5}|\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440.csproj|solutionrelative:\u043A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\rpninterpreter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,10 +32,22 @@
               "RelativeDocumentMoniker": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\Program.cs",
               "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\Program.cs",
               "RelativeToolTip": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T12:07:18.376Z",
+              "WhenOpened": "2025-06-05T17:56:40.75Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RPNInterpreter.cs",
+              "DocumentMoniker": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\RPNInterpreter.cs",
+              "RelativeDocumentMoniker": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\RPNInterpreter.cs",
+              "ToolTip": "C:\\Seva\\GitHub\\TSU_TASKS\\\u0421ompilation methods\\Compiler\\\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\RPNInterpreter.cs",
+              "RelativeToolTip": "\u041A\u043E\u043C\u043F\u0438\u043B\u044F\u0442\u043E\u0440\\RPNInterpreter.cs",
+              "ViewState": "AgIAAJIDAAAAAAAAAAAawO8DAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T17:54:36.325Z"
             }
           ]
         }

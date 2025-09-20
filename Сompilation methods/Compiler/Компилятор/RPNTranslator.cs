@@ -60,13 +60,21 @@ namespace Компилятор
                 else if (Input[0].TerminalType == ETerminalType.While)
                 {
                     // Создаем метку начала цикла
-                    var whileBeginMark = new RPNMark(ERPNType.М_Mark, EMarkType.WhileBeginMark);
+                    var whileBeginMark = new RPNMark(ERPNType.М_Mark, EMarkType.WhileBeginMark)
+                    {
+                        LinePointer = Input[0].LinePointer,
+                        CharPointer = Input[0].CharPointer
+                    };
                     TempMarks.Add(whileBeginMark);
                     whileBeginMark.Position = Output.Count;
                     Output.Add(whileBeginMark);
                     
                     // Создаем метку конца цикла
-                    var whileEndMark = new RPNMark(ERPNType.М_Mark, EMarkType.WhileEndMark);
+                    var whileEndMark = new RPNMark(ERPNType.М_Mark, EMarkType.WhileEndMark)
+                    {
+                        LinePointer = Input[0].LinePointer,
+                        CharPointer = Input[0].CharPointer
+                    };
                     TempMarks.Add(whileEndMark);
                     
                     // Сначала обрабатываем условие
@@ -110,13 +118,25 @@ namespace Компилятор
                     
                     // Добавляем метку конца цикла и условный переход в правильном порядке
                     Output.Add(whileEndMark);
-                    Output.Add(new RPNSymbol(ERPNType.F_ConditionalJumpToMark));
+                    Output.Add(new RPNSymbol(ERPNType.F_ConditionalJumpToMark)
+                    {
+                        LinePointer = whileEndMark.LinePointer,
+                        CharPointer = whileEndMark.CharPointer
+                    });
                 }
                 //if обрабатывается особым образом
                 else if (Input[0].TerminalType == ETerminalType.If)
                 {
-                    OperationStack.Add(new RPNSymbol(ERPNType.F_ConditionalJumpToMark));
-                    var ifMark = new RPNMark(ERPNType.М_Mark, EMarkType.IfMark);
+                    OperationStack.Add(new RPNSymbol(ERPNType.F_ConditionalJumpToMark)
+                    {
+                        LinePointer = Input[0].LinePointer,
+                        CharPointer = Input[0].CharPointer
+                    });
+                    var ifMark = new RPNMark(ERPNType.М_Mark, EMarkType.IfMark)
+                    {
+                        LinePointer = Input[0].LinePointer,
+                        CharPointer = Input[0].CharPointer
+                    };
                     OperationStack.Add(ifMark);
                     TempMarks.Add(ifMark);
                     Input.Remove(Input.First());
@@ -124,10 +144,18 @@ namespace Компилятор
                 //else обрабатывается особым образом
                 else if (Input[0].TerminalType == ETerminalType.Else)
                 {
-                    var elseMark = new RPNMark(ERPNType.М_Mark, EMarkType.ElseMark);
+                    var elseMark = new RPNMark(ERPNType.М_Mark, EMarkType.ElseMark)
+                    {
+                        LinePointer = Input[0].LinePointer,
+                        CharPointer = Input[0].CharPointer
+                    };
                     TempMarks.Add(elseMark);
                     Output.Add(elseMark);
-                    Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark));
+                    Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark)
+                    {
+                        LinePointer = Input[0].LinePointer,
+                        CharPointer = Input[0].CharPointer
+                    });
                     Input.Remove(Input.First());
                 }
                 else if (Input[0].TerminalType == ETerminalType.RightBrace)
@@ -156,7 +184,11 @@ namespace Компилятор
                     {
                         // Добавляем безусловный переход к началу цикла
                         Output.Add(whileBeginMark);
-                        Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark));
+                        Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark)
+                        {
+                            LinePointer = whileBeginMark.LinePointer,
+                            CharPointer = whileBeginMark.CharPointer
+                        });
                         
                         // Устанавливаем позицию метки конца цикла
                         whileEndMark.Position = Output.Count;
@@ -181,7 +213,11 @@ namespace Компилятор
                     {
                         // Добавляем безусловный переход к началу цикла
                         Output.Add(TempMarks.FirstOrDefault(m => m.MarkType == EMarkType.WhileBeginMark && m.Position == null));
-                        Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark));
+                        Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark)
+                        {
+                            LinePointer = TempMarks.FirstOrDefault(m => m.MarkType == EMarkType.WhileBeginMark && m.Position == null).LinePointer,
+                            CharPointer = TempMarks.FirstOrDefault(m => m.MarkType == EMarkType.WhileBeginMark && m.Position == null).CharPointer
+                        });
                         
                         // Устанавливаем позицию метки конца цикла
                         var endMark = TempMarks.FirstOrDefault(m => m.MarkType == EMarkType.WhileEndMark && m.Position == null);
@@ -201,45 +237,39 @@ namespace Компилятор
         /// returns: Символ RPN, представляющий операнд.
         public static RPNSymbol TranslateOperand(Terminal input)
         {
-            if (input is Terminal.TextLine)
+            switch (input.TerminalType)
             {
-                var output = new RPNTextLine(ERPNType.A_TextLine);
-                var inp = input as Terminal.TextLine;
-                output.CharPointer = inp.CharPointer;
-                output.LinePointer = inp.LinePointer;
-                output.Data = inp.Data;
-                return output;
+                case ETerminalType.Number:
+                    return new RPNNumber(ERPNType.A_Number)
+                    {
+                        Data = (input as Terminal.Number).Data,
+                        LinePointer = input.LinePointer,
+                        CharPointer = input.CharPointer
+                    };
+                case ETerminalType.TextLine:
+                    return new RPNTextLine(ERPNType.A_TextLine)
+                    {
+                        Data = (input as Terminal.TextLine).Data,
+                        LinePointer = input.LinePointer,
+                        CharPointer = input.CharPointer
+                    };
+                case ETerminalType.Boolean:
+                    return new RPNBoolean(ERPNType.A_Boolean)
+                    {
+                        Data = (input as Terminal.Boolean).Data,
+                        LinePointer = input.LinePointer,
+                        CharPointer = input.CharPointer
+                    };
+                case ETerminalType.VariableName:
+                    return new RPNIdentifier(ERPNType.A_VariableName)
+                    {
+                        Name = (input as Terminal.Identifier).Name,
+                        LinePointer = input.LinePointer,
+                        CharPointer = input.CharPointer
+                    };
+                default:
+                    throw new Exception($"Неожиданный тип терминала для операнда: {input.TerminalType}");
             }
-            if (input is Terminal.Boolean)
-            {
-                var output = new RPNBoolean(ERPNType.A_Boolean);
-                var inp = input as Terminal.Boolean;
-                output.CharPointer = inp.CharPointer;
-                output.LinePointer = inp.LinePointer;
-                output.Data = inp.Data;
-                return output;
-            }
-            if (input is Terminal.Number)
-            {
-                var output = new RPNNumber(ERPNType.A_Number);
-                var inp = input as Terminal.Number;
-                output.CharPointer = inp.CharPointer;
-                output.LinePointer = inp.LinePointer;
-                output.Data = inp.Data;
-                return output;
-            }
-            if (input is Terminal.Identifier)
-            {
-                var output = new RPNIdentifier(ERPNType.A_VariableName);
-                var inp = input as Terminal.Identifier;
-                output.CharPointer = inp.CharPointer;
-                output.LinePointer = inp.LinePointer;
-                output.Name = inp.Name;
-                return output;
-            }
-            //заглушка чтобы он не ругался
-            var ou = new RPNSymbol(ERPNType.A_VariableName);
-            return ou;
         }
         /// Проставляет значения позиций для меток в выходной RPN-строке.
         /// В текущей реализации используется для `ConstMarks`, но может быть расширено.
@@ -420,7 +450,11 @@ namespace Компилятор
                     {
                         // Добавляем безусловный переход к началу цикла
                         Output.Add(TempMarks.Last());
-                        Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark));
+                        Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark)
+                        {
+                            LinePointer = TempMarks.Last().LinePointer,
+                            CharPointer = TempMarks.Last().CharPointer
+                        });
                         TempMarks.Last().Position = Output.Count();
                         ConstMarks.Add(TempMarks.Last());
                         TempMarks.Remove(TempMarks.Last());
@@ -433,10 +467,18 @@ namespace Компилятор
 
                         if ((Input.Count() > 1) && (Input[1].TerminalType == ETerminalType.Else))
                         {
-                            var elseMark = new RPNMark(ERPNType.М_Mark, EMarkType.ElseMark);
+                            var elseMark = new RPNMark(ERPNType.М_Mark, EMarkType.ElseMark)
+                            {
+                                LinePointer = Input[0].LinePointer,
+                                CharPointer = Input[0].CharPointer
+                            };
                             Output.Add(elseMark);
                             TempMarks.Add(elseMark);
-                            Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark));
+                            Output.Add(new RPNSymbol(ERPNType.F_UnconditionalJumpToMark)
+                            {
+                                LinePointer = Input[0].LinePointer,
+                                CharPointer = Input[0].CharPointer
+                            });
                         }
                     }
                     else if ((TempMarks.Count > 0) && (TempMarks.Last().MarkType == EMarkType.ElseMark))
@@ -472,41 +514,37 @@ namespace Компилятор
         /// Перевод терминала в символ ОПС
         public static RPNSymbol TranslateToRPNSymbol(Terminal input) => input.TerminalType switch
         {
-            ETerminalType.Assignment => new RPNSymbol(ERPNType.F_Assignment),
-            ETerminalType.And => new RPNSymbol(ERPNType.F_And),
-            ETerminalType.Or => new RPNSymbol(ERPNType.F_Or),
-            ETerminalType.Equal => new RPNSymbol(ERPNType.F_Equal),
-            ETerminalType.Less => new RPNSymbol(ERPNType.F_Less),
-            ETerminalType.Greater => new RPNSymbol(ERPNType.F_Greater),
-            ETerminalType.LessEqual => new RPNSymbol(ERPNType.F_LessEqual),
-            ETerminalType.GreaterEqual => new RPNSymbol(ERPNType.F_GreaterEqual),
-            ETerminalType.Plus => new RPNSymbol(ERPNType.F_Plus),
-            ETerminalType.Minus => new RPNSymbol(ERPNType.F_Minus),
-            ETerminalType.Multiply => new RPNSymbol(ERPNType.F_Multiply),
-            ETerminalType.Divide => new RPNSymbol(ERPNType.F_Divide),
-            ETerminalType.Modulus => new RPNSymbol(ERPNType.F_Modulus),
-            ETerminalType.Not => new RPNSymbol(ERPNType.F_Not),
-            ETerminalType.Int => new RPNSymbol(ERPNType.F_Int),
-            ETerminalType.String => new RPNSymbol(ERPNType.F_String),
-            ETerminalType.Bool => new RPNSymbol(ERPNType.F_Bool),
-            ETerminalType.Input => new RPNSymbol(ERPNType.F_Input),
-            ETerminalType.Output => new RPNSymbol(ERPNType.F_Output),
-            ETerminalType.LeftBracket => new RPNSymbol(ERPNType.T_LeftBracket),
-            ETerminalType.RightBracket => new RPNSymbol(ERPNType.T_RightBracket),
-            ETerminalType.LeftParen => new RPNSymbol(ERPNType.T_LeftParen),
-            ETerminalType.RightParen => new RPNSymbol(ERPNType.T_RightParen),
-            ETerminalType.LeftBrace => new RPNSymbol(ERPNType.T_LeftBrace),
-            ETerminalType.RightBrace => new RPNSymbol(ERPNType.T_RightBrace),
-            ETerminalType.VariableName => new RPNSymbol(ERPNType.A_VariableName),
-            ETerminalType.Number => new RPNSymbol(ERPNType.A_Number),
-            ETerminalType.TextLine => new RPNSymbol(ERPNType.A_TextLine),
-            ETerminalType.Boolean => new RPNSymbol(ERPNType.A_Boolean),
-            ETerminalType.Semicolon => new RPNSymbol(ERPNType.T_Semicolon),
-
-            //ETerminalType.If => new RPNSymbol(ERPNType.ConditionalJumpToMark),
-            //ETerminalType.Else => new RPNSymbol(ERPNType.UnconditionalJumpToMark),
-            //ETerminalType.While => new RPNSymbol(ERPNType.ConditionalJumpToMark),
-            _ => throw new NotImplementedException("КРАШНУТЬСЯ НАФИГ")
+            ETerminalType.Plus => new RPNSymbol(ERPNType.F_Plus) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Minus => new RPNSymbol(ERPNType.F_Minus) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Multiply => new RPNSymbol(ERPNType.F_Multiply) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Divide => new RPNSymbol(ERPNType.F_Divide) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Modulus => new RPNSymbol(ERPNType.F_Modulus) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Assignment => new RPNSymbol(ERPNType.F_Assignment) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Less => new RPNSymbol(ERPNType.F_Less) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Greater => new RPNSymbol(ERPNType.F_Greater) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.LessEqual => new RPNSymbol(ERPNType.F_LessEqual) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.GreaterEqual => new RPNSymbol(ERPNType.F_GreaterEqual) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Equal => new RPNSymbol(ERPNType.F_Equal) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.And => new RPNSymbol(ERPNType.F_And) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Or => new RPNSymbol(ERPNType.F_Or) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Not => new RPNSymbol(ERPNType.F_Not) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Int => new RPNSymbol(ERPNType.F_Int) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.String => new RPNSymbol(ERPNType.F_String) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Bool => new RPNSymbol(ERPNType.F_Bool) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Output => new RPNSymbol(ERPNType.F_Output) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Input => new RPNSymbol(ERPNType.F_Input) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.LeftParen => new RPNSymbol(ERPNType.T_LeftParen) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.RightParen => new RPNSymbol(ERPNType.T_RightParen) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.LeftBracket => new RPNSymbol(ERPNType.T_LeftBracket) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.RightBracket => new RPNSymbol(ERPNType.T_RightBracket) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.LeftBrace => new RPNSymbol(ERPNType.T_LeftBrace) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.RightBrace => new RPNSymbol(ERPNType.T_RightBrace) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.VariableName => new RPNSymbol(ERPNType.A_VariableName) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Number => new RPNSymbol(ERPNType.A_Number) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.TextLine => new RPNSymbol(ERPNType.A_TextLine) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Boolean => new RPNSymbol(ERPNType.A_Boolean) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            ETerminalType.Semicolon => new RPNSymbol(ERPNType.T_Semicolon) { LinePointer = input.LinePointer, CharPointer = input.CharPointer },
+            _ => throw new Exception($"Неожиданный тип терминала: {input.TerminalType}")
         };
         /// Возвращает приоритет символа ОПС
         public static int GetRPNSymbolPriority(RPNSymbol input) => input.RPNType switch

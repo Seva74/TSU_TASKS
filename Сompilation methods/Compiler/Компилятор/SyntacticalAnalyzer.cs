@@ -57,11 +57,59 @@
         /// <returns>True, если синтаксический анализ прошел успешно, иначе False
         public static bool IsSyntacticalCorrect(List<Terminal> terminals)
         {
-            // Начинаем разбор с основного правила грамматики - "Блок инструкций".
-            bool result = ParseInstructionBlock(terminals);
-            // Записываем лог синтаксического анализа в файл.
-            File.WriteAllText("SAlog.txt", Log);
-            return result;
+            try
+            {
+                // Начинаем разбор с основного правила грамматики - "Блок инструкций".
+                bool result = ParseInstructionBlock(terminals);
+                // Записываем лог синтаксического анализа в файл.
+                File.WriteAllText("SAlog.txt", Log);
+                
+                if (!result)
+                {
+                    // Если разбор не удался, находим первый терминал в последовательности
+                    var firstTerminal = terminals.FirstOrDefault();
+                    if (firstTerminal != null)
+                    {
+                        throw new CompilerException(
+                            "Нарушение правил грамматики языка", 
+                            firstTerminal.LinePointer, 
+                            firstTerminal.CharPointer);
+                    }
+                    else
+                    {
+                        throw new CompilerException(
+                            "Нарушение правил грамматики языка: пустой код", 
+                            1, 
+                            1);
+                    }
+                }
+                
+                return result;
+            }
+            catch (CompilerException)
+            {
+                // Пробрасываем CompilerException дальше без изменений
+                throw;
+            }
+            catch (Exception ex)
+            {
+                // Для других исключений создаем CompilerException
+                var firstTerminal = terminals.FirstOrDefault();
+                if (firstTerminal != null)
+                {
+                    throw new CompilerException(
+                        $"Синтаксическая ошибка: {ex.Message}",
+                        firstTerminal.LinePointer,
+                        firstTerminal.CharPointer);
+                }
+                else
+                {
+                    throw new CompilerException(
+                        $"Синтаксическая ошибка: {ex.Message}",
+                        1,
+                        1);
+                }
+            }
         }
 
         /// Находит индекс парной закрывающей скобки для заданной открывающей скобки.

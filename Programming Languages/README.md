@@ -9,7 +9,7 @@
   dest                  Куда сохраняем архив или распаковываем
 
 Опциональные:
-  -h, --help            show this help message and exit
+  -h, --help            Посмотреть эту подсказку
   -c, --compress        Сжать
   -x, --extract         Распаковать
   -b, --benchmark       Показать время и размер

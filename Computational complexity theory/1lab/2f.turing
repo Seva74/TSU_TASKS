@@ -1,0 +1,83 @@
+{
+    "alphabet": ["a", "b", "c", "d"],
+    "states": {
+        "q_0": {
+            "λ": "λ N q_f",
+            "a": "a R q_0",
+            "b": "b R q_0",
+            "c": "c R q_0",
+            "d": "λ R q_h"
+        },
+
+        "q_h": {
+            "λ": "λ L q_preback",
+            "a": "λ L q_swap_a",
+            "b": "λ L q_swap_b",
+            "c": "λ L q_swap_c",
+            "d": "λ L q_swap_d"
+        },
+
+        "q_swap_a": {
+            "λ": "a R q_skip",
+            "a": "N",
+            "b": "N",
+            "c": "N",
+            "d": "N"
+        },
+        "q_swap_b": {
+            "λ": "b R q_skip",
+            "a": "N",
+            "b": "N",
+            "c": "N",
+            "d": "N"
+        },
+        "q_swap_c": {
+            "λ": "c R q_skip",
+            "a": "N",
+            "b": "N",
+            "c": "N",
+            "d": "N"
+        },
+        "q_swap_d": {
+            "λ": "d R q_skip",
+            "a": "N",
+            "b": "N",
+            "c": "N",
+            "d": "N"
+        },
+
+        "q_skip": {
+            "λ": "λ R q_h",
+            "a": "N",
+            "b": "N",
+            "c": "N",
+            "d": "N"
+        },
+
+        "q_preback": {
+            "λ": "λ L q_back",
+            "a": "N",
+            "b": "N",
+            "c": "N",
+            "d": "N"
+        },
+
+        "q_back": {
+            "λ": "λ R q_0",
+            "a": "a L q_back",
+            "b": "b L q_back",
+            "c": "c L q_back",
+            "d": "d L q_back"
+        },
+
+        "q_f": {
+            "λ": "!",
+            "a": "a N q_f",
+            "b": "b N q_f",
+            "c": "c N q_f",
+            "d": "d N q_f"
+        }
+    },
+
+    "word": "abcdabcdabcd"
+}

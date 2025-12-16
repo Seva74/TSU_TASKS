@@ -70,9 +70,6 @@ void backtrack(int idx, int curWeight, int curCost,
         return;
     }
 
-    // Не берём текущий груз
-    backtrack(idx + 1, curWeight, curCost, items, W);
-
     // Берём, если влезает
     if (curWeight + items[idx].weight <= W) {
         backtrack(idx + 1,
@@ -80,6 +77,9 @@ void backtrack(int idx, int curWeight, int curCost,
             curCost + items[idx].cost,
             items, W);
     }
+
+    // Не берём текущий груз
+    backtrack(idx + 1, curWeight, curCost, items, W);
 }
 
 pair<int, int> backtrackKnapsack(const vector<Item>& items, int W) {
@@ -120,7 +120,7 @@ int main() {
         << ", вес = " << dpRes.second << "\n";
 
     pair<int, int> btRes = backtrackKnapsack(items, W);
-    cout << "Бэктрекинг (полный перебор):   стоимость = " << btRes.first
+    cout << "Бэктрекинг:                    стоимость = " << btRes.first
         << ", вес = " << btRes.second << "\n\n";
 
     return 0;

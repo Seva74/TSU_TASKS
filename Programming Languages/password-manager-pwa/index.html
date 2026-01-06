@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Менеджер паролей</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="icons/icon-192.png" type="image/png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Менеджер паролей</h1>
+        
+        <div class="form">
+            <h2>Добавить новый пароль</h2>
+            <input type="text" id="site" placeholder="Сайт/Сервис (например, gmail.com)" required>
+            <input type="text" id="login" placeholder="Логин или email" required>
+            <input type="password" id="password" placeholder="Пароль (или сгенерировать)" required>
+            <button id="generate">🔑 Сгенерировать пароль</button>
+            <button id="save">💾 Сохранить</button>
+        </div>
+
+        <div class="passwords-list">
+            <h2>Сохранённые пароли (<span id="count">0</span>)</h2>
+            <ul id="list"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+    // Регистрация Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => {
+                    console.log('Service Worker зарегистрирован:', reg);
+                })
+                .catch(err => {
+                    console.log('Ошибка регистрации SW:', err);
+                });
+        });
+    }
+    </script>
+</body>
+</html>

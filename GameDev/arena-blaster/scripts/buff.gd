@@ -43,6 +43,16 @@ func _draw() -> void:
 			draw_line(Vector2(-9, 0), Vector2(9, 0), Color.WHITE, 2.0)
 		&"shield":
 			draw_rect(Rect2(Vector2(-6, -8), Vector2(12, 16)), Color.WHITE, false, 2.0)
+		&"health":
+			draw_rect(Rect2(Vector2(-7, -7), Vector2(14, 14)), Color.WHITE, false, 2.0)
+			draw_line(Vector2(-4, 0), Vector2(4, 0), Color.WHITE, 3.0)
+			draw_line(Vector2(0, -4), Vector2(0, 4), Color.WHITE, 3.0)
+		&"armor":
+			draw_polygon(PackedVector2Array([Vector2(0, -10), Vector2(9, -3), Vector2(6, 9), Vector2(-6, 9), Vector2(-9, -3)]), PackedColorArray([Color.WHITE]))
+		&"ammo":
+			draw_rect(Rect2(Vector2(-9, -7), Vector2(18, 14)), Color.WHITE, false, 2.0)
+			draw_rect(Rect2(Vector2(-5, -4), Vector2(10, 8)), Color.WHITE, true)
+			draw_line(Vector2(-6, -1), Vector2(6, -1), Color.WHITE, 2.0)
 
 
 func _get_color() -> Color:
@@ -53,4 +63,10 @@ func _get_color() -> Color:
 			return Color(1.0, 0.7, 0.25, 0.95)
 		&"shield":
 			return Color(0.35, 0.9, 1.0, 0.95)
+		&"health":
+			return Color(1.0, 0.32, 0.32, 0.95)
+		&"armor":
+			return Color(0.82, 0.6, 0.2, 0.95)
+		&"ammo":
+			return Color(0.98, 0.88, 0.25, 0.95)
 	return Color(0.9, 0.9, 0.9, 0.95)

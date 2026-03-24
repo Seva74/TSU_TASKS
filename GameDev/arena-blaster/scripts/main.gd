@@ -3,9 +3,11 @@ extends Node2D
 const ARENA_SIZE := Vector2(1920.0, 1080.0)
 const ARENA_RECT := Rect2(Vector2.ZERO, ARENA_SIZE)
 const MAX_WAVES := 5
-const BASE_WAVE_ENEMIES := 10
-const ENEMIES_PER_WAVE_STEP := 10
-const BUFF_DROP_CHANCE := 0.10
+const BASE_WAVE_ENEMIES := 6
+const ENEMIES_PER_WAVE_STEP := 5
+const BUFF_DROP_CHANCE := 0.14
+const WALL_LAYER_MASK := 1 << 1
+const COVER_QUERY_MASK := 1 << 1
 const SAVE_PATH := "user://save_data.cfg"
 
 const COMBO_TIMEOUT := 2.8
@@ -13,7 +15,11 @@ const COMBO_STEP := 0.15
 const MAX_COMBO_MULTIPLIER := 2.2
 
 const SHAKE_DECAY := 30.0
-const MAX_SHAKE := 26.0
+const MAX_SHAKE := 10.0
+const SCAN_COOLDOWN := 12.0
+const SCAN_DURATION := 2.4
+const HEAL_AMOUNT := 35.0
+const AMMO_AMOUNT := 18
 
 const PLAYER_SCRIPT := preload("res://scripts/player.gd")
 const ENEMY_SCRIPT := preload("res://scripts/enemy.gd")
@@ -25,6 +31,7 @@ const AUDIO_MANAGER_SCRIPT := preload("res://scripts/audio_manager.gd")
 enum GameState {
 	MENU,
 	PLAYING,
+	WEAPON_CHOICE,
 	FINISHED
 }
 
@@ -32,6 +39,7 @@ var rng := RandomNumberGenerator.new()
 var state: GameState = GameState.MENU
 
 var world_root: Node2D
+var map_root: Node2D
 var entity_root: Node2D
 var effects_root: Node2D
 var gameplay_camera: Camera2D
@@ -39,6 +47,7 @@ var gameplay_camera: Camera2D
 var ui_layer: CanvasLayer
 var menu_root: Control
 var hud_root: Control
+var weapon_choice_root: Control
 var end_root: Control
 var pause_root: Control
 
@@ -51,8 +60,12 @@ var score_label: Label
 var wave_label: Label
 var enemies_label: Label
 var buff_label: Label
+var weapon_label: Label
+var armor_label: Label
+var adrenaline_label: Label
 var combo_label: Label
 var dash_label: Label
+var scan_label: Label
 var wave_banner: Label
 
 var end_title_label: Label
@@ -65,6 +78,7 @@ var audio_manager: AudioManager
 var enemies: Array[Enemy] = []
 var projectiles: Array[Projectile] = []
 var buffs: Array[Buff] = []
+var cover_rects: Array[Rect2] = []
 
 var score := 0
 var current_wave := 0
@@ -85,6 +99,11 @@ var combo_count := 0
 var combo_multiplier := 1.0
 var combo_time_left := 0.0
 var screen_shake := 0.0
+var scan_cooldown_left := 0.0
+var scan_pulse_left := 0.0
+var weapon_choice_active := false
+var pending_weapon_choice_victory := false
+var weapon_choice_options: Array[StringName] = []
 
 var wave_banner_left := 0.0
 
@@ -107,6 +126,10 @@ func _draw() -> void:
 
 	draw_rect(ARENA_RECT, Color(0.05, 0.08, 0.11), true)
 
+	for cover_rect in cover_rects:
+		draw_rect(cover_rect, Color(0.12, 0.16, 0.2, 0.92), true)
+		draw_rect(cover_rect.grow(2.0), Color(0.58, 0.72, 0.95, 0.48), false, 2.0)
+
 	var grid_color := Color(0.2, 0.24, 0.3, 0.34)
 	for x in range(64, int(ARENA_SIZE.x), 64):
 		draw_line(Vector2(x, 0), Vector2(x, ARENA_SIZE.y), grid_color, 1.0)
@@ -117,13 +140,18 @@ func _draw() -> void:
 
 
 func _process(delta: float) -> void:
-	if is_paused:
+	if is_paused or weapon_choice_active:
 		return
 
 	if combo_time_left > 0.0:
 		combo_time_left -= delta
 		if combo_time_left <= 0.0:
 			_reset_combo()
+
+	if scan_cooldown_left > 0.0:
+		scan_cooldown_left = maxf(0.0, scan_cooldown_left - delta)
+	if scan_pulse_left > 0.0:
+		scan_pulse_left = maxf(0.0, scan_pulse_left - delta)
 
 	_update_screen_shake(delta)
 
@@ -139,7 +167,7 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if state != GameState.PLAYING or run_finished or is_paused:
+	if state != GameState.PLAYING or run_finished or is_paused or weapon_choice_active:
 		return
 
 	_handle_spawning(delta)
@@ -157,15 +185,18 @@ func _build_ui() -> void:
 
 	menu_root = _create_menu_ui()
 	hud_root = _create_hud_ui()
+	weapon_choice_root = _create_weapon_choice_ui()
 	end_root = _create_end_ui()
 	pause_root = _create_pause_ui()
 
 	ui_layer.add_child(menu_root)
 	ui_layer.add_child(hud_root)
+	ui_layer.add_child(weapon_choice_root)
 	ui_layer.add_child(end_root)
 	ui_layer.add_child(pause_root)
 
 	hud_root.visible = false
+	weapon_choice_root.visible = false
 	end_root.visible = false
 	pause_root.visible = false
 	_refresh_best_score_labels()
@@ -197,7 +228,7 @@ func _create_menu_ui() -> Control:
 	vbox.add_child(title)
 
 	var subtitle := Label.new()
-	subtitle.text = "Выживи 5 волн инопланетных захватчиков"
+	subtitle.text = "Выживи, выбирай оружие после босса и прячься за укрытиями"
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	subtitle.add_theme_font_size_override("font_size", 22)
 	vbox.add_child(subtitle)
@@ -269,20 +300,40 @@ func _create_hud_ui() -> Control:
 	buff_label.text = "Баффы: нет"
 	root.add_child(buff_label)
 
+	weapon_label = Label.new()
+	weapon_label.position = Vector2(20, 196)
+	weapon_label.text = "Оружие: Пистолет"
+	root.add_child(weapon_label)
+
+	armor_label = Label.new()
+	armor_label.position = Vector2(20, 220)
+	armor_label.text = "Броня: 0"
+	root.add_child(armor_label)
+
+	adrenaline_label = Label.new()
+	adrenaline_label.position = Vector2(20, 244)
+	adrenaline_label.text = "Адреналин: нет"
+	root.add_child(adrenaline_label)
+
 	combo_label = Label.new()
-	combo_label.position = Vector2(20, 196)
+	combo_label.position = Vector2(20, 268)
 	combo_label.text = "Комбо: x1.00"
 	root.add_child(combo_label)
 
 	dash_label = Label.new()
-	dash_label.position = Vector2(20, 220)
+	dash_label.position = Vector2(20, 292)
 	dash_label.text = "Рывок: READY"
 	root.add_child(dash_label)
 
 	var hint_label := Label.new()
-	hint_label.position = Vector2(1180, 16)
-	hint_label.text = "LMB: прицеливание | SPACE/SHIFT: рывок | ESC: пауза"
+	hint_label.position = Vector2(1110, 16)
+	hint_label.text = "Мышь: стрельба | R: перезарядка | SPACE/SHIFT: рывок | ESC: пауза | E: скан"
 	root.add_child(hint_label)
+
+	scan_label = Label.new()
+	scan_label.position = Vector2(20, 316)
+	scan_label.text = "Скан: READY"
+	root.add_child(scan_label)
 
 	wave_banner = Label.new()
 	wave_banner.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -385,9 +436,55 @@ func _create_pause_ui() -> Control:
 	return root
 
 
+func _create_weapon_choice_ui() -> Control:
+	var root := Control.new()
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	root.process_mode = Node.PROCESS_MODE_ALWAYS
+
+	var overlay := ColorRect.new()
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.color = Color(0.02, 0.02, 0.03, 0.9)
+	root.add_child(overlay)
+
+	var panel := PanelContainer.new()
+	panel.custom_minimum_size = Vector2(780, 420)
+	panel.position = Vector2(570, 280)
+	root.add_child(panel)
+
+	var box := VBoxContainer.new()
+	box.alignment = BoxContainer.ALIGNMENT_CENTER
+	box.add_theme_constant_override("separation", 16)
+	panel.add_child(box)
+
+	var title := Label.new()
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 42)
+	title.text = "ВЫБОР ОРУЖИЯ"
+	box.add_child(title)
+
+	var subtitle := Label.new()
+	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	subtitle.add_theme_font_size_override("font_size", 20)
+	subtitle.text = "После босса выбери оружие или оставь текущее"
+	box.add_child(subtitle)
+
+	for index in range(3):
+		var button := Button.new()
+		button.custom_minimum_size = Vector2(420, 56)
+		button.pressed.connect(Callable(self, "_on_weapon_choice_button_pressed").bind(index))
+		box.add_child(button)
+
+	return root
+
+
 func _show_menu() -> void:
 	_set_pause_enabled(false)
 	_clear_run_world()
+	weapon_choice_active = false
+	pending_weapon_choice_victory = false
+	weapon_choice_options.clear()
+	if weapon_choice_root:
+		weapon_choice_root.visible = false
 	state = GameState.MENU
 	menu_root.visible = true
 	hud_root.visible = false
@@ -399,6 +496,11 @@ func _show_menu() -> void:
 func _start_new_run() -> void:
 	_set_pause_enabled(false)
 	_clear_run_world()
+	weapon_choice_active = false
+	pending_weapon_choice_victory = false
+	weapon_choice_options.clear()
+	if weapon_choice_root:
+		weapon_choice_root.visible = false
 
 	state = GameState.PLAYING
 	run_finished = false
@@ -410,10 +512,13 @@ func _start_new_run() -> void:
 	between_waves = false
 	between_waves_left = 0.0
 	screen_shake = 0.0
+	scan_cooldown_left = 0.0
+	scan_pulse_left = 0.0
 	_reset_combo()
 
 	menu_root.visible = false
 	hud_root.visible = true
+	weapon_choice_root.visible = false
 	end_root.visible = false
 
 	world_root = Node2D.new()
@@ -426,6 +531,11 @@ func _start_new_run() -> void:
 	gameplay_camera.position = ARENA_SIZE * 0.5
 	gameplay_camera.process_mode = Node.PROCESS_MODE_PAUSABLE
 	world_root.add_child(gameplay_camera)
+
+	map_root = Node2D.new()
+	map_root.name = "Map"
+	world_root.add_child(map_root)
+	_build_arena_map()
 
 	entity_root = Node2D.new()
 	entity_root.name = "Entities"
@@ -441,7 +551,8 @@ func _start_new_run() -> void:
 	player = PLAYER_SCRIPT.new()
 	player.global_position = ARENA_SIZE * 0.5
 	player.set_arena_size(ARENA_SIZE)
-	player.target_provider = Callable(self, "_get_nearest_enemy_position")
+	player.collision_mask |= WALL_LAYER_MASK
+	player.set_weapon_type(&"pistol")
 	player.shoot_requested.connect(_on_player_shoot_requested)
 	player.health_changed.connect(_on_player_health_changed)
 	player.died.connect(_on_player_died)
@@ -456,10 +567,12 @@ func _clear_run_world() -> void:
 	enemies.clear()
 	projectiles.clear()
 	buffs.clear()
+	cover_rects.clear()
 
 	if is_instance_valid(world_root):
 		world_root.queue_free()
 	world_root = null
+	map_root = null
 	entity_root = null
 	effects_root = null
 	gameplay_camera = null
@@ -477,7 +590,7 @@ func _exit_game() -> void:
 func _start_wave(wave_number: int) -> void:
 	current_wave = wave_number
 	pending_spawns = BASE_WAVE_ENEMIES + ENEMIES_PER_WAVE_STEP * (wave_number - 1)
-	spawn_interval = maxf(0.09, 0.22 - 0.02 * float(wave_number - 1))
+	spawn_interval = maxf(0.12, 0.26 - 0.02 * float(wave_number - 1))
 	spawn_timer = 0.0
 	boss_spawned = false
 	between_waves = false
@@ -501,15 +614,18 @@ func _handle_spawning(delta: float) -> void:
 
 	var enemy_type: StringName = &"melee"
 	var roll := rng.randf()
-	if current_wave >= 2 and roll > 0.55:
+	if current_wave >= 2 and roll > 0.67:
 		enemy_type = &"ranged"
-	if current_wave >= 4 and roll > 0.9:
+	if current_wave >= 4 and roll > 0.84:
 		enemy_type = &"ranged"
 
 	_spawn_enemy(enemy_type)
 
 
 func _handle_wave_transitions(delta: float) -> void:
+	if weapon_choice_active:
+		return
+
 	if pending_spawns > 0:
 		return
 
@@ -543,8 +659,16 @@ func _spawn_enemy(enemy_type: StringName) -> void:
 
 	var enemy: Enemy = ENEMY_SCRIPT.new()
 	enemy.configure(enemy_type)
+	if enemy_type != &"boss":
+		var elite_chance := 0.0
+		if current_wave >= 3:
+			elite_chance = 0.12 + float(current_wave - 3) * 0.05
+		if rng.randf() < elite_chance:
+			enemy.make_elite()
 	enemy.set_arena_size(ARENA_SIZE)
+	enemy.collision_mask |= WALL_LAYER_MASK
 	enemy.target = player
+	enemy.visibility_provider = Callable(self, "_has_clear_sight_to_player").bind(enemy)
 	enemy.global_position = _get_spawn_point_on_edge(enemy_type == &"boss")
 	enemy.died.connect(_on_enemy_died)
 	enemy.projectile_requested.connect(_on_enemy_projectile_requested)
@@ -569,8 +693,31 @@ func _get_spawn_point_on_edge(is_boss: bool) -> Vector2:
 			return Vector2(-margin, rng.randf_range(0.0, ARENA_SIZE.y))
 
 
-func _on_player_shoot_requested(origin: Vector2, direction: Vector2, damage: float) -> void:
-	_spawn_projectile(origin + direction * 18.0, direction, damage, 940.0, false)
+func _on_player_shoot_requested(origin: Vector2, direction: Vector2, damage: float, weapon_type: StringName) -> void:
+	var weapon_config := player.get_weapon_config() if is_instance_valid(player) else {}
+	if weapon_type == &"axe":
+		var melee_range := float(weapon_config.get("melee_range", 90.0))
+		var melee_arc := float(weapon_config.get("melee_arc", 1.1))
+		var hits := 0
+		for enemy in enemies:
+			if not is_instance_valid(enemy):
+				continue
+			var to_enemy := enemy.global_position - origin
+			if to_enemy.length() > melee_range:
+				continue
+			if absf(direction.angle_to(to_enemy.normalized())) > melee_arc * 0.5:
+				continue
+			enemy.take_damage(damage)
+			_spawn_impact(enemy.global_position, Color(1.0, 0.72, 0.38), 22.0)
+			_push_screen_shake(1.4)
+			hits += 1
+		if hits > 0 and is_instance_valid(audio_manager):
+			audio_manager.play_shoot()
+		return
+
+	var projectile_speed := float(weapon_config.get("projectile_speed", 940.0))
+	var projectile_lifetime := float(weapon_config.get("projectile_lifetime", 1.7))
+	_spawn_projectile(origin + direction * 18.0, direction, damage, projectile_speed, false, weapon_type, projectile_lifetime)
 	if is_instance_valid(audio_manager):
 		audio_manager.play_shoot()
 
@@ -581,12 +728,12 @@ func _on_enemy_projectile_requested(origin: Vector2, direction: Vector2, damage:
 		audio_manager.play_enemy_shoot()
 
 
-func _spawn_projectile(origin: Vector2, direction: Vector2, damage: float, speed: float, from_enemy: bool) -> void:
+func _spawn_projectile(origin: Vector2, direction: Vector2, damage: float, speed: float, from_enemy: bool, weapon_type: StringName = &"pistol", lifetime_override: float = -1.0) -> void:
 	if not is_instance_valid(entity_root):
 		return
 
 	var projectile: Projectile = PROJECTILE_SCRIPT.new()
-	projectile.setup(origin, direction, speed, damage, from_enemy)
+	projectile.setup(origin, direction, speed, damage, from_enemy, weapon_type, lifetime_override)
 	entity_root.add_child(projectile)
 	projectiles.append(projectile)
 
@@ -605,14 +752,19 @@ func _handle_projectile_collisions() -> void:
 			projectile.queue_free()
 			continue
 
+		if _projectile_hits_wall(projectile):
+			_spawn_impact(projectile.global_position, Color(0.78, 0.82, 0.94), 14.0)
+			projectile.queue_free()
+			continue
+
 		if projectile.from_enemy:
 			var player_hit_distance: float = player.get_collision_radius() + projectile_radius
 			if player.global_position.distance_to(projectile.global_position) <= player_hit_distance:
 				if not player.is_dash_invulnerable():
 					player.apply_damage(projectile.damage)
 					_reset_combo()
-					_spawn_impact(projectile.global_position, Color(1.0, 0.45, 0.45), 22.0)
-					_push_screen_shake(12.0)
+					_spawn_impact(projectile.global_position, Color(1.0, 0.45, 0.45), 18.0)
+					_push_screen_shake(4.0)
 					if is_instance_valid(audio_manager):
 						audio_manager.play_hurt()
 				projectile.queue_free()
@@ -620,12 +772,18 @@ func _handle_projectile_collisions() -> void:
 			for enemy in enemies:
 				if not is_instance_valid(enemy):
 					continue
+				if projectile.has_hit_enemy(enemy):
+					continue
 
 				var enemy_hit_distance: float = float(enemy.get_collision_radius()) + projectile_radius
 				if enemy.global_position.distance_to(projectile.global_position) <= enemy_hit_distance:
 					enemy.take_damage(projectile.damage)
-					_spawn_impact(projectile.global_position, Color(0.35, 0.95, 1.0), 18.0)
-					_push_screen_shake(3.0)
+					projectile.register_enemy_hit(enemy)
+					_spawn_impact(projectile.global_position, Color(0.35, 0.95, 1.0), 14.0)
+					_push_screen_shake(1.2)
+					if projectile.pierce_remaining > 0:
+						projectile.pierce_remaining -= 1
+						continue
 					projectile.queue_free()
 					break
 
@@ -645,8 +803,8 @@ func _handle_contact_damage() -> void:
 				if not player.is_dash_invulnerable():
 					player.apply_damage(enemy.contact_damage)
 					_reset_combo()
-					_spawn_impact(player.global_position, Color(1.0, 0.5, 0.4), 24.0)
-					_push_screen_shake(14.0)
+					_spawn_impact(player.global_position, Color(1.0, 0.5, 0.4), 20.0)
+					_push_screen_shake(4.5)
 					if is_instance_valid(audio_manager):
 						audio_manager.play_hurt()
 
@@ -654,37 +812,126 @@ func _handle_contact_damage() -> void:
 func _on_enemy_died(enemy_type: StringName, score_gain: int, death_position: Vector2) -> void:
 	var awarded_score := _calculate_combo_score(score_gain)
 	score += awarded_score
-	_spawn_impact(death_position, Color(1.0, 0.7, 0.35), 28.0)
-	_push_screen_shake(20.0 if enemy_type == &"boss" else 8.0)
+	_spawn_impact(death_position, Color(1.0, 0.7, 0.35), 22.0)
+	_push_screen_shake(6.0 if enemy_type == &"boss" else 3.0)
 	if is_instance_valid(audio_manager):
 		audio_manager.play_explosion()
 
 	if enemy_type == &"boss":
+		_spawn_buff(death_position + Vector2(0, -16), &"health")
+		if rng.randf() < 0.75:
+			_spawn_buff(death_position + Vector2(14, 12), &"armor")
+		if is_instance_valid(player) and bool(player.get_weapon_config().get("uses_ammo", true)):
+			_spawn_buff(death_position + Vector2(-16, -12), &"ammo")
 		if rng.randf() < 0.85:
 			_spawn_buff(death_position + Vector2(22, -10))
 		if rng.randf() < 0.65:
 			_spawn_buff(death_position + Vector2(-24, 14))
+		_open_weapon_choice()
 	elif rng.randf() < BUFF_DROP_CHANCE:
-		_spawn_buff(death_position)
+		if is_instance_valid(player) and bool(player.get_weapon_config().get("uses_ammo", true)) and rng.randf() < 0.4:
+			_spawn_buff(death_position, &"ammo")
+		else:
+			_spawn_buff(death_position)
+	elif rng.randf() < 0.12:
+		_spawn_buff(death_position, &"health")
 
 	if combo_count >= 3 and awarded_score > score_gain:
 		_show_banner("КОМБО x%.2f" % combo_multiplier, 0.45)
 
+	if is_instance_valid(player) and combo_count >= 3:
+		player.apply_adrenaline(3.5)
 
-func _spawn_buff(spawn_position: Vector2) -> void:
+
+func _build_arena_map() -> void:
+	cover_rects = [
+		Rect2(Vector2(350, 220), Vector2(250, 44)),
+		Rect2(Vector2(1320, 220), Vector2(250, 44)),
+		Rect2(Vector2(350, 816), Vector2(250, 44)),
+		Rect2(Vector2(1320, 816), Vector2(250, 44)),
+		Rect2(Vector2(910, 360), Vector2(100, 360)),
+		Rect2(Vector2(620, 520), Vector2(170, 36)),
+		Rect2(Vector2(1130, 520), Vector2(170, 36))
+	]
+
+	for cover_rect in cover_rects:
+		var cover_body := StaticBody2D.new()
+		cover_body.collision_layer = WALL_LAYER_MASK
+		cover_body.position = cover_rect.position + cover_rect.size * 0.5
+		map_root.add_child(cover_body)
+
+		var cover_shape := CollisionShape2D.new()
+		var rectangle := RectangleShape2D.new()
+		rectangle.size = cover_rect.size
+		cover_shape.shape = rectangle
+		cover_body.add_child(cover_shape)
+
+
+func _has_clear_sight_to_player(enemy: Enemy) -> bool:
+	if not is_instance_valid(player) or not is_instance_valid(enemy):
+		return false
+
+	var query := PhysicsRayQueryParameters2D.create(enemy.global_position, player.global_position)
+	query.collision_mask = COVER_QUERY_MASK
+	query.exclude = [enemy.get_rid(), player.get_rid()]
+
+	var hit := get_world_2d().direct_space_state.intersect_ray(query)
+	return hit.is_empty()
+
+
+func _projectile_hits_wall(projectile: Projectile) -> bool:
+	var projectile_position := projectile.global_position
+	var previous_position := projectile.get_previous_position()
+	var projectile_radius := float(projectile.radius)
+
+	for cover_rect in cover_rects:
+		var expanded := cover_rect.grow(projectile_radius)
+		if expanded.has_point(projectile_position) or expanded.has_point(previous_position):
+			return true
+
+	return false
+
+
+func _trigger_scan_pulse() -> void:
+	if state != GameState.PLAYING or run_finished or is_paused:
+		return
+	if scan_cooldown_left > 0.0:
+		return
+
+	scan_pulse_left = SCAN_DURATION
+	scan_cooldown_left = SCAN_COOLDOWN
+	_show_banner("СКАН АКТИВЕН", 0.8)
+
+	for enemy in enemies:
+		if is_instance_valid(enemy):
+			enemy.mark_scanned(SCAN_DURATION)
+
+
+func _spawn_buff(spawn_position: Vector2, buff_type: StringName = &"") -> void:
 	if not is_instance_valid(entity_root):
 		return
 
 	var buff: Buff = BUFF_SCRIPT.new()
 	buff.global_position = spawn_position
 
-	match rng.randi_range(0, 2):
-		0:
-			buff.setup(&"speed")
-		1:
-			buff.setup(&"fire_rate")
-		_:
-			buff.setup(&"shield")
+	if buff_type != &"":
+		buff.setup(buff_type)
+	else:
+		var can_drop_ammo := is_instance_valid(player) and bool(player.get_weapon_config().get("uses_ammo", true))
+		match rng.randi_range(0, 4 if can_drop_ammo else 3):
+			0:
+				buff.setup(&"speed")
+			1:
+				buff.setup(&"fire_rate")
+			2:
+				buff.setup(&"shield")
+			3:
+				if rng.randf() < 0.5:
+					buff.setup(&"health")
+				else:
+					buff.setup(&"armor")
+			4:
+				buff.setup(&"ammo")
 
 	entity_root.add_child(buff)
 	buffs.append(buff)
@@ -700,10 +947,25 @@ func _handle_buff_pickups() -> void:
 
 		var hit_distance := player.get_collision_radius() + buff.get_collision_radius()
 		if player.global_position.distance_to(buff.global_position) <= hit_distance:
-			player.apply_buff(buff.buff_type)
-			_show_banner(_buff_pickup_label(buff.buff_type), 0.9)
-			_spawn_impact(buff.global_position, Color(0.4, 1.0, 0.5), 20.0)
-			_push_screen_shake(5.0)
+			if buff.buff_type == &"health":
+				var healed_amount := player.apply_heal(HEAL_AMOUNT)
+				if healed_amount > 0.0:
+					_show_banner("ХИЛКА: +%d HP" % int(round(healed_amount)), 0.9)
+			elif buff.buff_type == &"ammo":
+				var ammo_gained := player.add_ammo(AMMO_AMOUNT)
+				if ammo_gained > 0:
+					_show_banner("ПАТРОНЫ: +%d" % ammo_gained, 0.9)
+				else:
+					player.apply_buff(&"armor")
+					_show_banner("ПАТРОНЫ -> БРОНЯ", 0.9)
+			elif buff.buff_type == &"armor":
+				player.apply_buff(buff.buff_type)
+				_show_banner("БРОНЯ: +35" , 0.9)
+			else:
+				player.apply_buff(buff.buff_type)
+				_show_banner(_buff_pickup_label(buff.buff_type), 0.9)
+			_spawn_impact(buff.global_position, Color(0.4, 1.0, 0.5), 18.0)
+			_push_screen_shake(2.5)
 			if is_instance_valid(audio_manager):
 				audio_manager.play_pickup()
 			buff.queue_free()
@@ -717,6 +979,12 @@ func _buff_pickup_label(buff_type: StringName) -> String:
 			return "БАФФ: СКОРОСТРЕЛЬНОСТЬ"
 		&"shield":
 			return "БАФФ: ЩИТ +50"
+		&"health":
+			return "БАФФ: ХИЛКА +35"
+		&"armor":
+			return "БАФФ: БРОНЯ +35"
+		&"ammo":
+			return "БАФФ: ПАТРОНЫ"
 	return "БАФФ"
 
 
@@ -765,6 +1033,10 @@ func _finish_run(victory: bool) -> void:
 		return
 
 	_set_pause_enabled(false)
+	weapon_choice_active = false
+	pending_weapon_choice_victory = false
+	if weapon_choice_root:
+		weapon_choice_root.visible = false
 	run_finished = true
 	run_victory = victory
 	state = GameState.FINISHED
@@ -804,12 +1076,21 @@ func _update_hud() -> void:
 
 	if is_instance_valid(player):
 		buff_label.text = player.get_buff_status_text()
+		weapon_label.text = player.get_weapon_status_text()
+		armor_label.text = player.get_armor_status_text()
+		var adrenaline_text := player.get_adrenaline_status_text()
+		adrenaline_label.text = adrenaline_text if adrenaline_text != "" else "Адреналин: нет"
 		dash_label.text = player.get_dash_status_text()
 
 	if combo_count > 1 and combo_time_left > 0.0:
 		combo_label.text = "Комбо: x%.2f (%.1fs)" % [combo_multiplier, combo_time_left]
 	else:
 		combo_label.text = "Комбо: x1.00"
+
+	if scan_cooldown_left > 0.0:
+		scan_label.text = "Скан: %.1fs" % scan_cooldown_left
+	else:
+		scan_label.text = "Скан: READY"
 
 
 func _get_nearest_enemy_position() -> Variant:
@@ -863,6 +1144,26 @@ func _configure_input_map() -> void:
 		dash_key_event.physical_keycode = keycode
 		InputMap.action_add_event("dash", dash_key_event)
 
+	if not InputMap.has_action("scan"):
+		InputMap.add_action("scan")
+
+	for event in InputMap.action_get_events("scan"):
+		InputMap.action_erase_event("scan", event)
+
+	var scan_key_event := InputEventKey.new()
+	scan_key_event.physical_keycode = KEY_E
+	InputMap.action_add_event("scan", scan_key_event)
+
+	if not InputMap.has_action("reload"):
+		InputMap.add_action("reload")
+
+	for event in InputMap.action_get_events("reload"):
+		InputMap.action_erase_event("reload", event)
+
+	var reload_key_event := InputEventKey.new()
+	reload_key_event.physical_keycode = KEY_R
+	InputMap.action_add_event("reload", reload_key_event)
+
 
 func _input(event: InputEvent) -> void:
 	if not (event is InputEventKey):
@@ -872,7 +1173,12 @@ func _input(event: InputEvent) -> void:
 	if not key_event.pressed or key_event.echo:
 		return
 
+	if weapon_choice_active:
+		return
+
 	if key_event.physical_keycode != KEY_ESCAPE:
+		if key_event.physical_keycode == KEY_E:
+			_trigger_scan_pulse()
 		return
 
 	if state == GameState.PLAYING and not run_finished:
@@ -915,6 +1221,115 @@ func _refresh_best_score_labels() -> void:
 
 	if end_best_label:
 		end_best_label.text = "Рекорд: %d" % best_score
+
+
+func _open_weapon_choice() -> void:
+	if weapon_choice_active or not is_instance_valid(player):
+		return
+
+	weapon_choice_options = _build_weapon_choice_options()
+	weapon_choice_active = true
+	pending_weapon_choice_victory = current_wave >= MAX_WAVES
+	state = GameState.WEAPON_CHOICE
+	get_tree().paused = true
+
+	if weapon_choice_root:
+		weapon_choice_root.visible = true
+
+	var box := weapon_choice_root.get_child(1).get_child(0) if weapon_choice_root and weapon_choice_root.get_child_count() > 1 else null
+	if box == null:
+		return
+
+	var title := box.get_child(0) as Label
+	var subtitle := box.get_child(1) as Label
+	if title:
+		title.text = "ВЫБОР ОРУЖИЯ"
+	if subtitle:
+		subtitle.text = "Текущее оружие: %s" % (player.get_weapon_name() if is_instance_valid(player) else "Пистолет")
+
+	for index in range(weapon_choice_options.size()):
+		var button := box.get_child(index + 2) as Button
+		if button:
+			button.text = _weapon_choice_button_text(weapon_choice_options[index])
+			button.disabled = false
+
+	for index in range(weapon_choice_options.size(), box.get_child_count() - 2):
+		var extra_button := box.get_child(index + 2) as Button
+		if extra_button:
+			extra_button.disabled = true
+
+
+func _on_weapon_choice_pressed(weapon_type: StringName) -> void:
+	if not weapon_choice_active or not is_instance_valid(player):
+		return
+
+	if player.get_weapon_type() == weapon_type:
+		player.upgrade_weapon()
+	else:
+		player.set_weapon_type(weapon_type)
+	weapon_choice_active = false
+	if weapon_choice_root:
+		weapon_choice_root.visible = false
+	get_tree().paused = false
+	state = GameState.PLAYING if not pending_weapon_choice_victory else GameState.FINISHED
+
+	if pending_weapon_choice_victory:
+		_finish_run(true)
+		return
+
+	_start_wave(current_wave + 1)
+
+
+func _on_weapon_choice_button_pressed(option_index: int) -> void:
+	if option_index < 0 or option_index >= weapon_choice_options.size():
+		return
+
+	_on_weapon_choice_pressed(weapon_choice_options[option_index])
+
+
+func _weapon_choice_button_text(weapon_type: StringName) -> String:
+	var weapon_name := _weapon_choice_label(weapon_type)
+	if is_instance_valid(player) and player.get_weapon_type() == weapon_type:
+		return "УЛУЧШИТЬ: %s" % weapon_name
+
+	return "ВЗЯТЬ: %s" % weapon_name
+
+
+func _weapon_choice_label(weapon_type: StringName) -> String:
+	match weapon_type:
+		&"minigun":
+			return "Пулемет - безумный темп, огромный магазин"
+		&"shotgun":
+			return "Дробовик - 5 пуль, мощный разлет"
+		&"flamethrower":
+			return "Огнемет - почти непрерывная струя"
+		&"sniper":
+			return "Снайперка - one shot для обычных мобов, пули проходят сквозь"
+		&"axe":
+			return "Топор - ближний бой, но даёт броню"
+		_:
+			return "Пистолет - стабильный одиночный огонь"
+
+
+func _build_weapon_choice_options() -> Array[StringName]:
+	if not is_instance_valid(player):
+		return [&"pistol", &"shotgun", &"flamethrower"]
+
+	var current_weapon := player.get_weapon_type()
+	var all_weapons := player.get_all_weapon_types()
+	var pool: Array[StringName] = []
+	var options: Array[StringName] = [current_weapon]
+
+	for weapon_type in all_weapons:
+		if weapon_type != current_weapon:
+			pool.append(weapon_type)
+
+	while options.size() < 3 and not pool.is_empty():
+		var index := rng.randi_range(0, pool.size() - 1)
+		options.append(pool[index])
+		pool.remove_at(index)
+
+	return options
 
 
 func _calculate_combo_score(base_score: int) -> int:

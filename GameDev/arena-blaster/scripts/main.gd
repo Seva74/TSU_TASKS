@@ -16,10 +16,7 @@ const MAX_COMBO_MULTIPLIER := 2.2
 
 const SHAKE_DECAY := 30.0
 const MAX_SHAKE := 10.0
-const SCAN_COOLDOWN := 12.0
-const SCAN_DURATION := 2.4
 const HEAL_AMOUNT := 35.0
-const AMMO_AMOUNT := 18
 
 const PLAYER_SCRIPT := preload("res://scripts/player.gd")
 const ENEMY_SCRIPT := preload("res://scripts/enemy.gd")
@@ -65,7 +62,6 @@ var armor_label: Label
 var adrenaline_label: Label
 var combo_label: Label
 var dash_label: Label
-var scan_label: Label
 var wave_banner: Label
 
 var end_title_label: Label
@@ -99,8 +95,6 @@ var combo_count := 0
 var combo_multiplier := 1.0
 var combo_time_left := 0.0
 var screen_shake := 0.0
-var scan_cooldown_left := 0.0
-var scan_pulse_left := 0.0
 var weapon_choice_active := false
 var pending_weapon_choice_victory := false
 var weapon_choice_options: Array[StringName] = []
@@ -147,11 +141,6 @@ func _process(delta: float) -> void:
 		combo_time_left -= delta
 		if combo_time_left <= 0.0:
 			_reset_combo()
-
-	if scan_cooldown_left > 0.0:
-		scan_cooldown_left = maxf(0.0, scan_cooldown_left - delta)
-	if scan_pulse_left > 0.0:
-		scan_pulse_left = maxf(0.0, scan_pulse_left - delta)
 
 	_update_screen_shake(delta)
 
@@ -327,13 +316,8 @@ func _create_hud_ui() -> Control:
 
 	var hint_label := Label.new()
 	hint_label.position = Vector2(1110, 16)
-	hint_label.text = "Мышь: стрельба | R: перезарядка | SPACE/SHIFT: рывок | ESC: пауза | E: скан"
+	hint_label.text = "Мышь: стрельба | R: перезарядка | SPACE/SHIFT: рывок | ESC: пауза"
 	root.add_child(hint_label)
-
-	scan_label = Label.new()
-	scan_label.position = Vector2(20, 316)
-	scan_label.text = "Скан: READY"
-	root.add_child(scan_label)
 
 	wave_banner = Label.new()
 	wave_banner.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -470,7 +454,9 @@ func _create_weapon_choice_ui() -> Control:
 
 	for index in range(3):
 		var button := Button.new()
-		button.custom_minimum_size = Vector2(420, 56)
+		button.custom_minimum_size = Vector2(520, 86)
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		button.pressed.connect(Callable(self, "_on_weapon_choice_button_pressed").bind(index))
 		box.add_child(button)
 
@@ -512,8 +498,6 @@ func _start_new_run() -> void:
 	between_waves = false
 	between_waves_left = 0.0
 	screen_shake = 0.0
-	scan_cooldown_left = 0.0
-	scan_pulse_left = 0.0
 	_reset_combo()
 
 	menu_root.visible = false
@@ -827,7 +811,8 @@ func _on_enemy_died(enemy_type: StringName, score_gain: int, death_position: Vec
 			_spawn_buff(death_position + Vector2(22, -10))
 		if rng.randf() < 0.65:
 			_spawn_buff(death_position + Vector2(-24, 14))
-		_open_weapon_choice()
+		if current_wave < MAX_WAVES:
+			_open_weapon_choice()
 	elif rng.randf() < BUFF_DROP_CHANCE:
 		if is_instance_valid(player) and bool(player.get_weapon_config().get("uses_ammo", true)) and rng.randf() < 0.4:
 			_spawn_buff(death_position, &"ammo")
@@ -837,7 +822,16 @@ func _on_enemy_died(enemy_type: StringName, score_gain: int, death_position: Vec
 		_spawn_buff(death_position, &"health")
 
 	if combo_count >= 3 and awarded_score > score_gain:
-		_show_banner("КОМБО x%.2f" % combo_multiplier, 0.45)
+		var combo_message := ""
+		if combo_count >= 10:
+			combo_message = "MEGA KILL STREAK! x%.2f" % combo_multiplier
+		elif combo_count >= 7:
+			combo_message = "KILL RAMPAGE! x%.2f" % combo_multiplier
+		elif combo_count >= 5:
+			combo_message = "KILL STREAK! x%.2f" % combo_multiplier
+		else:
+			combo_message = "КОМБО x%.2f" % combo_multiplier
+		_show_banner(combo_message, 0.45)
 
 	if is_instance_valid(player) and combo_count >= 3:
 		player.apply_adrenaline(3.5)
@@ -892,21 +886,6 @@ func _projectile_hits_wall(projectile: Projectile) -> bool:
 	return false
 
 
-func _trigger_scan_pulse() -> void:
-	if state != GameState.PLAYING or run_finished or is_paused:
-		return
-	if scan_cooldown_left > 0.0:
-		return
-
-	scan_pulse_left = SCAN_DURATION
-	scan_cooldown_left = SCAN_COOLDOWN
-	_show_banner("СКАН АКТИВЕН", 0.8)
-
-	for enemy in enemies:
-		if is_instance_valid(enemy):
-			enemy.mark_scanned(SCAN_DURATION)
-
-
 func _spawn_buff(spawn_position: Vector2, buff_type: StringName = &"") -> void:
 	if not is_instance_valid(entity_root):
 		return
@@ -952,7 +931,7 @@ func _handle_buff_pickups() -> void:
 				if healed_amount > 0.0:
 					_show_banner("ХИЛКА: +%d HP" % int(round(healed_amount)), 0.9)
 			elif buff.buff_type == &"ammo":
-				var ammo_gained := player.add_ammo(AMMO_AMOUNT)
+				var ammo_gained := player.add_ammo(player.get_ammo_pickup_amount())
 				if ammo_gained > 0:
 					_show_banner("ПАТРОНЫ: +%d" % ammo_gained, 0.9)
 				else:
@@ -1023,6 +1002,14 @@ func _on_player_health_changed(current_hp: float, max_hp: float, shield_hp_value
 	hp_label.text = "HP: %d / %d" % [int(round(current_hp)), int(round(max_hp))]
 	shield_label.text = "Щит: %d" % int(round(shield_hp_value))
 
+	var hp_ratio := current_hp / maxf(max_hp, 1.0)
+	if hp_ratio <= 0.3:
+		hp_bar.modulate = Color(1.0, 0.45, 0.4)
+	elif hp_ratio <= 0.6:
+		hp_bar.modulate = Color(1.0, 0.9, 0.45)
+	else:
+		hp_bar.modulate = Color(0.75, 1.0, 0.75)
+
 
 func _on_player_died() -> void:
 	_finish_run(false)
@@ -1087,11 +1074,6 @@ func _update_hud() -> void:
 	else:
 		combo_label.text = "Комбо: x1.00"
 
-	if scan_cooldown_left > 0.0:
-		scan_label.text = "Скан: %.1fs" % scan_cooldown_left
-	else:
-		scan_label.text = "Скан: READY"
-
 
 func _get_nearest_enemy_position() -> Variant:
 	if not is_instance_valid(player):
@@ -1144,16 +1126,6 @@ func _configure_input_map() -> void:
 		dash_key_event.physical_keycode = keycode
 		InputMap.action_add_event("dash", dash_key_event)
 
-	if not InputMap.has_action("scan"):
-		InputMap.add_action("scan")
-
-	for event in InputMap.action_get_events("scan"):
-		InputMap.action_erase_event("scan", event)
-
-	var scan_key_event := InputEventKey.new()
-	scan_key_event.physical_keycode = KEY_E
-	InputMap.action_add_event("scan", scan_key_event)
-
 	if not InputMap.has_action("reload"):
 		InputMap.add_action("reload")
 
@@ -1177,8 +1149,6 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if key_event.physical_keycode != KEY_ESCAPE:
-		if key_event.physical_keycode == KEY_E:
-			_trigger_scan_pulse()
 		return
 
 	if state == GameState.PLAYING and not run_finished:
@@ -1245,7 +1215,10 @@ func _open_weapon_choice() -> void:
 	if title:
 		title.text = "ВЫБОР ОРУЖИЯ"
 	if subtitle:
-		subtitle.text = "Текущее оружие: %s" % (player.get_weapon_name() if is_instance_valid(player) else "Пистолет")
+		if is_instance_valid(player):
+			subtitle.text = "Текущее: %s\n%s" % [player.get_weapon_name(), player.get_weapon_upgrade_preview_text(player.get_weapon_type())]
+		else:
+			subtitle.text = "Текущее оружие: Пистолет"
 
 	for index in range(weapon_choice_options.size()):
 		var button := box.get_child(index + 2) as Button
@@ -1290,7 +1263,10 @@ func _on_weapon_choice_button_pressed(option_index: int) -> void:
 func _weapon_choice_button_text(weapon_type: StringName) -> String:
 	var weapon_name := _weapon_choice_label(weapon_type)
 	if is_instance_valid(player) and player.get_weapon_type() == weapon_type:
-		return "УЛУЧШИТЬ: %s" % weapon_name
+		return "ОСТАВИТЬ И УЛУЧШИТЬ: %s\n%s" % [weapon_name, player.get_weapon_upgrade_preview_text(weapon_type)]
+
+	if is_instance_valid(player):
+		return "ВЗЯТЬ: %s\n%s" % [weapon_name, player.get_weapon_upgrade_preview_text(weapon_type)]
 
 	return "ВЗЯТЬ: %s" % weapon_name
 

@@ -34,6 +34,8 @@ const WEAPON_CONFIGS := {
 		"reserve_ammo": 48,
 		"reload_time": 1.15,
 		"armor_on_equip": 0,
+		"crit_chance": 0.08,
+		"crit_damage": 1.5,
 		"texture": preload("res://assets/kenney_topdown_shooter/PNG/Man Blue/manBlue_gun.png")
 	},
 	WEAPON_MINIGUN: {
@@ -46,9 +48,11 @@ const WEAPON_CONFIGS := {
 		"projectile_lifetime": 1.45,
 		"uses_ammo": true,
 		"magazine_size": 60,
-		"reserve_ammo": 180,
+		"reserve_ammo": 360,
 		"reload_time": 2.6,
 		"armor_on_equip": 0,
+		"crit_chance": 0.04,
+		"crit_damage": 1.3,
 		"texture": preload("res://assets/kenney_topdown_shooter/PNG/Man Blue/manBlue_machine.png")
 	},
 	WEAPON_SHOTGUN: {
@@ -64,6 +68,8 @@ const WEAPON_CONFIGS := {
 		"reserve_ammo": 18,
 		"reload_time": 1.75,
 		"armor_on_equip": 0,
+		"crit_chance": 0.14,
+		"crit_damage": 1.7,
 		"texture": preload("res://assets/kenney_topdown_shooter/PNG/Man Blue/manBlue_machine.png")
 	},
 	WEAPON_FLAMETHROWER: {
@@ -76,9 +82,11 @@ const WEAPON_CONFIGS := {
 		"projectile_lifetime": 0.38,
 		"uses_ammo": true,
 		"magazine_size": 24,
-		"reserve_ammo": 72,
+		"reserve_ammo": 168,
 		"reload_time": 2.4,
 		"armor_on_equip": 0,
+		"crit_chance": 0.06,
+		"crit_damage": 1.4,
 		"texture": preload("res://assets/kenney_topdown_shooter/PNG/Man Blue/manBlue_silencer.png")
 	},
 	WEAPON_SNIPER: {
@@ -95,6 +103,8 @@ const WEAPON_CONFIGS := {
 		"reload_time": 1.8,
 		"pierce_enemies": 4,
 		"armor_on_equip": 0,
+		"crit_chance": 0.25,
+		"crit_damage": 2.2,
 		"texture": preload("res://assets/kenney_topdown_shooter/PNG/Man Blue/manBlue_gun.png")
 	},
 	WEAPON_AXE: {
@@ -110,6 +120,8 @@ const WEAPON_CONFIGS := {
 		"reserve_ammo": 0,
 		"reload_time": 0.0,
 		"armor_on_equip": 80,
+		"crit_chance": 0.18,
+		"crit_damage": 1.9,
 		"texture": preload("res://assets/kenney_topdown_shooter/PNG/Man Blue/manBlue_hold.png")
 	}
 }
@@ -234,7 +246,8 @@ func _process_weapon_fire(delta: float) -> void:
 
 	var pellets := int(weapon_config["pellets"])
 	var spread := float(weapon_config["spread"])
-	var damage := float(weapon_config["damage"])
+	var base_damage := float(weapon_config["damage"])
+	var damage := _calculate_final_damage(base_damage, weapon_config)
 	var fire_interval := float(weapon_config["fire_interval"])
 	var pellet_step := 0.0
 
@@ -363,12 +376,38 @@ func add_ammo(amount: int) -> int:
 	return reserve_ammo - previous_reserve
 
 
+func get_ammo_pickup_amount() -> int:
+	var weapon_config: Dictionary = _get_weapon_config()
+	if not bool(weapon_config.get("uses_ammo", true)):
+		return 0
+
+	var magazine_size := int(weapon_config.get("magazine_size", 12))
+	match weapon_type:
+		WEAPON_MINIGUN:
+			return magazine_size * 2
+		WEAPON_FLAMETHROWER:
+			return int(round(float(magazine_size) * 1.5))
+		WEAPON_SHOTGUN:
+			return max(8, magazine_size)
+		WEAPON_SNIPER:
+			return max(4, magazine_size)
+		_:
+			return max(10, int(round(float(magazine_size) * 0.9)))
+
+
 func get_reserve_ammo_capacity() -> int:
 	var weapon_config: Dictionary = _get_weapon_config()
 	if not bool(weapon_config.get("uses_ammo", true)):
 		return 0
 
-	return int(weapon_config.get("magazine_size", 12)) * 5
+	var base_capacity := int(weapon_config.get("magazine_size", 12)) * 5
+	match weapon_type:
+		WEAPON_MINIGUN:
+			return int(weapon_config.get("magazine_size", 12)) * 10
+		WEAPON_FLAMETHROWER:
+			return int(weapon_config.get("magazine_size", 12)) * 9
+		_:
+			return base_capacity
 
 
 func set_weapon_type(new_weapon_type: StringName) -> void:
@@ -423,6 +462,31 @@ func get_weapon_status_text() -> String:
 		return "Оружие: %s | %.1f x%d | %s + %s | %.2fs%s" % [label, damage, pellets, ammo_text, reserve_text, fire_interval / fire_rate_multiplier, reload_text]
 
 	return "Оружие: %s | %.1f | %s + %s | %.2fs%s" % [label, damage, ammo_text, reserve_text, fire_interval / fire_rate_multiplier, reload_text]
+
+
+func get_weapon_upgrade_preview_text(target_weapon_type: StringName) -> String:
+	if not WEAPON_CONFIGS.has(target_weapon_type):
+		return ""
+
+	if target_weapon_type != weapon_type:
+		var target_label := String(WEAPON_CONFIGS[target_weapon_type]["label"])
+		return "Смена: %s (ранг 1)" % target_label
+
+	var current_cfg := _get_weapon_config()
+	var next_cfg: Dictionary = WEAPON_CONFIGS[target_weapon_type].duplicate(true)
+	_apply_weapon_rank_modifiers_for_rank(next_cfg, weapon_rank + 1, target_weapon_type)
+
+	var dmg_now := float(current_cfg.get("damage", 0.0))
+	var dmg_next := float(next_cfg.get("damage", 0.0))
+	var rate_now := float(current_cfg.get("fire_interval", 1.0))
+	var rate_next := float(next_cfg.get("fire_interval", 1.0))
+	var mag_now := int(current_cfg.get("magazine_size", 0))
+	var mag_next := int(next_cfg.get("magazine_size", 0))
+
+	if bool(current_cfg.get("uses_ammo", true)):
+		return "Апгрейд: урон %.1f→%.1f, скорострельн. %.2f→%.2f, магазин %d→%d" % [dmg_now, dmg_next, rate_now, rate_next, mag_now, mag_next]
+
+	return "Апгрейд: урон %.1f→%.1f, задержка %.2f→%.2f" % [dmg_now, dmg_next, rate_now, rate_next]
 
 
 func get_buff_status_text() -> String:
@@ -500,6 +564,15 @@ func _get_weapon_config() -> Dictionary:
 	return base_config
 
 
+func _calculate_final_damage(base_damage: float, weapon_config: Dictionary) -> float:
+	var crit_chance := float(weapon_config.get("crit_chance", 0.0))
+	var crit_damage := float(weapon_config.get("crit_damage", 1.0))
+	
+	if randf() < crit_chance:
+		return base_damage * crit_damage
+	return base_damage
+
+
 func _apply_weapon_visuals() -> void:
 	if not sprite:
 		return
@@ -567,11 +640,15 @@ func _update_reload_state(delta: float) -> void:
 
 
 func _apply_weapon_rank_modifiers(config: Dictionary) -> void:
-	var rank_bonus: int = weapon_rank - 1
+	_apply_weapon_rank_modifiers_for_rank(config, weapon_rank, weapon_type)
+
+
+func _apply_weapon_rank_modifiers_for_rank(config: Dictionary, rank_value: int, type_name: StringName) -> void:
+	var rank_bonus: int = rank_value - 1
 	if rank_bonus <= 0:
 		return
 
-	match weapon_type:
+	match type_name:
 		WEAPON_PISTOL:
 			config["damage"] = float(config["damage"]) + float(rank_bonus) * 2.0
 			config["fire_interval"] = maxf(0.18, float(config["fire_interval"]) * pow(0.93, float(rank_bonus)))
@@ -581,7 +658,7 @@ func _apply_weapon_rank_modifiers(config: Dictionary) -> void:
 			config["damage"] = float(config["damage"]) + float(rank_bonus) * 1.0
 			config["fire_interval"] = maxf(0.028, float(config["fire_interval"]) * pow(0.9, float(rank_bonus)))
 			config["magazine_size"] = int(config["magazine_size"]) + rank_bonus * 10
-			config["reserve_ammo"] = int(config["reserve_ammo"]) + rank_bonus * 30
+			config["reserve_ammo"] = int(config["reserve_ammo"]) + rank_bonus * 60
 		WEAPON_SHOTGUN:
 			config["damage"] = float(config["damage"]) + float(rank_bonus) * 1.3
 			config["pellets"] = int(config["pellets"]) + min(rank_bonus, 2)
@@ -592,7 +669,7 @@ func _apply_weapon_rank_modifiers(config: Dictionary) -> void:
 			config["damage"] = float(config["damage"]) + float(rank_bonus) * 0.6
 			config["fire_interval"] = maxf(0.02, float(config["fire_interval"]) * pow(0.92, float(rank_bonus)))
 			config["magazine_size"] = int(config["magazine_size"]) + rank_bonus * 8
-			config["reserve_ammo"] = int(config["reserve_ammo"]) + rank_bonus * 20
+			config["reserve_ammo"] = int(config["reserve_ammo"]) + rank_bonus * 40
 		WEAPON_SNIPER:
 			config["damage"] = float(config["damage"]) + float(rank_bonus) * 40.0
 			config["fire_interval"] = maxf(0.4, float(config["fire_interval"]) * pow(0.9, float(rank_bonus)))

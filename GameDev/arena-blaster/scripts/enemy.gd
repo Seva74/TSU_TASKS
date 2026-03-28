@@ -200,12 +200,6 @@ func register_contact_damage() -> void:
 	contact_cooldown_left = CONTACT_COOLDOWN
 
 
-func mark_scanned(duration: float) -> void:
-	flash_left = maxf(flash_left, duration)
-	if sprite:
-		sprite.modulate = Color(0.45, 1.2, 1.4)
-
-
 func _can_see_target() -> bool:
 	if not is_instance_valid(target):
 		return false

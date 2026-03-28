@@ -2,6 +2,7 @@ extends Node
 class_name AudioManager
 
 const MIX_RATE := 22050.0
+const ENABLE_BACKGROUND_MUSIC := false
 
 var rng := RandomNumberGenerator.new()
 
@@ -14,11 +15,13 @@ var bass_phase := 0.0
 
 func _ready() -> void:
 	rng.randomize()
-	_start_music()
+	if ENABLE_BACKGROUND_MUSIC:
+		_start_music()
 
 
 func _process(_delta: float) -> void:
-	_fill_music_buffer()
+	if ENABLE_BACKGROUND_MUSIC:
+		_fill_music_buffer()
 
 
 func play_shoot() -> void:

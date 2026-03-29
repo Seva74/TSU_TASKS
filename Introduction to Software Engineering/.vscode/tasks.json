@@ -1,0 +1,74 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "extract-phase-info",
+			"type": "shell",
+			"command": "\"c:/Seva/GitHub/TSU_TASKS/Introduction to Software Engineering/.venv/Scripts/python.exe\"",
+			"args": [
+				"__extract_phase_info.py"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "extract-phase-info-2",
+			"type": "shell",
+			"command": "& \"c:/Seva/GitHub/TSU_TASKS/Introduction to Software Engineering/.venv/Scripts/python.exe\"",
+			"args": [
+				"__extract_phase_info.py"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "extract-phase-info-cmd",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"\"c:/Seva/GitHub/TSU_TASKS/Introduction to Software Engineering/.venv/Scripts/python.exe\" __extract_phase_info.py"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "extract-phase-info-relative",
+			"type": "shell",
+			"command": "& \".\\.venv\\Scripts\\python.exe\" \".\\__extract_phase_info.py\"",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "extract-phase-info-relative-2",
+			"type": "shell",
+			"command": "& \".\\.venv\\Scripts\\python.exe\" \".\\__extract_phase_info.py\"",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "extract-phase-info-all-pages",
+			"type": "shell",
+			"command": "& \".\\.venv\\Scripts\\python.exe\" \".\\__extract_phase_info.py\"",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "check-node",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"node -v && npm -v"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

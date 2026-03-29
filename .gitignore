@@ -45,6 +45,9 @@ TestResults/
 __pycache__/
 *.py[cod]
 *.pyc.*
+*.import
+*.ctex
+*.md5
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/

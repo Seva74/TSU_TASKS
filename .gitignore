@@ -1,0 +1,71 @@
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*~
+
+# IDE metadata
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userprefs
+*.rsuser
+*.VC.db
+*.VC.db-shm
+*.VC.db-wal
+*.ipch
+
+# .NET / Visual Studio build output
+bin/
+obj/
+TestResults/
+*.pdb
+*.ilk
+*.tlog
+*.lastbuildstate
+*.cache
+*.deps.json
+*.runtimeconfig.json
+
+# C / C++ build artifacts
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc.*
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.venv/
+venv/
+env/
+ENV/
+.ipynb_checkpoints/
+.coverage
+.coverage.*
+htmlcov/
+
+# JavaScript / web tooling
+node_modules/
+coverage/
+dist/
+build/
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp

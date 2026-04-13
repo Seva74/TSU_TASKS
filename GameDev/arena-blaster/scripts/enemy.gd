@@ -228,7 +228,7 @@ func _build_visuals() -> void:
 func _apply_texture() -> void:
 	match enemy_type:
 		&"melee":
-			sprite.texture = preload("res://assets/kenney_topdown_shooter/PNG/Zombie 1/zoimbie1_stand.png")
+			sprite.texture = preload("res://assets/kenney_topdown_shooter/PNG/Zombie 1/zoimbie1_hold.png")
 		&"ranged":
 			sprite.texture = preload("res://assets/kenney_topdown_shooter/PNG/Robot 1/robot1_gun.png")
 		&"boss":

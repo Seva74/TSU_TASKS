@@ -92,7 +92,3 @@
 - Движок: Godot 4.6.
 - Рендер: Forward Plus.
 - Целевое окно: 1920x1080 (stretch настроен в проекте).
-
-## Лицензии и ассеты
-Используются внешние графические ассеты из папки `assets/kenney_topdown_shooter`.
-Проверь условия лицензии в `assets/kenney_topdown_shooter/License.txt` перед публикацией.
